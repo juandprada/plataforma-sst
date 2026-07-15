@@ -1,0 +1,32 @@
+/* ---- Reglas de impresión / PDF ---- */
+@page {
+  size: Letter;
+  margin: 0.6in;
+}
+
+@media print {
+  /* Oculta toda la interfaz; solo se imprime el documento. */
+  .app-chrome { display: none !important; }
+
+  body { background: #fff; }
+
+  #salida {
+    margin: 0;
+    max-width: none;
+    box-shadow: none;
+  }
+
+  /* El padding lo aporta @page; evita doble margen. */
+  .doc { padding: 0; }
+
+  /* Encabezado en flujo normal (aparece una vez, arriba). Evita solaparse
+     con el cuerpo como pasaría con position:fixed. */
+  .doc-header { page-break-inside: avoid; }
+  .doc-body { margin-top: 12px; }
+
+  /* Evita cortar filas de tabla entre páginas. */
+  .doc-tabla tr { page-break-inside: avoid; }
+  .doc-tabla thead { display: table-header-group; }
+
+  .doc-firmas { page-break-inside: avoid; }
+}

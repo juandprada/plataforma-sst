@@ -1,0 +1,17 @@
+# Temporales / SO
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Editores
+.vscode/
+.idea/
+
+# Archivos Office temporales (por si se copian plantillas fuente)
+~$*

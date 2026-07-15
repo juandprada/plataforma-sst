@@ -1,0 +1,132 @@
+[
+  {
+    "id": "tabla-de-contenido",
+    "nombre": "Tabla de Contenido",
+    "categoria": "General",
+    "archivo": "tabla-de-contenido.html",
+    "titulo": "TABLA DE CONTENIDO — SISTEMA DE GESTIÓN DE SEGURIDAD Y SALUD EN EL TRABAJO",
+    "codigo": "",
+    "version": "",
+    "orientacion": "vertical"
+  },
+  {
+    "id": "plan-de-mejora",
+    "nombre": "Plan de Mejora",
+    "categoria": "1.PLANEAR",
+    "archivo": "plan-de-mejora.html",
+    "titulo": "PLAN DE MEJORA CON BASE EN LA AUTOEVALUACIÓN INICIAL",
+    "codigo": "PMA-SST-01",
+    "version": "01",
+    "orientacion": "vertical"
+  },
+  {
+    "id": "plan-de-trabajo-anual",
+    "nombre": "Plan de Trabajo Anual",
+    "categoria": "1.PLANEAR",
+    "archivo": "plan-de-trabajo-anual.html",
+    "titulo": "PLAN DE TRABAJO ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO",
+    "codigo": "PTA-SST-01",
+    "version": "01",
+    "orientacion": "horizontal"
+  },
+  {
+    "id": "acta-conformacion-ccl",
+    "nombre": "Acta Conformación CCL",
+    "categoria": "1.PLANEAR",
+    "archivo": "acta-conformacion-ccl.html",
+    "titulo": "ACTA DE CONFORMACIÓN DEL COMITÉ DE CONVIVENCIA LABORAL",
+    "codigo": "ACL-SST-01",
+    "version": "01",
+    "orientacion": "vertical"
+  },
+  {
+    "id": "politicas",
+    "nombre": "Políticas (Tabaco/Alcohol/SPA y SST)",
+    "categoria": "1.PLANEAR",
+    "archivo": "politicas.html",
+    "titulo": "POLÍTICA DE PREVENCIÓN DE CONSUMO DE TABACO, ALCOHOL Y SUSTANCIAS PSICOACTIVAS",
+    "codigo": "TAS-SST-01",
+    "version": "01",
+    "orientacion": "vertical"
+  },
+  {
+    "id": "responsable",
+    "nombre": "Acta Responsabilidades Alta Gerencia",
+    "categoria": "1.PLANEAR",
+    "archivo": "responsable.html",
+    "titulo": "ACTA DE RESPONSABILIDADES DE LA ALTA GERENCIA FRENTE AL SG-SST",
+    "codigo": "RFG-SST-01",
+    "version": "01",
+    "orientacion": "vertical"
+  },
+  {
+    "id": "acta-conformacion-vigia-copasst",
+    "nombre": "Acta Conformación Vigía / COPASST",
+    "categoria": "1.PLANEAR",
+    "archivo": "acta-conformacion-vigia-copasst.html",
+    "titulo": "ACTA DE CONFORMACIÓN DEL VIGÍA SUPLENTE EN SEGURIDAD Y SALUD EN EL TRABAJO",
+    "codigo": "ACS-SST-01",
+    "version": "01",
+    "orientacion": "vertical"
+  },
+  {
+    "id": "objetivos",
+    "nombre": "Objetivos del SG-SST",
+    "categoria": "1.PLANEAR",
+    "archivo": "objetivos.html",
+    "titulo": "OBJETIVOS DEL SISTEMA DE GESTIÓN DE SEGURIDAD Y SALUD EN EL TRABAJO",
+    "codigo": "OB-SST-01",
+    "version": "01",
+    "orientacion": "vertical"
+  },
+  {
+    "id": "responsabilidades",
+    "nombre": "Responsabilidades frente al SG-SST",
+    "categoria": "1.PLANEAR",
+    "archivo": "responsabilidades.html",
+    "titulo": "RESPONSABILIDADES FRENTE AL SG-SST",
+    "codigo": "RFC-SST-01",
+    "version": "01",
+    "orientacion": "vertical"
+  },
+  {
+    "id": "asistencia-a-capacitacion",
+    "nombre": "Asistencia a Capacitación",
+    "categoria": "1.PLANEAR",
+    "archivo": "asistencia-a-capacitacion.html",
+    "titulo": "FORMATO DE ASISTENCIA A CAPACITACIÓN",
+    "codigo": "FI-SST-01",
+    "version": "01",
+    "orientacion": "vertical"
+  },
+  {
+    "id": "reunion-copasst",
+    "nombre": "Formato de Reunión COPASST",
+    "categoria": "1.PLANEAR",
+    "archivo": "reunion-copasst.html",
+    "titulo": "FORMATO DE REUNIÓN DEL COPASST",
+    "codigo": "",
+    "version": "",
+    "orientacion": "vertical"
+  },
+  {
+    "id": "reunion-ccl",
+    "nombre": "Formato de Reunión CCL",
+    "categoria": "1.PLANEAR",
+    "archivo": "reunion-ccl.html",
+    "titulo": "FORMATO DE REUNIÓN DEL COMITÉ DE CONVIVENCIA LABORAL (CCL)",
+    "codigo": "",
+    "version": "",
+    "orientacion": "vertical"
+  },
+  {
+    "id": "reunion-vigia",
+    "nombre": "Formato de Reunión Vigía",
+    "categoria": "1.PLANEAR",
+    "archivo": "reunion-vigia.html",
+    "titulo": "FORMATO DE REUNIÓN DEL VIGÍA",
+    "codigo": "",
+    "version": "",
+    "orientacion": "vertical"
+  }
+]

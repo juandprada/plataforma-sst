@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plataforma de Documentos SST</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="print.css" media="print">
+  <!-- La app fija aquí el tamaño de página según la orientación del formato. -->
+  <style id="page-orient">@page { size: Letter; margin: 0.6in; }</style>
+</head>
+<body>
+  <div class="app-chrome">
+    <header class="app-header">
+      <h1>Plataforma de Documentos SST</h1>
+      <p>Selecciona un formato y una empresa, genera y descarga el PDF.</p>
+    </header>
+
+    <section class="controls">
+      <div class="field">
+        <label for="sel-formato">Formato</label>
+        <select id="sel-formato"></select>
+      </div>
+      <div class="field">
+        <label for="sel-empresa">Empresa</label>
+        <select id="sel-empresa"></select>
+      </div>
+      <div class="actions">
+        <button id="btn-generar" type="button">Generar vista previa</button>
+        <button id="btn-pdf" type="button" disabled>Descargar PDF</button>
+      </div>
+      <p id="estado" class="estado" role="status"></p>
+    </section>
+
+    <p class="hint">
+      En el diálogo de impresión elige <strong>“Guardar como PDF”</strong> como destino.
+    </p>
+  </div>
+
+  <!-- El documento generado se inyecta aquí; es lo único que se imprime. -->
+  <main id="salida" aria-live="polite"></main>
+
+  <script src="app.js"></script>
+</body>
+</html>

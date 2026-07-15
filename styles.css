@@ -1,0 +1,138 @@
+/* ---- Estilos de pantalla (UI) ---- */
+:root {
+  --azul: #1f4e79;
+  --gris: #f2f4f7;
+  --borde: #d0d5dd;
+  --texto: #1a1a1a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--texto);
+  background: var(--gris);
+}
+
+.app-header {
+  background: var(--azul);
+  color: #fff;
+  padding: 1.25rem 1.5rem;
+}
+.app-header h1 { margin: 0 0 .25rem; font-size: 1.35rem; }
+.app-header p { margin: 0; opacity: .9; font-size: .95rem; }
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+  padding: 1.25rem 1.5rem;
+  background: #fff;
+  border-bottom: 1px solid var(--borde);
+}
+.field { display: flex; flex-direction: column; gap: .35rem; min-width: 240px; flex: 1; }
+.field label { font-weight: 600; font-size: .85rem; }
+.field select {
+  padding: .55rem .6rem;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  font-size: .95rem;
+  background: #fff;
+}
+.actions { display: flex; gap: .6rem; }
+button {
+  padding: .6rem 1.1rem;
+  border: 0;
+  border-radius: 6px;
+  font-size: .95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+#btn-generar { background: var(--azul); color: #fff; }
+#btn-pdf { background: #2e7d32; color: #fff; }
+button:disabled { opacity: .5; cursor: not-allowed; }
+
+.estado { flex-basis: 100%; margin: .25rem 0 0; font-size: .9rem; color: #475467; }
+.estado.error { color: #b42318; }
+.hint { margin: 0; padding: .6rem 1.5rem; font-size: .85rem; color: #475467; }
+
+/* Área de vista previa: simula una hoja carta. */
+#salida {
+  display: block;
+  max-width: 8.5in;
+  margin: 1.5rem auto;
+  background: #fff;
+  box-shadow: 0 1px 6px rgba(0,0,0,.15);
+}
+#salida.horizontal { max-width: 11in; }  /* carta horizontal en pantalla */
+#salida:empty { display: none; }
+
+/* ---- Estilo del documento (compartido con impresión) ---- */
+.doc { padding: 0.6in; font-size: 11px; color: #000; }
+
+.doc-header {
+  display: grid;
+  grid-template-columns: 120px 1fr 200px;
+  align-items: center;
+  border: 1px solid #000;
+}
+.dh-logo {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #000;
+  padding: 4px;
+  overflow: hidden;
+}
+.dh-logo-img { max-width: 100%; max-height: 62px; object-fit: contain; }
+.dh-logo-fallback { font-weight: 700; font-size: 10px; text-align: center; }
+.dh-titulo { text-align: center; padding: 6px 10px; }
+.dh-nombre { font-size: 12px; font-weight: 700; text-transform: uppercase; }
+.dh-anio { font-size: 10px; font-weight: 700; margin-top: 4px; }
+.dh-meta { border-collapse: collapse; height: 70px; width: 200px; }
+.dh-meta th, .dh-meta td {
+  border-left: 1px solid #000;
+  border-bottom: 1px solid #000;
+  font-size: 9px;
+  padding: 2px 5px;
+  text-align: left;
+}
+.dh-meta tr:last-child th, .dh-meta tr:last-child td { border-bottom: 0; }
+.dh-meta th { width: 46px; background: #f0f0f0; }
+
+.doc-body { margin-top: 12px; }
+.doc-body p { margin: 0 0 8px; text-align: justify; }
+.doc-intro { margin: 0 0 12px; text-align: justify; }
+
+/* Encabezados de sección dentro del cuerpo (párrafos en negrita del .docx). */
+.doc-h { font-weight: 700; text-align: left !important; margin: 12px 0 6px; }
+
+.doc-body ul { margin: 0 0 8px; padding-left: 20px; }
+.doc-body li { margin-bottom: 4px; text-align: justify; }
+
+.doc-tabla { width: 100%; border-collapse: collapse; margin: 6px 0 12px; }
+.doc-tabla th, .doc-tabla td {
+  border: 1px solid #000;
+  padding: 4px 5px;
+  vertical-align: top;
+  font-size: 10px;
+}
+.doc-tabla th {
+  background: var(--azul);
+  color: #fff;
+  text-align: center;
+  font-size: 9px;
+}
+.doc-tabla .th-nota { font-weight: 400; font-size: 7px; display: block; margin-top: 2px; }
+
+.doc-firmas {
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+  margin-top: 40px;
+}
+.firma { text-align: center; min-width: 200px; }
+.firma-linea { border-top: 1px solid #000; margin-bottom: 4px; }
