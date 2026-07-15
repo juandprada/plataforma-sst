@@ -169,7 +169,11 @@ async function generarPDF() {
       format: "letter",
       orientation: horizontal ? "landscape" : "portrait",
     },
-    pagebreak: { mode: ["css", "legacy"], before: ".salto-pagina", avoid: "tr" },
+    pagebreak: {
+      mode: ["css", "legacy"],
+      before: [".salto-pagina", ".pb-antes"], // corte forzado en bordes limpios
+      avoid: "tr",
+    },
   };
 
   setEstado("Generando PDF…");

@@ -39,4 +39,6 @@
 
   /* Salto de página del .docx original (p.ej. hoja de firmas aparte). */
   .salto-pagina { break-before: page; page-break-before: always; border: 0; margin: 0; }
+  /* Corte forzado en un borde de sección limpio (evita partir grupos con rowspan). */
+  .pb-antes { break-before: page; page-break-before: always; }
 }
