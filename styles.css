@@ -130,8 +130,13 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 }
 .doc-tabla .th-nota { font-weight: 400; font-size: 7px; display: block; margin-top: 2px; }
 
-/* Celdas de firma dentro de tablas: espacio para firmar sobre la línea. */
-.doc-tabla td.firma-cel { padding-top: 30px; vertical-align: bottom; }
+/* Celdas de firma dentro de tablas: piso de altura para firmar sobre la línea.
+   'height' en celdas actúa como mínimo; la altura original manda si es mayor. */
+.doc-tabla td.firma-cel {
+  height: 64px;
+  vertical-align: bottom;
+  padding-top: 6px;
+}
 
 /* Indicador de salto de página en la vista previa (no aparece en el PDF). */
 .salto-pagina { border-top: 1px dashed #c7ccd4; margin: 16px 0; }
