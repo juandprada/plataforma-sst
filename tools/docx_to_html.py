@@ -284,8 +284,21 @@ def tabla_html(tab) -> str:
                 estilos.append(f"color:{c['color']}")
             if estilos:
                 attrs += f' style="{";".join(estilos)}"'
-            contenido = esc(c["texto"]) if c["texto"] else "&nbsp;"
-            if c["bold"] and tag == "td" and c["texto"]:
+            texto = c["texto"]
+            # Firma automática de la consultora: en celdas con "Karen" junto a una
+            # línea de firma, inserta {{FIRMA_CONSULTORA}} sobre esa línea.
+            if texto and "karen" in texto.lower() and re.search(
+                r"(?mi)^[ \t]*(?:firma[ \t]*)?_{5,}", texto
+            ):
+                texto = re.sub(
+                    r"(?mi)^([ \t]*(?:firma[ \t]*)?_{5,})",
+                    "@@FIRMACONS@@\\1",
+                    texto,
+                    count=1,
+                )
+            contenido = esc(texto) if texto else "&nbsp;"
+            contenido = contenido.replace("@@FIRMACONS@@", "{{FIRMA_CONSULTORA}}<br>")
+            if c["bold"] and tag == "td" and texto:
                 contenido = f"<strong>{contenido}</strong>"
             out.append(f"<{tag}{attrs}>{contenido}</{tag}>")
         out.append("</tr>")

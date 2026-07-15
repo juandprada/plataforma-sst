@@ -37,6 +37,13 @@ Input/Logo*.png →(tools/normalize_logos.py)→ logos/<id>.png
   Abre `.docm` re-empaquetándolo. Genera solo el CUERPO (sin encabezado).
 - **NO reautorar formatos complejos** (Plan de Emergencias, matrices IPEVR, hojas de
   cálculo). Van en `plantillas/PENDIENTES.md`, no en el manifest.
+- **Firma de la consultora**: token `{{FIRMA_CONSULTORA}}` (imagen `assets/firma-karen.png`,
+  raw en `app.js`). El conversor la inserta automáticamente en celdas de tabla que tengan
+  "Karen" junto a una línea de firma (`____` o `FIRMA___`). El bloque `{{ANIO}}`/
+  `{{ANIO_SIGUIENTE}}` sale de pares de años consecutivos del `.docx`.
+- **Plantillas con edición manual (NO regenerar a ciegas)**: `plan-de-mejora.html` y
+  `tabla-de-contenido.html` son hechas a mano; `plan-de-trabajo-anual.html` tiene el
+  bloque de firmas `.firmas` a mano. Regenerar estas pierde los ajustes.
 - Las plantillas llevan un comentario `<!-- Generado desde X.docx … -->`; si se regeneran
   con el conversor se pierden ajustes manuales — revisar antes de sobrescribir.
 
