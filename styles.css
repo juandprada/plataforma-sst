@@ -133,6 +133,9 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 /* Celdas de firma dentro de tablas: espacio para firmar sobre la línea. */
 .doc-tabla td.firma-cel { padding-top: 30px; vertical-align: bottom; }
 
+/* Indicador de salto de página en la vista previa (no aparece en el PDF). */
+.salto-pagina { border-top: 1px dashed #c7ccd4; margin: 16px 0; }
+
 /* Bloque de firmas (sin caja): línea + espacio para firmar + firma automática. */
 .firmas {
   display: flex;

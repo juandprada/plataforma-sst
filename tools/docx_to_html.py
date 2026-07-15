@@ -104,6 +104,17 @@ def cargar_documento(path: Path) -> docx.document.Document:
     return docx.Document(str(tmp))
 
 
+def _tiene_salto_pagina(p_el) -> bool:
+    """True si el párrafo fuerza un salto de página (w:br type=page o sectPr)."""
+    for br in p_el.iter(qn("w:br")):
+        if br.get(qn("w:type")) == "page":
+            return True
+    pPr = p_el.find(qn("w:pPr"))
+    if pPr is not None and pPr.find(qn("w:sectPr")) is not None:
+        return True  # fin de sección => nueva página (salvo la sección final del body)
+    return False
+
+
 def parrafo_html(p) -> str | None:
     txt = p.text.strip()
     if not txt:
@@ -289,20 +300,26 @@ def convertir(path: Path) -> str:
     para_i = tab_i = 0
     for child in d.element.body.iterchildren():
         if child.tag == qn("w:p"):
-            frag = parrafo_html(d.paragraphs[para_i])
+            p = d.paragraphs[para_i]
             para_i += 1
-            if frag is None:
-                continue
-            if frag.startswith("<li>"):
-                if not lista_abierta:
-                    partes.append("<ul>")
-                    lista_abierta = True
-                partes.append(frag)
-                continue
-            if lista_abierta:
-                partes.append("</ul>")
-                lista_abierta = False
-            partes.append(frag)
+            frag = parrafo_html(p)
+            salto = _tiene_salto_pagina(p._p)
+            if frag is not None:
+                if frag.startswith("<li>"):
+                    if not lista_abierta:
+                        partes.append("<ul>")
+                        lista_abierta = True
+                    partes.append(frag)
+                else:
+                    if lista_abierta:
+                        partes.append("</ul>")
+                        lista_abierta = False
+                    partes.append(frag)
+            if salto:
+                if lista_abierta:
+                    partes.append("</ul>")
+                    lista_abierta = False
+                partes.append('<div class="salto-pagina"></div>')
         elif child.tag == qn("w:tbl"):
             if lista_abierta:
                 partes.append("</ul>")

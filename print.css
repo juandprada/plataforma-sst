@@ -29,4 +29,7 @@
   .doc-tabla thead { display: table-header-group; }
 
   .doc-firmas { page-break-inside: avoid; }
+
+  /* Salto de página del .docx original (p.ej. hoja de firmas aparte). */
+  .salto-pagina { break-before: page; page-break-before: always; border: 0; margin: 0; }
 }
