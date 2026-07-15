@@ -33,6 +33,13 @@ function fillTokens(tpl, ctx, raw = []) {
   });
 }
 
+// Nombre propio a Título ("LILIANA MARÍA OROZCO" -> "Liliana María Orozco").
+function tituloCase(str) {
+  return String(str)
+    .toLowerCase()
+    .replace(/(^|[\s/.-])(\p{L})/gu, (_, sep, letra) => sep + letra.toUpperCase());
+}
+
 function logoHTML(empresa) {
   if (empresa.LOGO) {
     return `<img class="dh-logo-img" src="${empresa.LOGO}" alt="Logo ${escapeHTML(
@@ -97,6 +104,9 @@ async function generar() {
     // Contexto = datos de empresa + metadatos del formato + logo (HTML).
     const ctx = {
       ...empresa,
+      // Nombre del representante en Título (viene en MAYÚSCULAS desde el Excel),
+      // para unificar con la firma de la consultora que va en Título.
+      REPRESENTANTE_LEGAL: tituloCase(empresa.REPRESENTANTE_LEGAL || ""),
       TITULO: formato.titulo || formato.nombre,
       CODIGO: formato.codigo || "",
       VERSION: formato.version || "",
