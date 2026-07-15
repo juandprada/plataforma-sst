@@ -128,6 +128,38 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 }
 .doc-tabla .th-nota { font-weight: 400; font-size: 7px; display: block; margin-top: 2px; }
 
+/* ---- Tabla de contenido (índice de documentos) ---- */
+.toc { column-count: 2; column-gap: 24px; font-size: 10px; }
+.toc-sec {
+  column-span: all;
+  background: var(--azul);
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  padding: 4px;
+  margin: 10px 0 6px;
+  letter-spacing: .5px;
+}
+.toc-sec:first-child { margin-top: 0; }
+.toc ul { margin: 0; }
+.toc-l0 { list-style: none; padding-left: 0; }
+.toc-l0 > li {
+  break-inside: avoid;
+  margin-bottom: 4px;
+  font-weight: 600;
+  padding-left: 12px;
+  text-indent: -12px;
+}
+.toc-l0 > li::before { content: "▸ "; color: var(--azul); }
+.toc-l1 { list-style: none; padding-left: 14px; margin-top: 2px; }
+.toc-l1 > li {
+  font-weight: 400;
+  text-indent: -10px;
+  padding-left: 10px;
+  margin-bottom: 1px;
+}
+.toc-l1 > li::before { content: "– "; color: #666; }
+
 .doc-firmas {
   display: flex;
   justify-content: space-around;
