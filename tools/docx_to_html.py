@@ -133,6 +133,34 @@ def _vmerge(tc):
     return "restart" if val == "restart" else "continue"
 
 
+def _hex(val: str | None) -> str | None:
+    """Normaliza un color OOXML a #RRGGBB; ignora 'auto'/vacío."""
+    if not val or val.lower() == "auto":
+        return None
+    val = val.strip().lstrip("#")
+    return "#" + val.upper() if len(val) == 6 else None
+
+
+def _fill(tc) -> str | None:
+    tcPr = tc.find(qn("w:tcPr"))
+    if tcPr is None:
+        return None
+    s = tcPr.find(qn("w:shd"))
+    return _hex(s.get(qn("w:fill"))) if s is not None else None
+
+
+def _text_color(tc) -> str | None:
+    for r in tc.iter(qn("w:r")):
+        rPr = r.find(qn("w:rPr"))
+        if rPr is not None:
+            c = rPr.find(qn("w:color"))
+            if c is not None:
+                h = _hex(c.get(qn("w:val")))
+                if h:
+                    return h
+    return None
+
+
 def _para_text(p_el) -> str:
     """Texto de un <w:p>: une runs sin salto; w:br/w:cr -> salto de línea."""
     partes = []
@@ -178,6 +206,8 @@ def tabla_html(tab) -> str:
                 "rowspan": 1,
                 "col": col,
                 "bold": bold,
+                "fill": _fill(tc),
+                "color": _text_color(tc),
             }
             celdas.append(celda)
             if vm == "restart":
@@ -205,6 +235,14 @@ def tabla_html(tab) -> str:
                 attrs += f' colspan="{c["colspan"]}"'
             if c["rowspan"] > 1:
                 attrs += f' rowspan="{c["rowspan"]}"'
+            # Respeta el sombreado y color de texto originales de la celda.
+            estilos = []
+            if c["fill"]:
+                estilos.append(f"background-color:{c['fill']}")
+            if c["color"]:
+                estilos.append(f"color:{c['color']}")
+            if estilos:
+                attrs += f' style="{";".join(estilos)}"'
             contenido = esc(c["texto"]) if c["texto"] else "&nbsp;"
             if c["bold"] and tag == "td" and c["texto"]:
                 contenido = f"<strong>{contenido}</strong>"

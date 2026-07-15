@@ -120,9 +120,11 @@ button:disabled { opacity: .5; cursor: not-allowed; }
   vertical-align: top;
   font-size: 10px;
 }
+/* Encabezado de tabla: gris neutro por defecto (coincide con el F2F2F2 de los
+   .docx). Las celdas con sombreado propio lo sobrescriben con estilo inline. */
 .doc-tabla th {
-  background: var(--azul);
-  color: #fff;
+  background: #f2f2f2;
+  color: #000;
   text-align: center;
   font-size: 9px;
 }
@@ -132,7 +134,7 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .firmas {
   display: flex;
   justify-content: space-around;
-  align-items: flex-end;
+  align-items: flex-start;          /* alinea desde arriba: líneas al mismo nivel */
   gap: 24px;
   margin-top: 40px;
 }
@@ -141,17 +143,18 @@ button:disabled { opacity: .5; cursor: not-allowed; }
   text-align: center;
   font-size: 10px;
 }
-.firma-espacio { height: 46px; }              /* espacio para firmar a mano */
+/* Zona para firmar, misma altura en las tres -> las líneas quedan a nivel. */
+.firma-top {
+  height: 46px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.firma-top .firma-img { max-height: 46px; max-width: 90%; object-fit: contain; }
 .firmas .firma-linea {
   border-top: 1px solid #000;
   margin: 0 auto 4px;
   width: 80%;
-}
-.firma-img {
-  display: block;
-  height: 46px;
-  margin: 0 auto -6px;                         /* firma apoyada sobre la línea */
-  object-fit: contain;
 }
 
 /* ---- Tabla de contenido (índice de documentos) ---- */
