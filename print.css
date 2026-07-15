@@ -10,6 +10,13 @@
 
   body { background: #fff; }
 
+  /* Fuerza imprimir colores de fondo (sombreado de celdas, código PDCA, etc.)
+     sin que el usuario deba activar "Gráficos de fondo" en el diálogo. */
+  .doc, .doc * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
   #salida {
     margin: 0;
     max-width: none;
