@@ -58,6 +58,34 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .estado.error { color: #b42318; }
 .hint { margin: 0; padding: .6rem 1.5rem; font-size: .85rem; color: #475467; }
 
+/* Visor del PDF (iframe con controles nativos) + botón de descarga. */
+#visor { max-width: 11in; margin: 1rem auto 0; padding: 0 1rem; }
+#visor[hidden] { display: none; }
+.visor-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: .6rem;
+}
+.visor-desc {
+  background: #2e7d32;
+  color: #fff;
+  padding: .55rem 1.1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: .95rem;
+}
+.visor-hint { color: #475467; font-size: .85rem; }
+.visor-frame {
+  width: 100%;
+  height: 85vh;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  background: #fff;
+}
+
 /* Área de vista previa: simula una hoja carta. */
 #salida {
   display: block;

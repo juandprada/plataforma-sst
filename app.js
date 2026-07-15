@@ -139,10 +139,13 @@ async function generar() {
   }
 }
 
-// Descarga el PDF sin diálogo de impresión (evita el encabezado nativo del
-// navegador en móvil). Rasteriza con html2pdf: ancho fijo para que no se
-// deforme en pantallas pequeñas.
-async function descargarPDF() {
+let ultimoBlobUrl = null;
+
+// Genera el PDF (sin diálogo de impresión, para evitar el encabezado nativo del
+// navegador en móvil) y lo muestra en un visor embebido con controles nativos
+// (zoom, imprimir) y botón de descarga. Rasteriza con html2pdf y fija el ancho
+// para que no se deforme en pantallas pequeñas.
+async function generarPDF() {
   const doc = $("#salida .doc");
   if (!doc) {
     setEstado("Primero genera la vista previa.", true);
@@ -184,9 +187,21 @@ async function descargarPDF() {
       const pdf = await html2pdf().set(opt).from(doc).toPdf().get("pdf");
       celdaPagina.textContent = "1 de " + pdf.internal.getNumberOfPages();
     }
-    // Paso 2: generar con el número de página ya puesto y descargar.
-    await html2pdf().set(opt).from(doc).save();
-    setEstado("PDF descargado.");
+    // Paso 2: generar el PDF como blob y mostrarlo en el visor.
+    const url = await html2pdf().set(opt).from(doc).outputPdf("bloburl");
+    if (ultimoBlobUrl) URL.revokeObjectURL(ultimoBlobUrl);
+    ultimoBlobUrl = url;
+
+    const visor = $("#visor");
+    visor.hidden = false;
+    visor.innerHTML =
+      `<div class="visor-bar">` +
+      `<a class="visor-desc" href="${url}" download="${nombre}.pdf">⬇ Descargar PDF</a>` +
+      `<span class="visor-hint">Usa el visor para hacer zoom, imprimir o descargar.</span>` +
+      `</div>` +
+      `<iframe class="visor-frame" title="Vista del PDF" src="${url}"></iframe>`;
+    visor.scrollIntoView({ behavior: "smooth", block: "start" });
+    setEstado("PDF generado: descárgalo con el botón o desde el visor.");
   } catch (err) {
     console.error(err);
     setEstado("No se pudo generar el PDF: " + (err.message || err), true);
@@ -207,7 +222,7 @@ async function init() {
     poblarSelects();
     setEstado("");
     $("#btn-generar").addEventListener("click", generar);
-    $("#btn-pdf").addEventListener("click", descargarPDF);
+    $("#btn-pdf").addEventListener("click", generarPDF);
   } catch (err) {
     console.error(err);
     setEstado(

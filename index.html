@@ -27,18 +27,21 @@
       </div>
       <div class="actions">
         <button id="btn-generar" type="button">Generar vista previa</button>
-        <button id="btn-pdf" type="button" disabled>Descargar PDF</button>
+        <button id="btn-pdf" type="button" disabled>Generar PDF</button>
       </div>
       <p id="estado" class="estado" role="status"></p>
     </section>
 
     <p class="hint">
-      El PDF se <strong>descarga directamente</strong> a tu dispositivo (sin diálogo de
-      impresión), también en el celular.
+      Genera la vista previa, luego <strong>“Generar PDF”</strong>: se abre un visor con
+      el PDF (zoom, imprimir) y un botón para descargarlo. Funciona también en el celular.
     </p>
   </div>
 
-  <!-- El documento generado se inyecta aquí; es lo único que se imprime. -->
+  <!-- Visor del PDF generado (controles nativos + botón de descarga). -->
+  <section id="visor" hidden></section>
+
+  <!-- Vista previa HTML; es la fuente que se convierte a PDF. -->
   <main id="salida" aria-live="polite"></main>
 
   <script src="assets/vendor/html2pdf.bundle.min.js"></script>
