@@ -265,6 +265,20 @@ def tabla_html(tab) -> str:
     )
 
     out = ['<table class="doc-tabla">']
+    # Reproduce los anchos de columna del .docx (tblGrid) con un <colgroup>.
+    grid_el = tbl.find(qn("w:tblGrid"))
+    if grid_el is not None:
+        anchos_col = [
+            int(gc.get(qn("w:w")))
+            for gc in grid_el.findall(qn("w:gridCol"))
+            if gc.get(qn("w:w")) and gc.get(qn("w:w")).isdigit()
+        ]
+        tot = sum(anchos_col)
+        if tot > 0:
+            out.append("<colgroup>")
+            for w in anchos_col:
+                out.append(f'<col style="width:{w / tot * 100:.2f}%">')
+            out.append("</colgroup>")
     for i, fila in enumerate(grid):
         out.append(f'<tr style="height:{alturas[i]}px">' if alturas[i] else "<tr>")
         tag = "th" if (header and i == 0) else "td"

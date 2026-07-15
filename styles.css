@@ -152,7 +152,13 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .doc-body ul { margin: 0 0 8px; padding-left: 20px; }
 .doc-body li { margin-bottom: 4px; text-align: justify; }
 
-.doc-tabla { width: 100%; border-collapse: collapse; margin: 6px 0 12px; }
+.doc-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 6px 0 12px;
+  /* Layout automático: respeta las proporciones del <colgroup> pero deja que las
+     columnas angostas se expandan para que el texto quepa (como en Word). */
+}
 .doc-tabla th, .doc-tabla td {
   border: 1px solid #000;
   padding: 4px 5px;
