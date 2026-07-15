@@ -130,6 +130,9 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 }
 .doc-tabla .th-nota { font-weight: 400; font-size: 7px; display: block; margin-top: 2px; }
 
+/* Celdas de firma dentro de tablas: espacio para firmar sobre la línea. */
+.doc-tabla td.firma-cel { padding-top: 30px; vertical-align: bottom; }
+
 /* Bloque de firmas (sin caja): línea + espacio para firmar + firma automática. */
 .firmas {
   display: flex;

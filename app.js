@@ -102,6 +102,9 @@ async function generar() {
       CODIGO: formato.codigo || "",
       VERSION: formato.version || "",
       ANIO: formato.anio || String(new Date().getFullYear()),
+      ANIO_SIGUIENTE: String(
+        Number(formato.anio || new Date().getFullYear()) + 1
+      ),
       LOGO: logoHTML(empresa),
       // Firma de la consultora (Karen Lizeth Bensur): se inserta automáticamente.
       FIRMA_CONSULTORA:

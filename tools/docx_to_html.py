@@ -69,6 +69,14 @@ REEMPLAZOS = dict(sorted(REEMPLAZOS.items(), key=lambda kv: -len(kv[0])))
 def tokenizar(texto: str) -> str:
     for lit, tok in REEMPLAZOS.items():
         texto = texto.replace(lit, tok)
+    # Pares de años consecutivos (p.ej. "2024 y 2025") -> año actual y el siguiente.
+    texto = re.sub(
+        r"\b(\d{4}) y (\d{4})\b",
+        lambda m: "{{ANIO}} y {{ANIO_SIGUIENTE}}"
+        if int(m.group(2)) == int(m.group(1)) + 1
+        else m.group(0),
+        texto,
+    )
     return texto
 
 
@@ -177,12 +185,31 @@ def _cell_text(tc) -> str:
     return "\n".join(_para_text(p) for p in tc.findall(qn("w:p"))).strip()
 
 
+def _row_height_px(tr) -> int | None:
+    """Altura de fila (w:trHeight, en twips) convertida a px, o None."""
+    trPr = tr.find(qn("w:trPr"))
+    if trPr is None:
+        return None
+    th = trPr.find(qn("w:trHeight"))
+    if th is None:
+        return None
+    val = th.get(qn("w:val"))
+    if not val or not val.isdigit():
+        return None
+    return round(int(val) / 15)  # 1440 twips/pulgada, 96 px/pulgada
+
+
+_RE_FIRMA = re.compile(r"^_{5,}")
+
+
 def tabla_html(tab) -> str:
     tbl = tab._tbl
     filas = tbl.findall(qn("w:tr"))
     abiertos = {}  # col -> celda origen (para rowspan de vMerge)
     grid = []
+    alturas = []
     for tr in filas:
+        alturas.append(_row_height_px(tr))
         col = 0
         celdas = []
         for tc in tr.findall(qn("w:tc")):
@@ -208,6 +235,7 @@ def tabla_html(tab) -> str:
                 "bold": bold,
                 "fill": _fill(tc),
                 "color": _text_color(tc),
+                "firma": bool(_RE_FIRMA.match(texto)),
             }
             celdas.append(celda)
             if vm == "restart":
@@ -227,7 +255,7 @@ def tabla_html(tab) -> str:
 
     out = ['<table class="doc-tabla">']
     for i, fila in enumerate(grid):
-        out.append("<tr>")
+        out.append(f'<tr style="height:{alturas[i]}px">' if alturas[i] else "<tr>")
         tag = "th" if (header and i == 0) else "td"
         for c in fila:
             attrs = ""
@@ -235,6 +263,8 @@ def tabla_html(tab) -> str:
                 attrs += f' colspan="{c["colspan"]}"'
             if c["rowspan"] > 1:
                 attrs += f' rowspan="{c["rowspan"]}"'
+            if c["firma"]:
+                attrs += ' class="firma-cel"'
             # Respeta el sombreado y color de texto originales de la celda.
             estilos = []
             if c["fill"]:
