@@ -177,6 +177,8 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 
 /* Fila que inicia una página forzada: un poco de aire arriba (margen de página). */
 .pb-antes > td, .pb-antes > th { padding-top: 20px; }
+/* Celda que contiene el encabezado repetido al inicio de la página 2. */
+.cel-header { border: 0 !important; padding: 20px 0 8px !important; background: #fff; }
 
 /* Celdas de firma dentro de tablas: piso de altura para firmar sobre la línea.
    'height' en celdas actúa como mínimo; la altura original manda si es mayor. */

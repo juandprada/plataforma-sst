@@ -124,9 +124,9 @@ async function generar() {
       `<article class="doc">${encabezado}` +
       `<div class="doc-body">${cuerpo}</div></article>`;
 
-    // Página por defecto en la vista previa; al descargar se corrige al total real.
-    const celdaPag = $("#salida .dh-pagina");
-    if (celdaPag) celdaPag.textContent = "1 de 1";
+    // Página por defecto en cada encabezado; al descargar se corrige al total real.
+    const celdasPag = $("#salida").querySelectorAll(".dh-pagina");
+    celdasPag.forEach((c, i) => (c.textContent = i + 1 + " de " + celdasPag.length));
 
     document.title = `${formato.nombre} - ${empresa.EMPRESA}`;
     // Genera el PDF y lo muestra en el visor.
@@ -180,12 +180,13 @@ async function generarPDF() {
   window.scrollTo(0, 0); // evita que html2canvas capture con desplazamiento vertical
   const anchoPrevio = doc.style.width;
   doc.style.width = anchoPx + "px"; // fija el ancho durante la captura
-  const celdaPagina = doc.querySelector(".dh-pagina");
+  const celdasPagina = doc.querySelectorAll(".dh-pagina");
   try {
-    // Paso 1: contar las páginas reales para rellenar "Página 1 de N".
-    if (celdaPagina) {
+    // Paso 1: contar las páginas reales y numerar cada encabezado ("i de N").
+    if (celdasPagina.length) {
       const pdf = await html2pdf().set(opt).from(doc).toPdf().get("pdf");
-      celdaPagina.textContent = "1 de " + pdf.internal.getNumberOfPages();
+      const N = pdf.internal.getNumberOfPages();
+      celdasPagina.forEach((c, i) => (c.textContent = i + 1 + " de " + N));
     }
     // Paso 2: generar el PDF como blob y mostrarlo en el visor.
     const url = await html2pdf().set(opt).from(doc).outputPdf("bloburl");
