@@ -125,6 +125,10 @@ async function generar() {
       `<article class="doc">${encabezado}` +
       `<div class="doc-body">${cuerpo}</div></article>`;
 
+    // Página por defecto en la vista previa; al descargar se corrige al total real.
+    const celdaPag = $("#salida .dh-pagina");
+    if (celdaPag) celdaPag.textContent = "1 de 1";
+
     document.title = `${formato.nombre} - ${empresa.EMPRESA}`;
     $("#btn-pdf").disabled = false;
     setEstado(`Vista previa lista: ${formato.nombre} — ${empresa.EMPRESA}.`);
@@ -150,32 +154,38 @@ async function descargarPDF() {
     (document.title || "documento").replace(/[^\wáéíóúñ .-]+/gi, "").trim() ||
     "documento";
 
+  const opt = {
+    margin: 0,
+    filename: nombre + ".pdf",
+    image: { type: "jpeg", quality: 0.98 },
+    html2canvas: {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: "#ffffff",
+      windowWidth: anchoPx,
+      width: anchoPx,
+    },
+    jsPDF: {
+      unit: "in",
+      format: "letter",
+      orientation: horizontal ? "landscape" : "portrait",
+    },
+    pagebreak: { mode: ["css", "legacy"], before: ".salto-pagina", avoid: "tr" },
+  };
+
   setEstado("Generando PDF…");
   $("#btn-pdf").disabled = true;
   const anchoPrevio = doc.style.width;
   doc.style.width = anchoPx + "px"; // fija el ancho durante la captura
+  const celdaPagina = doc.querySelector(".dh-pagina");
   try {
-    await html2pdf()
-      .set({
-        margin: 0,
-        filename: nombre + ".pdf",
-        image: { type: "jpeg", quality: 0.98 },
-        html2canvas: {
-          scale: 2,
-          useCORS: true,
-          backgroundColor: "#ffffff",
-          windowWidth: anchoPx,
-          width: anchoPx,
-        },
-        jsPDF: {
-          unit: "in",
-          format: "letter",
-          orientation: horizontal ? "landscape" : "portrait",
-        },
-        pagebreak: { mode: ["css", "legacy"], before: ".salto-pagina", avoid: "tr" },
-      })
-      .from(doc)
-      .save();
+    // Paso 1: contar las páginas reales para rellenar "Página 1 de N".
+    if (celdaPagina) {
+      const pdf = await html2pdf().set(opt).from(doc).toPdf().get("pdf");
+      celdaPagina.textContent = "1 de " + pdf.internal.getNumberOfPages();
+    }
+    // Paso 2: generar con el número de página ya puesto y descargar.
+    await html2pdf().set(opt).from(doc).save();
     setEstado("PDF descargado.");
   } catch (err) {
     console.error(err);
