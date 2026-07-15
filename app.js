@@ -135,6 +135,57 @@ async function generar() {
   }
 }
 
+// Descarga el PDF sin diálogo de impresión (evita el encabezado nativo del
+// navegador en móvil). Rasteriza con html2pdf: ancho fijo para que no se
+// deforme en pantallas pequeñas.
+async function descargarPDF() {
+  const doc = $("#salida .doc");
+  if (!doc) {
+    setEstado("Primero genera la vista previa.", true);
+    return;
+  }
+  const horizontal = $("#salida").classList.contains("horizontal");
+  const anchoPx = horizontal ? 1056 : 816; // 11in / 8.5in a 96dpi
+  const nombre =
+    (document.title || "documento").replace(/[^\wáéíóúñ .-]+/gi, "").trim() ||
+    "documento";
+
+  setEstado("Generando PDF…");
+  $("#btn-pdf").disabled = true;
+  const anchoPrevio = doc.style.width;
+  doc.style.width = anchoPx + "px"; // fija el ancho durante la captura
+  try {
+    await html2pdf()
+      .set({
+        margin: 0,
+        filename: nombre + ".pdf",
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: "#ffffff",
+          windowWidth: anchoPx,
+          width: anchoPx,
+        },
+        jsPDF: {
+          unit: "in",
+          format: "letter",
+          orientation: horizontal ? "landscape" : "portrait",
+        },
+        pagebreak: { mode: ["css", "legacy"], before: ".salto-pagina", avoid: "tr" },
+      })
+      .from(doc)
+      .save();
+    setEstado("PDF descargado.");
+  } catch (err) {
+    console.error(err);
+    setEstado("No se pudo generar el PDF: " + (err.message || err), true);
+  } finally {
+    doc.style.width = anchoPrevio;
+    $("#btn-pdf").disabled = false;
+  }
+}
+
 async function init() {
   try {
     setEstado("Cargando datos…");
@@ -146,7 +197,7 @@ async function init() {
     poblarSelects();
     setEstado("");
     $("#btn-generar").addEventListener("click", generar);
-    $("#btn-pdf").addEventListener("click", () => window.print());
+    $("#btn-pdf").addEventListener("click", descargarPDF);
   } catch (err) {
     console.error(err);
     setEstado(
