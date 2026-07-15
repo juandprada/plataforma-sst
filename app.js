@@ -157,14 +157,12 @@ async function generarPDF() {
     margin: 0,
     filename: nombre + ".pdf",
     image: { type: "jpeg", quality: 0.98 },
+    // Sin windowWidth/width: dependían del devicePixelRatio (escalado de Windows)
+    // y desplazaban el PDF. El ancho lo fija doc.style.width (ver abajo).
     html2canvas: {
       scale: 2,
       useCORS: true,
       backgroundColor: "#ffffff",
-      windowWidth: anchoPx,
-      width: anchoPx,
-      scrollX: 0,
-      scrollY: 0,
     },
     jsPDF: {
       unit: "in",
