@@ -138,8 +138,10 @@ button:disabled { opacity: .5; cursor: not-allowed; }
   padding-top: 6px;
 }
 
-/* Indicador de salto de página en la vista previa (no aparece en el PDF). */
-.salto-pagina { border-top: 1px dashed #c7ccd4; margin: 16px 0; }
+/* Marcador de salto de página: sin estilos visibles (html2pdf captura la
+   pantalla, así que cualquier borde/margen se colaría en el PDF). El salto real
+   lo maneja html2pdf (pagebreak) y @media print. */
+.salto-pagina { height: 0; }
 
 /* Bloque de firmas (sin caja): línea + espacio para firmar + firma automática. */
 .firmas {
