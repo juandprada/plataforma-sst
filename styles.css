@@ -175,6 +175,9 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 }
 .doc-tabla .th-nota { font-weight: 400; font-size: 7px; display: block; margin-top: 2px; }
 
+/* Fila que inicia una página forzada: un poco de aire arriba (margen de página). */
+.pb-antes > td, .pb-antes > th { padding-top: 20px; }
+
 /* Celdas de firma dentro de tablas: piso de altura para firmar sobre la línea.
    'height' en celdas actúa como mínimo; la altura original manda si es mayor. */
 .doc-tabla td.firma-cel {
