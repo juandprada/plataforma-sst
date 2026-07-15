@@ -140,9 +140,7 @@ async function generar() {
 let ultimoBlobUrl = null;
 
 // Genera el PDF (sin diálogo de impresión, para evitar el encabezado nativo del
-// navegador en móvil) y lo muestra en un visor embebido con controles nativos
-// (zoom, imprimir) y botón de descarga. Rasteriza con html2pdf y fija el ancho
-// para que no se deforme en pantallas pequeñas.
+// navegador en móvil) y lo muestra en un visor embebido con controles nativos.
 async function generarPDF() {
   const doc = $("#salida .doc");
   if (!doc) {

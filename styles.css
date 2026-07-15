@@ -87,11 +87,10 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 }
 
 /* Área de vista previa: simula una hoja carta. */
-/* Fuente de render para html2pdf: el contenedor se recorta a 0 (invisible) y el
-   documento queda en 0,0. Evita el offset gigante que desplaza html2canvas en
-   algunos navegadores móviles. El visor muestra el PDF real. */
+/* Fuente de render para html2pdf: contenedor fijo en 0,0 y recortado a 0
+   (invisible). Estar en 0,0 evita el offset vertical de html2canvas. */
 #salida-host {
-  position: fixed;   /* en 0,0 del viewport: evita el offset vertical de html2canvas */
+  position: fixed;
   top: 0;
   left: 0;
   width: 0;
