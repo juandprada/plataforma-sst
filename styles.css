@@ -87,15 +87,16 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 }
 
 /* Área de vista previa: simula una hoja carta. */
+/* Fuente de render para html2pdf: fuera de pantalla (el visor muestra el PDF). */
 #salida {
+  position: absolute;
+  left: -99999px;
+  top: 0;
   display: block;
   max-width: 8.5in;
-  margin: 1.5rem auto;
   background: #fff;
-  box-shadow: 0 1px 6px rgba(0,0,0,.15);
 }
-#salida.horizontal { max-width: 11in; }  /* carta horizontal en pantalla */
-#salida:empty { display: none; }
+#salida.horizontal { max-width: 11in; }
 
 /* ---- Estilo del documento (compartido con impresión) ---- */
 .doc { padding: 0.6in; font-size: 11px; color: #000; }

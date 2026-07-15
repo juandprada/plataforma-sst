@@ -84,7 +84,6 @@ function poblarSelects() {
 async function generar() {
   try {
     setEstado("Generando…");
-    $("#btn-pdf").disabled = true;
 
     const formato = FORMATOS.find((f) => f.id === $("#sel-formato").value);
     const empresa = EMPRESAS.find((e) => e._id === $("#sel-empresa").value);
@@ -130,9 +129,8 @@ async function generar() {
     if (celdaPag) celdaPag.textContent = "1 de 1";
 
     document.title = `${formato.nombre} - ${empresa.EMPRESA}`;
-    $("#btn-pdf").disabled = false;
-    setEstado(`Vista previa lista: ${formato.nombre} — ${empresa.EMPRESA}.`);
-    $("#salida").scrollIntoView({ behavior: "smooth", block: "start" });
+    // Genera el PDF y lo muestra en el visor.
+    await generarPDF();
   } catch (err) {
     console.error(err);
     setEstado(err.message || "Error al generar.", true);
@@ -177,7 +175,6 @@ async function generarPDF() {
   };
 
   setEstado("Generando PDF…");
-  $("#btn-pdf").disabled = true;
   const anchoPrevio = doc.style.width;
   doc.style.width = anchoPx + "px"; // fija el ancho durante la captura
   const celdaPagina = doc.querySelector(".dh-pagina");
@@ -195,19 +192,14 @@ async function generarPDF() {
     const visor = $("#visor");
     visor.hidden = false;
     visor.innerHTML =
-      `<div class="visor-bar">` +
-      `<a class="visor-desc" href="${url}" download="${nombre}.pdf">⬇ Descargar PDF</a>` +
-      `<span class="visor-hint">Usa el visor para hacer zoom, imprimir o descargar.</span>` +
-      `</div>` +
       `<iframe class="visor-frame" title="Vista del PDF" src="${url}"></iframe>`;
     visor.scrollIntoView({ behavior: "smooth", block: "start" });
-    setEstado("PDF generado: descárgalo con el botón o desde el visor.");
+    setEstado("PDF listo: usa el visor para hacer zoom, imprimir o descargar.");
   } catch (err) {
     console.error(err);
     setEstado("No se pudo generar el PDF: " + (err.message || err), true);
   } finally {
     doc.style.width = anchoPrevio;
-    $("#btn-pdf").disabled = false;
   }
 }
 
@@ -221,8 +213,10 @@ async function init() {
     ]);
     poblarSelects();
     setEstado("");
-    $("#btn-generar").addEventListener("click", generar);
-    $("#btn-pdf").addEventListener("click", generarPDF);
+    // Auto-genera el PDF al elegir formato o empresa (sin botones).
+    $("#sel-formato").addEventListener("change", generar);
+    $("#sel-empresa").addEventListener("change", generar);
+    generar(); // genera el primer documento con la selección por defecto
   } catch (err) {
     console.error(err);
     setEstado(
