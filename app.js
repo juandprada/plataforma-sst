@@ -202,6 +202,27 @@ async function generarPDF() {
   }
 }
 
+// Serializa las generaciones: una sola a la vez (dos html2canvas en paralelo sobre
+// el mismo #salida se corrompen y gana la que termina última, no la seleccionada).
+// Si el usuario cambia de selección durante un render, al terminar se repite con lo
+// último elegido.
+let genSeq = 0;
+let genRunning = false;
+async function solicitarGeneracion() {
+  genSeq++;
+  if (genRunning) return; // la que corre ya tomará el genSeq más reciente al terminar
+  genRunning = true;
+  try {
+    let last;
+    do {
+      last = genSeq;
+      await generar(); // usa los valores ACTUALES de los selects
+    } while (genSeq !== last); // cambió durante el render -> repetir con lo último
+  } finally {
+    genRunning = false;
+  }
+}
+
 async function init() {
   try {
     setEstado("Cargando datos…");
@@ -212,10 +233,10 @@ async function init() {
     ]);
     poblarSelects();
     setEstado("");
-    // Auto-genera el PDF al elegir formato o empresa (sin botones).
-    $("#sel-formato").addEventListener("change", generar);
-    $("#sel-empresa").addEventListener("change", generar);
-    generar(); // genera el primer documento con la selección por defecto
+    // Auto-genera el PDF al elegir formato o empresa (sin botones), serializado.
+    $("#sel-formato").addEventListener("change", solicitarGeneracion);
+    $("#sel-empresa").addEventListener("change", solicitarGeneracion);
+    solicitarGeneracion(); // genera el primer documento con la selección por defecto
   } catch (err) {
     console.error(err);
     setEstado(
