@@ -103,10 +103,14 @@ async function generar() {
       VERSION: formato.version || "",
       ANIO: formato.anio || String(new Date().getFullYear()),
       LOGO: logoHTML(empresa),
+      // Firma de la consultora (Karen Lizeth Bensur): se inserta automáticamente.
+      FIRMA_CONSULTORA:
+        '<img class="firma-img" src="assets/firma-karen.png" alt="Firma consultora">',
     };
 
-    const encabezado = fillTokens(ENCABEZADO_TPL, ctx, ["LOGO"]);
-    const cuerpo = fillTokens(cuerpoTpl, ctx, ["LOGO"]);
+    const raw = ["LOGO", "FIRMA_CONSULTORA"];
+    const encabezado = fillTokens(ENCABEZADO_TPL, ctx, raw);
+    const cuerpo = fillTokens(cuerpoTpl, ctx, raw);
 
     // Orientación de página (vertical por defecto / horizontal si aplica).
     const horizontal = (formato.orientacion || "vertical") === "horizontal";

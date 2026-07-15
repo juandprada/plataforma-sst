@@ -128,9 +128,31 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 }
 .doc-tabla .th-nota { font-weight: 400; font-size: 7px; display: block; margin-top: 2px; }
 
-/* Celdas de firma: espacio arriba para firmar sobre la línea, centradas. */
-.doc-firmas-tabla { margin-top: 24px; }
-.firma-cel { text-align: center; vertical-align: bottom; padding-top: 36px !important; }
+/* Bloque de firmas (sin caja): línea + espacio para firmar + firma automática. */
+.firmas {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  gap: 24px;
+  margin-top: 40px;
+}
+.firmas .firma {
+  flex: 1;
+  text-align: center;
+  font-size: 10px;
+}
+.firma-espacio { height: 46px; }              /* espacio para firmar a mano */
+.firmas .firma-linea {
+  border-top: 1px solid #000;
+  margin: 0 auto 4px;
+  width: 80%;
+}
+.firma-img {
+  display: block;
+  height: 46px;
+  margin: 0 auto -6px;                         /* firma apoyada sobre la línea */
+  object-fit: contain;
+}
 
 /* ---- Tabla de contenido (índice de documentos) ---- */
 .toc { column-count: 2; column-gap: 24px; font-size: 10px; }
