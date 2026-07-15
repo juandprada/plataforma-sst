@@ -38,8 +38,8 @@
   <!-- Visor del PDF generado (controles nativos + botón de descarga). -->
   <section id="visor" hidden></section>
 
-  <!-- Vista previa HTML; es la fuente que se convierte a PDF. -->
-  <main id="salida" aria-live="polite"></main>
+  <!-- Fuente de render para html2pdf (oculta con un contenedor recortado a 0). -->
+  <div id="salida-host" aria-hidden="true"><main id="salida" aria-live="polite"></main></div>
 
   <script src="assets/vendor/html2pdf.bundle.min.js"></script>
   <script src="app.js"></script>

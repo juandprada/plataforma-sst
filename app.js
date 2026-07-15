@@ -165,6 +165,8 @@ async function generarPDF() {
       backgroundColor: "#ffffff",
       windowWidth: anchoPx,
       width: anchoPx,
+      scrollX: 0,
+      scrollY: 0,
     },
     jsPDF: {
       unit: "in",
@@ -175,6 +177,7 @@ async function generarPDF() {
   };
 
   setEstado("Generando PDF…");
+  window.scrollTo(0, 0); // evita que html2canvas capture con desplazamiento vertical
   const anchoPrevio = doc.style.width;
   doc.style.width = anchoPx + "px"; // fija el ancho durante la captura
   const celdaPagina = doc.querySelector(".dh-pagina");

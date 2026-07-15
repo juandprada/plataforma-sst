@@ -87,16 +87,27 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 }
 
 /* Área de vista previa: simula una hoja carta. */
-/* Fuente de render para html2pdf: fuera de pantalla (el visor muestra el PDF). */
+/* Fuente de render para html2pdf: el contenedor se recorta a 0 (invisible) y el
+   documento queda en 0,0. Evita el offset gigante que desplaza html2canvas en
+   algunos navegadores móviles. El visor muestra el PDF real. */
+#salida-host {
+  position: fixed;   /* en 0,0 del viewport: evita el offset vertical de html2canvas */
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  z-index: -1;
+}
 #salida {
   position: absolute;
-  left: -99999px;
   top: 0;
+  left: 0;
   display: block;
-  max-width: 8.5in;
+  width: 8.5in;
   background: #fff;
 }
-#salida.horizontal { max-width: 11in; }
+#salida.horizontal { width: 11in; }
 
 /* ---- Estilo del documento (compartido con impresión) ---- */
 .doc { padding: 0.6in; font-size: 11px; color: #000; }
