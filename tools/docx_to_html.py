@@ -66,6 +66,18 @@ REEMPLAZOS["ACTIVIDADES FINANCIERAS"] = "{{ACTIVIDAD}}"
 REEMPLAZOS = dict(sorted(REEMPLAZOS.items(), key=lambda kv: -len(kv[0])))
 
 
+# Encabezado que se repite al inicio de cada página nueva (tras un salto). Usa los
+# mismos tokens que partials/encabezado.html; la app los rellena y numera cada uno.
+ENCABEZADO_REPETIDO = (
+    '<header class="doc-header"><div class="dh-logo">{{LOGO}}</div>'
+    '<div class="dh-titulo"><div class="dh-nombre">{{TITULO}}</div>'
+    '<div class="dh-anio">AÑO: {{ANIO}}</div></div>'
+    '<table class="dh-meta"><tr><th>Código</th><td>{{CODIGO}}</td></tr>'
+    '<tr><th>Versión</th><td>{{VERSION}}</td></tr>'
+    '<tr><th>Página</th><td class="dh-pagina">&nbsp;</td></tr></table></header>'
+)
+
+
 def tokenizar(texto: str) -> str:
     for lit, tok in REEMPLAZOS.items():
         texto = texto.replace(lit, tok)
@@ -346,7 +358,9 @@ def convertir(path: Path) -> str:
                 if lista_abierta:
                     partes.append("</ul>")
                     lista_abierta = False
+                # Salto de página + encabezado repetido al inicio de la nueva página.
                 partes.append('<div class="salto-pagina"></div>')
+                partes.append(ENCABEZADO_REPETIDO)
         elif child.tag == qn("w:tbl"):
             if lista_abierta:
                 partes.append("</ul>")
