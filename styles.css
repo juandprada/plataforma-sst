@@ -128,6 +128,10 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 }
 .doc-tabla .th-nota { font-weight: 400; font-size: 7px; display: block; margin-top: 2px; }
 
+/* Celdas de firma: espacio arriba para firmar sobre la línea, centradas. */
+.doc-firmas-tabla { margin-top: 24px; }
+.firma-cel { text-align: center; vertical-align: bottom; padding-top: 36px !important; }
+
 /* ---- Tabla de contenido (índice de documentos) ---- */
 .toc { column-count: 2; column-gap: 24px; font-size: 10px; }
 .toc-sec {
