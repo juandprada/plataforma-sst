@@ -39,6 +39,12 @@ Input/Logo*.png →(tools/normalize_logos.py)→ logos/<id>.png
   (p. ej. `.doc--acta-conformacion-ccl .tabla-form td { … }`). Regla: primero variante
   reusable; el ámbito por formato es solo para excepciones puntuales. Cotejar contra el
   `.docx` original (anchos de columna, altos de fila) con Word→PDF para calibrar tamaños.
+- **Interlineado y líneas de llenado (sistemático, no caso por caso)**: el conversor
+  preserva el `line_spacing` del `.docx` por párrafo (OJO: múltiplo de Word ≈ CSS ×1.2;
+  docx 1.35 ≈ `line-height:1.6`). Además marca con `.p-llenar` las **líneas de formulario**
+  (dominadas por guiones: ≥2 blancos o ≥40% del texto) — no la prosa con un guion suelto —
+  para darles renglón de escritura (`styles.css`, `line-height` grande). El default de
+  interlineado por formato está en `styles.css` con ámbito `.doc--<id> .doc-body`.
 - **Conversor `tools/docx_to_html.py`**: párrafos/listas/tablas con celdas combinadas
   (gridSpan/vMerge). Une runs de un párrafo SIN salto (no partir palabras); párrafos y
   `w:br` → `<br>`. Tokeniza literales de empresas/representantes de muestra (mapa interno).

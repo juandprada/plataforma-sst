@@ -144,6 +144,20 @@ def _line_height_style(p) -> str:
         return ""
 
 
+def es_linea_de_llenar(txt: str) -> bool:
+    """True si el párrafo es una LÍNEA DE FORMULARIO para llenar a mano (dominada por
+    guiones), no prosa con un guion incidental. Criterio: ≥2 blancos, o el blanco es
+    ≥40% del texto visible. Se le da renglón de escritura extra (clase .p-llenar).
+    Ignora tokens {{...}} para el cálculo."""
+    limpio = re.sub(r"\{\{[^}]+\}\}", "", txt)
+    blancos = re.findall(r"_{5,}", limpio)
+    if len(blancos) >= 2:
+        return True
+    chars_blanco = sum(len(b) for b in blancos)
+    visible = len(re.sub(r"\s", "", limpio))
+    return visible > 0 and chars_blanco / visible >= 0.40
+
+
 def parrafo_html(p) -> str | None:
     txt = p.text.strip()
     if not txt:
@@ -155,11 +169,14 @@ def parrafo_html(p) -> str | None:
     )
     cont = esc(txt)
     lh = _line_height_style(p)
+    llenar = es_linea_de_llenar(txt)
     if es_lista:
-        return f"<li{lh}>{cont}</li>"
+        cls = ' class="p-llenar"' if llenar else ""
+        return f"<li{cls}{lh}>{cont}</li>"
     if todo_negrita:
-        return f'<p class="doc-h"{lh}>{cont}</p>'
-    return f"<p{lh}>{cont}</p>"
+        return f'<p class="doc-h{" p-llenar" if llenar else ""}"{lh}>{cont}</p>'
+    cls = ' class="p-llenar"' if llenar else ""
+    return f"<p{cls}{lh}>{cont}</p>"
 
 
 def _grid_span(tc) -> int:
