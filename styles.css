@@ -266,6 +266,10 @@ button:disabled { opacity: .5; cursor: not-allowed; }
   align-items: flex-end;
   justify-content: center;
 }
+/* Firma escaneada de la consultora ({{FIRMA_CONSULTORA}}). Límite general para que no
+   salga a tamaño natural (desproporcionada) en celdas anchas como el acta de
+   responsabilidades. `.firma-top` la sobrescribe donde aplica. */
+.firma-img { max-height: 42px; max-width: 85%; object-fit: contain; }
 .firma-top .firma-img { max-height: 46px; max-width: 90%; object-fit: contain; }
 .firmas .firma-linea {
   border-top: 1px solid #000;
