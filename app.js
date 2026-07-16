@@ -184,7 +184,7 @@ async function generarPDF() {
     pagebreak: {
       mode: ["css", "legacy"],
       before: [".salto-pagina", ".pb-antes"], // corte forzado en bordes limpios
-      avoid: "tr",
+      avoid: ["tr", ".doc-header"], // no partir filas ni el encabezado repetido
     },
   };
 

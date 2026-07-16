@@ -109,8 +109,9 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 #salida.horizontal { width: 11in; }
 
 /* ---- Estilo del documento (compartido con impresión) ---- */
-/* Sin padding: el margen de página lo aporta html2pdf (uniforme en todas las páginas). */
-.doc { padding: 0; font-size: 11px; color: #000; }
+/* El margen de página lo aporta html2pdf. Un colchón horizontal mínimo evita que
+   el borde derecho de las tablas quede pegado al canvas y html2canvas lo recorte. */
+.doc { padding: 0 4px; font-size: 11px; color: #000; }
 
 .doc-header {
   display: grid;
@@ -178,7 +179,7 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 
 /* Celda que contiene el encabezado repetido al inicio de una página forzada.
    Sin margen extra arriba: el margen de página (html2pdf) ya es uniforme. */
-.cel-header { border: 0 !important; padding: 0 0 8px !important; background: #fff; }
+.cel-header { border: 0 !important; padding: 5px 0 8px !important; background: #fff; }
 
 /* Celdas de firma dentro de tablas: piso de altura para firmar sobre la línea.
    'height' en celdas actúa como mínimo; la altura original manda si es mayor. */
@@ -191,7 +192,9 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 /* Marcador de salto de página: sin estilos visibles (html2pdf captura la
    pantalla, así que cualquier borde/margen se colaría en el PDF). El salto real
    lo maneja html2pdf (pagebreak) y @media print. */
-.salto-pagina { height: 0; }
+/* Colchón transparente al inicio de la página nueva: absorbe el pixel que html2pdf
+   filtra al final de la página anterior (evita el borde del encabezado colado). */
+.salto-pagina { height: 5px; }
 
 /* Bloque de firmas (sin caja): línea + espacio para firmar + firma automática. */
 .firmas {
