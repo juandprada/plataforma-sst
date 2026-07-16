@@ -15,3 +15,8 @@ venv/
 
 # Archivos Office temporales (por si se copian plantillas fuente)
 ~$*
+
+# QA: PDFs temporales del comparador Word (tools/comparar_word.ps1) y pruebas sueltas
+_compare/
+*roto.pdf
+_*.html

@@ -7,7 +7,8 @@
     "titulo": "TABLA DE CONTENIDO — SISTEMA DE GESTIÓN DE SEGURIDAD Y SALUD EN EL TRABAJO",
     "codigo": "",
     "version": "",
-    "orientacion": "vertical"
+    "orientacion": "vertical",
+    "origen": "TABLA DE CONTENIDO.docx"
   },
   {
     "id": "plan-de-mejora",
@@ -17,7 +18,8 @@
     "titulo": "PLAN DE MEJORA CON BASE EN LA AUTOEVALUACIÓN INICIAL",
     "codigo": "PMA-SST-01",
     "version": "01",
-    "orientacion": "horizontal"
+    "orientacion": "horizontal",
+    "origen": "1.PLANEAR/1.PLAN DE MEJORA.docx"
   },
   {
     "id": "plan-de-trabajo-anual",
@@ -27,7 +29,8 @@
     "titulo": "PLAN DE TRABAJO ANUAL DE SEGURIDAD Y SALUD EN EL TRABAJO",
     "codigo": "PTA-SST-01",
     "version": "01",
-    "orientacion": "horizontal"
+    "orientacion": "horizontal",
+    "origen": "1.PLANEAR/2.PLAN DE TRABAJO ANUAL.docx"
   },
   {
     "id": "acta-conformacion-ccl",
@@ -37,7 +40,8 @@
     "titulo": "ACTA DE CONFORMACIÓN DEL COMITÉ DE CONVIVENCIA LABORAL",
     "codigo": "ACL-SST-01",
     "version": "01",
-    "orientacion": "vertical"
+    "orientacion": "vertical",
+    "origen": "1.PLANEAR/4.ACTA CONFORMACION CCL.docx"
   },
   {
     "id": "politicas",
@@ -47,7 +51,8 @@
     "titulo": "POLÍTICA DE PREVENCIÓN DE CONSUMO DE TABACO, ALCOHOL Y SUSTANCIAS PSICOACTIVAS",
     "codigo": "TAS-SST-01",
     "version": "01",
-    "orientacion": "vertical"
+    "orientacion": "vertical",
+    "origen": "1.PLANEAR/4.POLITICAS.docx"
   },
   {
     "id": "responsable",
@@ -57,7 +62,8 @@
     "titulo": "ACTA DE RESPONSABILIDADES DE LA ALTA GERENCIA FRENTE AL SG-SST",
     "codigo": "RFG-SST-01",
     "version": "01",
-    "orientacion": "vertical"
+    "orientacion": "vertical",
+    "origen": "1.PLANEAR/4.RESPONSABLE.docx"
   },
   {
     "id": "acta-conformacion-vigia-copasst",
@@ -67,7 +73,8 @@
     "titulo": "ACTA DE CONFORMACIÓN DEL VIGÍA SUPLENTE EN SEGURIDAD Y SALUD EN EL TRABAJO",
     "codigo": "ACS-SST-01",
     "version": "01",
-    "orientacion": "vertical"
+    "orientacion": "vertical",
+    "origen": "1.PLANEAR/5.ACTA DE CONFORMACION VIGIA-COPASST.docx"
   },
   {
     "id": "objetivos",
@@ -77,7 +84,8 @@
     "titulo": "OBJETIVOS DEL SISTEMA DE GESTIÓN DE SEGURIDAD Y SALUD EN EL TRABAJO",
     "codigo": "OB-SST-01",
     "version": "01",
-    "orientacion": "vertical"
+    "orientacion": "vertical",
+    "origen": "1.PLANEAR/6.OBJETIVOS.docx"
   },
   {
     "id": "responsabilidades",
@@ -87,7 +95,8 @@
     "titulo": "RESPONSABILIDADES FRENTE AL SG-SST",
     "codigo": "RFC-SST-01",
     "version": "01",
-    "orientacion": "vertical"
+    "orientacion": "vertical",
+    "origen": "1.PLANEAR/7.RESPONSABILIDADES.docx"
   },
   {
     "id": "asistencia-a-capacitacion",
@@ -97,7 +106,8 @@
     "titulo": "FORMATO DE ASISTENCIA A CAPACITACIÓN",
     "codigo": "FI-SST-01",
     "version": "01",
-    "orientacion": "vertical"
+    "orientacion": "vertical",
+    "origen": "1.PLANEAR/8.ASISTENCIA A CAPACITACION.docx"
   },
   {
     "id": "reunion-copasst",
@@ -107,7 +117,8 @@
     "titulo": "FORMATO DE REUNIÓN DEL COPASST",
     "codigo": "",
     "version": "",
-    "orientacion": "vertical"
+    "orientacion": "vertical",
+    "origen": "1.PLANEAR/9.FORMATO DE REUNION COPASST.docx"
   },
   {
     "id": "reunion-ccl",
@@ -117,7 +128,8 @@
     "titulo": "FORMATO DE REUNIÓN DEL COMITÉ DE CONVIVENCIA LABORAL (CCL)",
     "codigo": "",
     "version": "",
-    "orientacion": "vertical"
+    "orientacion": "vertical",
+    "origen": ""
   },
   {
     "id": "reunion-vigia",
@@ -127,6 +139,7 @@
     "titulo": "FORMATO DE REUNIÓN DEL VIGÍA",
     "codigo": "",
     "version": "",
-    "orientacion": "vertical"
+    "orientacion": "vertical",
+    "origen": "1.PLANEAR/9.FORMATO DE REUNION VIGIA.docx"
   }
 ]

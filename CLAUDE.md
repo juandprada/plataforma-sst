@@ -31,6 +31,14 @@ Input/Logo*.png →(tools/normalize_logos.py)→ logos/<id>.png
   Código/Versión de ancho fijo. Debe verse **igual en vertical y horizontal**; solo el
   título se estira. La orientación por formato está en `manifest.orientacion`
   (`vertical|horizontal`); la app fija `@page size` vía `<style id="page-orient">`.
+- **Estilos de tabla = base + variantes + ámbito** (no un solo estilo global para todo):
+  base `.doc-tabla` (bordes/fuente) + **variantes reutilizables** que la plantilla elige
+  según la función de la tabla — `.tabla-form` (filas altas para llenar a mano),
+  `.tabla-firmas` (celdas altas con la línea abajo, espacio para firmar). Para ajustes de
+  UN solo formato, la app pone en el `<article>` la clase de **ámbito** `doc--<id>`
+  (p. ej. `.doc--acta-conformacion-ccl .tabla-form td { … }`). Regla: primero variante
+  reusable; el ámbito por formato es solo para excepciones puntuales. Cotejar contra el
+  `.docx` original (anchos de columna, altos de fila) con Word→PDF para calibrar tamaños.
 - **Conversor `tools/docx_to_html.py`**: párrafos/listas/tablas con celdas combinadas
   (gridSpan/vMerge). Une runs de un párrafo SIN salto (no partir palabras); párrafos y
   `w:br` → `<br>`. Tokeniza literales de empresas/representantes de muestra (mapa interno).
@@ -60,6 +68,19 @@ python -m http.server 8000
 
 Revisar: logo contenido en su caja, Código/Versión, tablas/merges, saltos de página,
 tildes/ñ, y que no queden tokens `{{...}}`. Probar varias empresas y ambas orientaciones.
+
+**Paso final — cotejar contra el Word original.** Cada formato guarda su `.docx` de
+origen en `manifest.origen` (ruta relativa a la raíz `sst\`). Convertirlo a PDF temporal
+y compararlo lado a lado con el PDF que genera la app:
+
+```bash
+powershell -File tools/comparar_word.ps1                    # todos -> _compare/word_<id>.pdf
+powershell -File tools/comparar_word.ps1 -Id acta-conformacion-ccl   # uno solo
+```
+
+`_compare/` es temporal (gitignored). Comparar tamaños de celda/fila, saltos y que no
+falte contenido. Nota: el `.docx` trae datos de muestra (otra empresa/logo, años viejos);
+lo que se coteja es la **presentación**, no los valores (que la app tokeniza).
 
 ## Datos
 

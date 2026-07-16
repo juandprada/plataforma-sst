@@ -177,6 +177,34 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 }
 .doc-tabla .th-nota { font-weight: 400; font-size: 7px; display: block; margin-top: 2px; }
 
+/* ---- Variantes de tabla (opt-in por plantilla; ver CLAUDE.md) ----
+   Vocabulario reutilizable entre formatos. Una tabla combina la base .doc-tabla
+   con una variante según su función. Para ajustes de un solo formato usar el
+   ámbito .doc--<id> (p. ej. `.doc--acta-conformacion-ccl .tabla-form td { … }`). */
+
+/* tabla-form: tabla para llenar a mano. Las filas de datos ganan altura para que
+   haya espacio de escritura; el encabezado y las etiquetas no crecen de más. */
+.doc-tabla.tabla-form td { height: 34px; }
+
+/* tabla-firmas: rejilla de firmas. Celdas altas con la línea abajo y espacio
+   arriba para firmar (como en el .docx original). El segundo selector sube la
+   especificidad para ganarle a `.doc-tabla td.firma-cel` (definido más abajo). */
+.doc-tabla.tabla-firmas td,
+.doc-tabla.tabla-firmas td.firma-cel {
+  height: 92px;
+  vertical-align: bottom;
+  padding: 6px 8px 8px;
+}
+
+/* tabla-firma-suelta: una o pocas firmas SIN recuadro (como en el .docx, donde la
+   firma es solo una línea + nombre, no una tabla con bordes). Quita bordes y el
+   espacio de la celda vacía que el conversor deja al lado. */
+.doc-tabla.tabla-firma-suelta,
+.doc-tabla.tabla-firma-suelta td {
+  border: 0;
+}
+.doc-tabla.tabla-firma-suelta td { padding: 0 8px 0 0; vertical-align: bottom; }
+
 /* Celda que contiene el encabezado repetido al inicio de una página forzada.
    Sin margen extra arriba: el margen de página (html2pdf) ya es uniforme. */
 .cel-header { border: 0 !important; padding: 5px 0 8px !important; background: #fff; }

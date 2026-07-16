@@ -130,8 +130,12 @@ async function generar() {
       `@page { size: Letter ${horizontal ? "landscape" : "portrait"}; margin: 0.6in; }`;
     $("#salida").classList.toggle("horizontal", horizontal);
 
+    // Ámbito por formato: la clase doc--<id> permite ajustes de CSS específicos de
+    // un formato sin afectar a los demás (ver styles.css). Las variantes de tabla
+    // (.tabla-firmas, .tabla-form…) cubren lo común; esto es el escape para excepciones.
+    const scope = "doc--" + String(formato.id).replace(/[^a-z0-9-]/gi, "");
     $("#salida").innerHTML =
-      `<article class="doc">${encabezado}` +
+      `<article class="doc ${scope}">${encabezado}` +
       `<div class="doc-body">${cuerpo}</div></article>`;
 
     // Página por defecto en cada encabezado; al descargar se corrige al total real.
@@ -190,6 +194,12 @@ async function generarPDF() {
 
   setEstado("Generando PDF…");
   window.scrollTo(0, 0); // evita que html2canvas capture con desplazamiento vertical
+  // Oculta la barra de scroll durante la captura. Con página alta (el visor de 85vh),
+  // Windows muestra una barra clásica de ~17px; html2canvas usa clientWidth (que la
+  // resta) y desplaza el contenido a la derecha, cortando el borde derecho. En Android
+  // (scrollbars superpuestas) no pasa. overflow:hidden la quita solo durante el render.
+  const overflowPrevio = document.documentElement.style.overflow;
+  document.documentElement.style.overflow = "hidden";
   const anchoPrevio = doc.style.width;
   doc.style.width = anchoPx + "px"; // fija el ancho durante la captura
   const celdasPagina = doc.querySelectorAll(".dh-pagina");
@@ -216,6 +226,7 @@ async function generarPDF() {
     setEstado("No se pudo generar el PDF: " + (err.message || err), true);
   } finally {
     doc.style.width = anchoPrevio;
+    document.documentElement.style.overflow = overflowPrevio;
   }
 }
 
