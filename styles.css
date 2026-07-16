@@ -149,14 +149,18 @@ button:disabled { opacity: .5; cursor: not-allowed; }
    sobre las líneas de guiones). Por defecto sencillo (formatos de tabla); las actas
    suben a 1.35 y los textos a 1.5, que es lo que traen sus .docx. Al regenerar una
    plantilla, el conversor ya emite el line-height por párrafo (inline) y ese manda. */
-.doc-body { margin-top: 12px; line-height: 1.15; }
+/* OJO: el "múltiplo" de Word (1.35, 1.5) se mide sobre el interlineado SENCILLO,
+   que ya es ~1.2× la fuente; en CSS line-height es × la fuente. Por eso el múltiplo
+   de Word ≈ CSS × ~1.2 (docx 1.35 ≈ CSS 1.6; docx 1.5 ≈ CSS 1.8). Verificado contra
+   el render de Word del acta CCL. */
+.doc-body { margin-top: 12px; line-height: 1.2; }
 .doc--acta-conformacion-ccl .doc-body,
 .doc--acta-conformacion-vigia .doc-body,
-.doc--acta-conformacion-copasst .doc-body { line-height: 1.35; }
+.doc--acta-conformacion-copasst .doc-body { line-height: 1.6; }
 .doc--objetivos .doc-body,
 .doc--politicas .doc-body,
 .doc--responsable .doc-body,
-.doc--responsabilidades .doc-body { line-height: 1.5; }
+.doc--responsabilidades .doc-body { line-height: 1.8; }
 .doc-body p { margin: 0 0 8px; text-align: justify; }
 .doc-intro { margin: 0 0 12px; text-align: justify; }
 

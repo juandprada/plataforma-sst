@@ -135,8 +135,10 @@ def _line_height_style(p) -> str:
     if ls is None:
         return ""
     if isinstance(ls, float):  # regla MULTIPLE / 1.5 / doble -> múltiplo
-        return f' style="line-height:{ls:g}"'
-    try:  # regla EXACTLY / AT_LEAST -> longitud en puntos
+        # El múltiplo de Word se mide sobre el interlineado SENCILLO (~1.2× la fuente);
+        # en CSS line-height es × la fuente. Por eso se escala ×1.2 (docx 1.35 ≈ 1.6).
+        return f' style="line-height:{ls * 1.2:.2f}"'
+    try:  # regla EXACTLY / AT_LEAST -> longitud en puntos (absoluto, sin factor)
         return f' style="line-height:{ls.pt:g}pt"'
     except Exception:
         return ""
