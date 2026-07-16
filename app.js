@@ -158,13 +158,15 @@ async function generarPDF() {
     return;
   }
   const horizontal = $("#salida").classList.contains("horizontal");
-  const anchoPx = horizontal ? 1056 : 816; // 11in / 8.5in a 96dpi
+  // Ancho = área de contenido (página menos 0.6in de margen a cada lado):
+  // horizontal 11in-1.2in=9.8in, vertical 8.5in-1.2in=7.3in (a 96dpi).
+  const anchoPx = horizontal ? 940 : 700;
   const nombre =
     (document.title || "documento").replace(/[^\wáéíóúñ .-]+/gi, "").trim() ||
     "documento";
 
   const opt = {
-    margin: 0,
+    margin: 0.6, // margen uniforme (in) en TODAS las páginas y lados
     filename: nombre + ".pdf",
     image: { type: "jpeg", quality: 0.98 },
     // Sin windowWidth/width: dependían del devicePixelRatio (escalado de Windows)
