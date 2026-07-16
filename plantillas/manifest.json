@@ -44,12 +44,23 @@
     "origen": "1.PLANEAR/4.ACTA CONFORMACION CCL.docx"
   },
   {
-    "id": "politicas",
-    "nombre": "Políticas (Tabaco/Alcohol/SPA y SST)",
+    "id": "politica-tabaco-alcohol-spa",
+    "nombre": "Política Tabaco/Alcohol/SPA",
     "categoria": "1.PLANEAR",
-    "archivo": "politicas.html",
+    "archivo": "politica-tabaco-alcohol-spa.html",
     "titulo": "POLÍTICA DE PREVENCIÓN DE CONSUMO DE TABACO, ALCOHOL Y SUSTANCIAS PSICOACTIVAS",
     "codigo": "TAS-SST-01",
+    "version": "01",
+    "orientacion": "vertical",
+    "origen": "1.PLANEAR/4.POLITICAS.docx"
+  },
+  {
+    "id": "politica-sst",
+    "nombre": "Política de SST",
+    "categoria": "1.PLANEAR",
+    "archivo": "politica-sst.html",
+    "titulo": "POLÍTICA DE SEGURIDAD Y SALUD EN EL TRABAJO",
+    "codigo": "PSS-SST-01",
     "version": "01",
     "orientacion": "vertical",
     "origen": "1.PLANEAR/4.POLITICAS.docx"

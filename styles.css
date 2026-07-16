@@ -158,7 +158,8 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .doc--acta-conformacion-vigia .doc-body,
 .doc--acta-conformacion-copasst .doc-body { line-height: 1.6; }
 .doc--objetivos .doc-body,
-.doc--politicas .doc-body,
+.doc--politica-tabaco-alcohol-spa .doc-body,
+.doc--politica-sst .doc-body,
 .doc--responsable .doc-body,
 .doc--responsabilidades .doc-body { line-height: 1.8; }
 /* Línea para LLENAR a mano con varios nombres en el mismo párrafo (p. ej. "designa a:
