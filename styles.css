@@ -161,6 +161,11 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .doc--politicas .doc-body,
 .doc--responsable .doc-body,
 .doc--responsabilidades .doc-body { line-height: 1.8; }
+/* Línea para LLENAR a mano con varios nombres en el mismo párrafo (p. ej. "designa a:
+   ___ como Presidente... se nombra a: ___ como Secretario"). Al envolver en menos
+   líneas que Word, los guiones quedan pegados; se le da interlineado extra para que
+   haya renglón de escritura sobre cada nombre. */
+.doc-body p.p-llenar { line-height: 2.6; }
 .doc-body p { margin: 0 0 8px; text-align: justify; }
 .doc-intro { margin: 0 0 12px; text-align: justify; }
 
