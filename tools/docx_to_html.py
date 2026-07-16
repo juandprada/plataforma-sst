@@ -127,6 +127,21 @@ def _tiene_salto_pagina(p_el) -> bool:
     return False
 
 
+def _line_height_style(p) -> str:
+    """Interlineado del párrafo como CSS (el .docx lo trae en pPr/spacing).
+    Sin esto el HTML sale con interlineado sencillo aunque el .docx use 1.35/1.5,
+    y no queda aire para escribir a mano sobre las líneas de guiones."""
+    ls = p.paragraph_format.line_spacing
+    if ls is None:
+        return ""
+    if isinstance(ls, float):  # regla MULTIPLE / 1.5 / doble -> múltiplo
+        return f' style="line-height:{ls:g}"'
+    try:  # regla EXACTLY / AT_LEAST -> longitud en puntos
+        return f' style="line-height:{ls.pt:g}pt"'
+    except Exception:
+        return ""
+
+
 def parrafo_html(p) -> str | None:
     txt = p.text.strip()
     if not txt:
@@ -137,11 +152,12 @@ def parrafo_html(p) -> str | None:
         p._p.find(qn("w:pPr")).find(qn("w:numPr")) is not None
     )
     cont = esc(txt)
+    lh = _line_height_style(p)
     if es_lista:
-        return f"<li>{cont}</li>"
+        return f"<li{lh}>{cont}</li>"
     if todo_negrita:
-        return f'<p class="doc-h">{cont}</p>'
-    return f"<p>{cont}</p>"
+        return f'<p class="doc-h"{lh}>{cont}</p>'
+    return f"<p{lh}>{cont}</p>"
 
 
 def _grid_span(tc) -> int:
