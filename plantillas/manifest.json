@@ -66,13 +66,24 @@
     "origen": "1.PLANEAR/4.RESPONSABLE.docx"
   },
   {
-    "id": "acta-conformacion-vigia-copasst",
-    "nombre": "Acta Conformación Vigía / COPASST",
+    "id": "acta-conformacion-vigia",
+    "nombre": "Acta Conformación Vigía",
     "categoria": "1.PLANEAR",
-    "archivo": "acta-conformacion-vigia-copasst.html",
-    "titulo": "ACTA DE CONFORMACIÓN DEL VIGÍA SUPLENTE EN SEGURIDAD Y SALUD EN EL TRABAJO",
+    "archivo": "acta-conformacion-vigia.html",
+    "titulo": "ACTA DE CONFORMACIÓN DEL VIGÍA EN SEGURIDAD Y SALUD EN EL TRABAJO",
     "codigo": "ACS-SST-01",
     "version": "01",
+    "orientacion": "vertical",
+    "origen": "1.PLANEAR/5.ACTA DE CONFORMACION VIGIA-COPASST.docx"
+  },
+  {
+    "id": "acta-conformacion-copasst",
+    "nombre": "Acta Conformación COPASST",
+    "categoria": "1.PLANEAR",
+    "archivo": "acta-conformacion-copasst.html",
+    "titulo": "ACTA DE CONFORMACIÓN DEL COPASST",
+    "codigo": "ACC-SST-01",
+    "version": "1",
     "orientacion": "vertical",
     "origen": "1.PLANEAR/5.ACTA DE CONFORMACION VIGIA-COPASST.docx"
   },

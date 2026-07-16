@@ -144,7 +144,10 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .dh-meta tr:last-child th, .dh-meta tr:last-child td { border-bottom: 0; }
 .dh-meta th { width: 46px; background: #f0f0f0; }
 
-.doc-body { margin-top: 12px; }
+/* Interlineado 1.35 igual que los .docx originales (spacing múltiple 1.35). La
+   conversión lo perdía y el texto salía apretado, sin aire para escribir a mano
+   sobre las líneas de guiones. Se hereda a párrafos, listas y celdas de tabla. */
+.doc-body { margin-top: 12px; line-height: 1.35; }
 .doc-body p { margin: 0 0 8px; text-align: justify; }
 .doc-intro { margin: 0 0 12px; text-align: justify; }
 
