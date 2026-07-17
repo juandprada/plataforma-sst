@@ -39,12 +39,20 @@ Input/Logo*.png →(tools/normalize_logos.py)→ logos/<id>.png
   (p. ej. `.doc--acta-conformacion-ccl .tabla-form td { … }`). Regla: primero variante
   reusable; el ámbito por formato es solo para excepciones puntuales. Cotejar contra el
   `.docx` original (anchos de columna, altos de fila) con Word→PDF para calibrar tamaños.
-- **Interlineado y líneas de llenado (sistemático, no caso por caso)**: el conversor
-  preserva el `line_spacing` del `.docx` por párrafo (OJO: múltiplo de Word ≈ CSS ×1.2;
-  docx 1.35 ≈ `line-height:1.6`). Además marca con `.p-llenar` las **líneas de formulario**
-  (dominadas por guiones: ≥2 blancos o ≥40% del texto) — no la prosa con un guion suelto —
-  para darles renglón de escritura (`styles.css`, `line-height` grande). El default de
-  interlineado por formato está en `styles.css` con ámbito `.doc--<id> .doc-body`.
+- **La salida debe parecerse al `.docx` de origen, medido POR FORMATO (no global)**. Con
+  `python-docx` se mide tamaño de letra, `line_spacing` y alineación de cada `.docx`
+  (`manifest.origen`) y se aplica por ámbito `.doc--<id>` en `styles.css`:
+  - **Tamaño de letra**: la base `.doc` es 11px; los `.docx` de texto suelen ser 12pt →
+    `font-size:16px` (conversión pt→px ≈ ×4/3). Los densos de tabla (asistencia, reuniones,
+    planes, TOC) se dejan chicos a propósito para que quepan las columnas.
+  - **Interlineado**: el conversor preserva el `line_spacing` por párrafo (OJO: múltiplo de
+    Word ≈ CSS ×1.2; docx 1.35 ≈ `line-height:1.6`, 1.5 ≈ 1.8).
+  - **Alineación**: a la **izquierda** (los `.docx` la usan; y es lo recomendado para
+    documentos formales/accesibles, no justificado).
+  - **Líneas de llenado**: el conversor marca con `.p-llenar` las líneas de formulario
+    (dominadas por guiones: ≥2 blancos o ≥40% del texto) — no la prosa con un guion suelto —
+    para darles renglón de escritura (`line-height` grande).
+  Al cambiar tamaños, re-render y confirmar que no cambie el número de páginas vs. Word.
 - **Conversor `tools/docx_to_html.py`**: párrafos/listas/tablas con celdas combinadas
   (gridSpan/vMerge). Une runs de un párrafo SIN salto (no partir palabras); párrafos y
   `w:br` → `<br>`. Tokeniza literales de empresas/representantes de muestra (mapa interno).

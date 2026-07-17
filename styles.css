@@ -163,19 +163,44 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .doc--acta-asignacion-funciones .doc-body,
 .doc--acta-responsabilidades-gerencia .doc-body,
 .doc--responsabilidades .doc-body { line-height: 1.8; }
+
+/* Tamaño de letra POR FORMATO, igual que el .docx (medido con python-docx; pt→px ≈ ×4/3,
+   p. ej. 12pt→16px). La base .doc=11px es más chica que los originales. Se sube el cuerpo
+   y, en estos formatos de texto, también sus celdas de tabla/firma para no dejar la letra
+   despareja. Los formatos densos de tabla (asistencia, reuniones, planes, TOC) se dejan
+   como están: su letra chica es a propósito para que quepan las columnas. */
+.doc--objetivos .doc-body,
+.doc--politica-tabaco-alcohol-spa .doc-body,
+.doc--politica-sst .doc-body,
+.doc--acta-conformacion-ccl .doc-body,
+.doc--acta-conformacion-vigia .doc-body,
+.doc--acta-conformacion-copasst .doc-body,
+.doc--acta-asignacion-funciones .doc-body,
+.doc--acta-responsabilidades-gerencia .doc-body,
+.doc--responsabilidades .doc-body { font-size: 16px; }
+.doc--objetivos .doc-tabla td, .doc--objetivos .doc-tabla th,
+.doc--politica-tabaco-alcohol-spa .doc-tabla td, .doc--politica-tabaco-alcohol-spa .doc-tabla th,
+.doc--politica-sst .doc-tabla td, .doc--politica-sst .doc-tabla th,
+.doc--acta-conformacion-ccl .doc-tabla td, .doc--acta-conformacion-ccl .doc-tabla th,
+.doc--acta-conformacion-vigia .doc-tabla td, .doc--acta-conformacion-vigia .doc-tabla th,
+.doc--acta-conformacion-copasst .doc-tabla td, .doc--acta-conformacion-copasst .doc-tabla th,
+.doc--acta-asignacion-funciones .doc-tabla td, .doc--acta-asignacion-funciones .doc-tabla th,
+.doc--acta-responsabilidades-gerencia .doc-tabla td, .doc--acta-responsabilidades-gerencia .doc-tabla th {
+  font-size: 14px;
+}
 /* Línea para LLENAR a mano con varios nombres en el mismo párrafo (p. ej. "designa a:
    ___ como Presidente... se nombra a: ___ como Secretario"). Al envolver en menos
    líneas que Word, los guiones quedan pegados; se le da interlineado extra para que
    haya renglón de escritura sobre cada nombre. */
 .doc-body p.p-llenar { line-height: 2.6; }
-.doc-body p { margin: 0 0 8px; text-align: justify; }
-.doc-intro { margin: 0 0 12px; text-align: justify; }
+.doc-body p { margin: 0 0 8px; text-align: left; }
+.doc-intro { margin: 0 0 12px; text-align: left; }
 
 /* Encabezados de sección dentro del cuerpo (párrafos en negrita del .docx). */
 .doc-h { font-weight: 700; text-align: left !important; margin: 12px 0 6px; }
 
 .doc-body ul { margin: 0 0 8px; padding-left: 20px; }
-.doc-body li { margin-bottom: 4px; text-align: justify; }
+.doc-body li { margin-bottom: 4px; text-align: left; }
 
 .doc-tabla {
   width: 100%;
