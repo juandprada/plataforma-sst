@@ -44,7 +44,10 @@ Input/Logo*.png →(tools/normalize_logos.py)→ logos/<id>.png
   (`manifest.origen`) y se aplica por ámbito `.doc--<id>` en `styles.css`:
   - **Tamaño de letra**: la base `.doc` es 11px; los `.docx` de texto suelen ser 12pt →
     `font-size:16px` (conversión pt→px ≈ ×4/3). Los densos de tabla (asistencia, reuniones,
-    planes, TOC) se dejan chicos a propósito para que quepan las columnas.
+    planes, TOC) se dejan chicos a propósito para que quepan las columnas. El **encabezado**
+    también sale del `.docx` (header de sección): título 11pt→`.dh-nombre:15px`,
+    Código/Versión/Página 10pt→`.dh-meta:13px`. Ojo: en el Word el título (11pt) es un poco
+    MÁS chico que el cuerpo (12pt), no al revés.
   - **Interlineado**: el conversor preserva el `line_spacing` por párrafo (OJO: múltiplo de
     Word ≈ CSS ×1.2; docx 1.35 ≈ `line-height:1.6`, 1.5 ≈ 1.8).
   - **Alineación**: a la **izquierda** (los `.docx` la usan; y es lo recomendado para
