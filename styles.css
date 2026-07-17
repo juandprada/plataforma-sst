@@ -234,6 +234,12 @@ button:disabled { opacity: .5; cursor: not-allowed; }
    haya espacio de escritura; el encabezado y las etiquetas no crecen de más. */
 .doc-tabla.tabla-form td { height: 34px; }
 
+/* tabla-compacta: tabla que NO ocupa todo el ancho (se ajusta al contenido), a la
+   izquierda. Para casillas tipo Ordinaria/Extraordinaria, donde el checkbox debe ir
+   JUNTO a la etiqueta, no flotando al extremo derecho de una tabla de ancho completo. */
+.doc-tabla.tabla-compacta { width: auto; }
+.doc-tabla.tabla-compacta td:last-child { text-align: center; min-width: 34px; }
+
 /* tabla-firmas: rejilla de firmas. Celdas altas con la línea abajo y espacio
    arriba para firmar (como en el .docx original). El segundo selector sube la
    especificidad para ganarle a `.doc-tabla td.firma-cel` (definido más abajo). */

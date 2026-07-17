@@ -34,7 +34,9 @@ Input/Logo*.png →(tools/normalize_logos.py)→ logos/<id>.png
 - **Estilos de tabla = base + variantes + ámbito** (no un solo estilo global para todo):
   base `.doc-tabla` (bordes/fuente) + **variantes reutilizables** que la plantilla elige
   según la función de la tabla — `.tabla-form` (filas altas para llenar a mano),
-  `.tabla-firmas` (celdas altas con la línea abajo, espacio para firmar). Para ajustes de
+  `.tabla-firmas` (celdas altas con la línea abajo, espacio para firmar),
+  `.tabla-compacta` (ancho al contenido, para casillas como Ordinaria/Extraordinaria
+  donde el checkbox va junto a la etiqueta, no al extremo derecho). Para ajustes de
   UN solo formato, la app pone en el `<article>` la clase de **ámbito** `doc--<id>`
   (p. ej. `.doc--acta-conformacion-ccl .tabla-form td { … }`). Regla: primero variante
   reusable; el ámbito por formato es solo para excepciones puntuales. Cotejar contra el
