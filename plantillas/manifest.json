@@ -66,10 +66,21 @@
     "origen": "1.PLANEAR/4.POLITICAS.docx"
   },
   {
-    "id": "responsable",
+    "id": "acta-asignacion-funciones",
+    "nombre": "Acta Asignación de Funciones",
+    "categoria": "1.PLANEAR",
+    "archivo": "acta-asignacion-funciones.html",
+    "titulo": "ACTA DE ASIGNACIÓN DE FUNCIONES DEL SG-SST",
+    "codigo": "AAF-SST-01",
+    "version": "01",
+    "orientacion": "vertical",
+    "origen": "1.PLANEAR/4.RESPONSABLE.docx"
+  },
+  {
+    "id": "acta-responsabilidades-gerencia",
     "nombre": "Acta Responsabilidades Alta Gerencia",
     "categoria": "1.PLANEAR",
-    "archivo": "responsable.html",
+    "archivo": "acta-responsabilidades-gerencia.html",
     "titulo": "ACTA DE RESPONSABILIDADES DE LA ALTA GERENCIA FRENTE AL SG-SST",
     "codigo": "RFG-SST-01",
     "version": "01",
