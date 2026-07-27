@@ -33,6 +33,17 @@
     "origen": "1.PLANEAR/2.PLAN DE TRABAJO ANUAL.docx"
   },
   {
+    "id": "presupuesto",
+    "nombre": "Presupuesto SG-SST",
+    "categoria": "1.PLANEAR",
+    "archivo": "presupuesto.html",
+    "titulo": "PRESUPUESTO DEL SG-SST",
+    "codigo": "PRE-SST-01",
+    "version": "01",
+    "orientacion": "vertical",
+    "origen": "1.PLANEAR/3.PRESUPUESTO.docx"
+  },
+  {
     "id": "acta-conformacion-ccl",
     "nombre": "Acta Conformación CCL",
     "categoria": "1.PLANEAR",

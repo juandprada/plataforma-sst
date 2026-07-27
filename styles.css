@@ -240,6 +240,17 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .doc-tabla.tabla-compacta { width: auto; }
 .doc-tabla.tabla-compacta td:last-child { text-align: center; min-width: 34px; }
 
+/* tabla-presupuesto: la arma la app (ver app.js/tablaPresupuestoHTML). Filas de grupo
+   y de subtotal/total resaltadas, importes a la derecha, como en el .docx. */
+.doc-tabla.tabla-presupuesto .pr-num { text-align: right; white-space: nowrap; }
+.doc-tabla.tabla-presupuesto .pr-grupo td { background: #f2f2f2; font-weight: 700; }
+.doc-tabla.tabla-presupuesto .pr-subtotal td { font-weight: 700; text-align: right; }
+.doc-tabla.tabla-presupuesto .pr-total td {
+  background: #f2f2f2;
+  font-weight: 700;
+  text-align: right;
+}
+
 /* tabla-firmas: rejilla de firmas. Celdas altas con la línea abajo y espacio
    arriba para firmar (como en el .docx original). El segundo selector sube la
    especificidad para ganarle a `.doc-tabla td.firma-cel` (definido más abajo). */

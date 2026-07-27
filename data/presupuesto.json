@@ -1,0 +1,188 @@
+{
+  "_origen": "1.PLANEAR/3.PRESUPUESTO.xlsx (regenerar con tools/presupuesto_to_json.py)",
+  "moneda": "COP",
+  "parametros_default": {
+    "trabajadores": 4,
+    "extintores": 1,
+    "botiquines": 1,
+    "aires_acondicionados": 0,
+    "pago_mensual_asesoria": 250000
+  },
+  "parametros_por_empresa": {
+    "medalleria-deportiva-del-valle": {
+      "trabajadores": 4,
+      "extintores": 2,
+      "botiquines": 1,
+      "aires_acondicionados": 0,
+      "pago_mensual_asesoria": 250000
+    },
+    "gaf-technology-solutions-sas": {
+      "trabajadores": 1,
+      "extintores": 0,
+      "botiquines": 1,
+      "aires_acondicionados": 3,
+      "pago_mensual_asesoria": 250000
+    },
+    "ck-comercializadora-un-mundo-de-oportunidades-sas": {
+      "trabajadores": 2,
+      "extintores": 0,
+      "botiquines": 1,
+      "aires_acondicionados": 3,
+      "pago_mensual_asesoria": 250000
+    },
+    "te-recuperamos-sas": {
+      "trabajadores": 3,
+      "extintores": 0,
+      "botiquines": 1,
+      "aires_acondicionados": 3,
+      "pago_mensual_asesoria": 250000
+    }
+  },
+  "catalogo": [
+    {
+      "grupo": "Sistema de Gestión de Seguridad y Salud en el Trabajo",
+      "items": [
+        {
+          "nombre": "Asesoría Externa SG-SST",
+          "vu": {
+            "param": "pago_mensual_asesoria"
+          },
+          "cant": {
+            "fijo": 12
+          }
+        },
+        {
+          "nombre": "Elementos de Oficina",
+          "vu": {
+            "fijo": 20000,
+            "por": "trabajadores"
+          },
+          "cant": {
+            "fijo": 1
+          }
+        },
+        {
+          "nombre": "Capacitaciones en SG-SST",
+          "vu": {
+            "fijo": 30000,
+            "por": "trabajadores"
+          },
+          "cant": {
+            "fijo": 1
+          }
+        }
+      ]
+    },
+    {
+      "grupo": "Brigadas de Emergencias",
+      "items": [
+        {
+          "nombre": "Mantenimiento y recarga de extintores",
+          "vu": {
+            "fijo": 50000
+          },
+          "cant": {
+            "param": "extintores"
+          }
+        },
+        {
+          "nombre": "Implementos para el botiquín",
+          "vu": {
+            "fijo": 30000
+          },
+          "cant": {
+            "param": "botiquines"
+          }
+        }
+      ]
+    },
+    {
+      "grupo": "Seguridad Industrial",
+      "items": [
+        {
+          "nombre": "Elementos de Protección Personal",
+          "vu": {
+            "fijo": 100000
+          },
+          "cant": {
+            "param": "trabajadores"
+          }
+        },
+        {
+          "nombre": "Fumigación",
+          "vu": {
+            "fijo": 200000
+          },
+          "cant": {
+            "fijo": 1
+          }
+        }
+      ]
+    },
+    {
+      "grupo": "Higiene Industrial",
+      "items": [
+        {
+          "nombre": "Desinfectantes",
+          "vu": {
+            "fijo": 50000
+          },
+          "cant": {
+            "fijo": 1
+          }
+        },
+        {
+          "nombre": "Caja de Toallas Desechables",
+          "vu": {
+            "fijo": 50000
+          },
+          "cant": {
+            "fijo": 1
+          }
+        },
+        {
+          "nombre": "Caja de Jabones",
+          "vu": {
+            "fijo": 50000
+          },
+          "cant": {
+            "fijo": 1
+          }
+        },
+        {
+          "nombre": "Mantenimiento de Aires Acondicionados",
+          "vu": {
+            "fijo": 100000
+          },
+          "cant": {
+            "param": "aires_acondicionados"
+          }
+        }
+      ]
+    },
+    {
+      "grupo": "Salud Laboral",
+      "items": [
+        {
+          "nombre": "Exámenes Periódicos",
+          "vu": {
+            "fijo": 25000
+          },
+          "cant": {
+            "param": "trabajadores"
+          }
+        },
+        {
+          "nombre": "Semana de la Salud",
+          "vu": {
+            "fijo": 30000,
+            "por": "trabajadores"
+          },
+          "cant": {
+            "fijo": 1
+          }
+        }
+      ]
+    }
+  ]
+}

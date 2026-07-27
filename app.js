@@ -4,6 +4,7 @@
 let EMPRESAS = [];
 let FORMATOS = [];
 let ENCABEZADO_TPL = "";
+let PRESUPUESTO = null; // data/presupuesto.json (parámetros por empresa + catálogo)
 
 const $ = (sel) => document.querySelector(sel);
 
@@ -47,6 +48,72 @@ function logoHTML(empresa) {
     )}">`;
   }
   return `<span class="dh-logo-fallback">${escapeHTML(empresa.EMPRESA)}</span>`;
+}
+
+// ---- Presupuesto (formato calculado) -------------------------------------
+// El .xlsx original es una calculadora: la tabla sale de 5 parámetros por empresa
+// (trabajadores, extintores, botiquines, aires, pago de asesoría) y de un catálogo
+// de ítems con su precio base. Ambos viven en data/presupuesto.json.
+
+const pesos = (n) => "$ " + Math.round(n).toLocaleString("es-CO");
+
+// Resuelve un valor unitario o una cantidad según su regla del catálogo:
+//   {fijo: n} | {fijo: n, por: "<param>"} (n × parámetro) | {param: "<param>"}
+function valorRegla(regla, params) {
+  if (!regla) return 0;
+  if ("param" in regla) return Number(params[regla.param]) || 0;
+  const base = Number(regla.fijo) || 0;
+  return "por" in regla ? base * (Number(params[regla.por]) || 0) : base;
+}
+
+// Arma la tabla del presupuesto (grupos + subtotales + totales) para una empresa.
+function tablaPresupuestoHTML(empresa) {
+  if (!PRESUPUESTO) return "<p>No se pudo cargar el presupuesto.</p>";
+  const params = {
+    ...PRESUPUESTO.parametros_default,
+    ...(PRESUPUESTO.parametros_por_empresa[empresa._id] || {}),
+  };
+
+  const filas = [];
+  let total = 0;
+  for (const grupo of PRESUPUESTO.catalogo) {
+    filas.push(
+      `<tr class="pr-grupo"><td colspan="4">${escapeHTML(grupo.grupo)}</td></tr>`
+    );
+    let subtotal = 0;
+    for (const item of grupo.items) {
+      const vu = valorRegla(item.vu, params);
+      const cant = valorRegla(item.cant, params);
+      const t = vu * cant;
+      subtotal += t;
+      filas.push(
+        `<tr><td>${escapeHTML(item.nombre)}</td>` +
+          `<td class="pr-num">${pesos(vu)}</td>` +
+          `<td class="pr-num">${cant}</td>` +
+          `<td class="pr-num">${pesos(t)}</td></tr>`
+      );
+    }
+    total += subtotal;
+    filas.push(
+      `<tr class="pr-subtotal"><td colspan="3">SUBTOTAL</td>` +
+        `<td class="pr-num">${pesos(subtotal)}</td></tr>`
+    );
+  }
+  filas.push(
+    `<tr class="pr-total"><td colspan="3">PRESUPUESTO TOTAL ASIGNADO</td>` +
+      `<td class="pr-num">${pesos(total)}</td></tr>`,
+    `<tr class="pr-total"><td colspan="3">PRESUPUESTO MENSUAL</td>` +
+      `<td class="pr-num">${pesos(total / 12)}</td></tr>`
+  );
+
+  return (
+    '<table class="doc-tabla tabla-presupuesto">' +
+    "<colgroup><col style=\"width:46%\"><col style=\"width:19%\">" +
+    "<col style=\"width:14%\"><col style=\"width:21%\"></colgroup>" +
+    "<tr><th>ITEM</th><th>VALOR UNITARIO</th><th>CANTIDADES</th><th>VALOR TOTAL</th></tr>" +
+    filas.join("") +
+    "</table>"
+  );
 }
 
 async function fetchText(url) {
@@ -118,9 +185,11 @@ async function generar() {
       // Firma de la consultora (Karen Lizeth Bensur): se inserta automáticamente.
       FIRMA_CONSULTORA:
         '<img class="firma-img" src="assets/firma-karen.png" alt="Firma consultora">',
+      // Tabla del presupuesto: se calcula por empresa (ver data/presupuesto.json).
+      TABLA_PRESUPUESTO: tablaPresupuestoHTML(empresa),
     };
 
-    const raw = ["LOGO", "FIRMA_CONSULTORA"];
+    const raw = ["LOGO", "FIRMA_CONSULTORA", "TABLA_PRESUPUESTO"];
     const encabezado = fillTokens(ENCABEZADO_TPL, ctx, raw);
     const cuerpo = fillTokens(cuerpoTpl, ctx, raw);
 
@@ -254,10 +323,11 @@ async function solicitarGeneracion() {
 async function init() {
   try {
     setEstado("Cargando datos…");
-    [EMPRESAS, FORMATOS, ENCABEZADO_TPL] = await Promise.all([
+    [EMPRESAS, FORMATOS, ENCABEZADO_TPL, PRESUPUESTO] = await Promise.all([
       fetchJSON("data/empresas.json"),
       fetchJSON("plantillas/manifest.json"),
       fetchText("partials/encabezado.html"),
+      fetchJSON("data/presupuesto.json"),
     ]);
     poblarSelects();
     setEstado("");

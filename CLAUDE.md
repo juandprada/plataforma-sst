@@ -62,6 +62,14 @@ Input/Logo*.png →(tools/normalize_logos.py)→ logos/<id>.png
   (gridSpan/vMerge). Une runs de un párrafo SIN salto (no partir palabras); párrafos y
   `w:br` → `<br>`. Tokeniza literales de empresas/representantes de muestra (mapa interno).
   Abre `.docm` re-empaquetándolo. Genera solo el CUERPO (sin encabezado).
+- **Presupuesto = formato CALCULADO** (único hasta ahora). Su `.docx` estaba conectado a
+  `3.PRESUPUESTO.xlsx`, que era una calculadora. Ahora los datos viven en
+  `data/presupuesto.json`: `parametros_por_empresa` (trabajadores, extintores, botiquines,
+  aires, pago de asesoría) + `catalogo` (ítems agrupados con su precio base y de qué
+  parámetro depende cada cantidad). La app arma la tabla en `tablaPresupuestoHTML()` y la
+  inyecta con el token `{{TABLA_PRESUPUESTO}}` (va en `raw`, es HTML). Para actualizar
+  precios (inflación) se edita el JSON, no el código; los parámetros se regeneran del
+  .xlsx con `tools/presupuesto_to_json.py`. Empresas sin datos usan `parametros_default`.
 - **NO reautorar formatos complejos** (Plan de Emergencias, matrices IPEVR, hojas de
   cálculo). Van en `plantillas/PENDIENTES.md`, no en el manifest.
 - **Firma de la consultora**: token `{{FIRMA_CONSULTORA}}` (imagen `assets/firma-karen.png`,
