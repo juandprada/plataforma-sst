@@ -153,6 +153,19 @@ function poblarSelects() {
     o.textContent = e.EMPRESA;
     selE.appendChild(o);
   }
+
+  // Años disponibles: el actual y el anterior (hoy: 2026 y 2025). Muchos documentos
+  // se firman para el año en curso, pero a veces hay que reponer los del año pasado.
+  const selA = $("#sel-anio");
+  const actual = new Date().getFullYear();
+  selA.innerHTML = "";
+  for (const a of [actual, actual - 1]) {
+    const o = document.createElement("option");
+    o.value = String(a);
+    o.textContent = String(a);
+    selA.appendChild(o);
+  }
+  selA.value = String(actual); // por defecto, el año en curso
 }
 
 async function generar() {
@@ -165,6 +178,7 @@ async function generar() {
       setEstado("Selecciona formato y empresa.", true);
       return;
     }
+    const anio = Number($("#sel-anio").value) || new Date().getFullYear();
 
     const cuerpoTpl = await fetchText(`plantillas/${formato.archivo}`);
 
@@ -177,10 +191,10 @@ async function generar() {
       TITULO: formato.titulo || formato.nombre,
       CODIGO: formato.codigo || "",
       VERSION: formato.version || "",
-      ANIO: formato.anio || String(new Date().getFullYear()),
-      ANIO_SIGUIENTE: String(
-        Number(formato.anio || new Date().getFullYear()) + 1
-      ),
+      // Año del documento: lo elige el usuario en el selector (encabezado y textos
+      // tipo "para los años {{ANIO}} y {{ANIO_SIGUIENTE}}").
+      ANIO: String(anio),
+      ANIO_SIGUIENTE: String(anio + 1),
       LOGO: logoHTML(empresa),
       // Firma de la consultora (Karen Lizeth Bensur): se inserta automáticamente.
       FIRMA_CONSULTORA:
@@ -334,6 +348,8 @@ async function init() {
     // Auto-genera el PDF al elegir formato o empresa (sin botones), serializado.
     $("#sel-formato").addEventListener("change", solicitarGeneracion);
     $("#sel-empresa").addEventListener("change", solicitarGeneracion);
+    $("#sel-anio").addEventListener("change", solicitarGeneracion);
+    $("#sel-anio").addEventListener("change", solicitarGeneracion);
     solicitarGeneracion(); // genera el primer documento con la selección por defecto
   } catch (err) {
     console.error(err);
