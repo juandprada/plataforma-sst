@@ -185,5 +185,27 @@
     "version": "",
     "orientacion": "vertical",
     "origen": "1.PLANEAR/9.FORMATO DE REUNION VIGIA.docx"
+  },
+  {
+    "id": "matriz-capacitacion",
+    "nombre": "Matriz de Capacitación",
+    "categoria": "1.PLANEAR",
+    "archivo": "matriz-capacitacion.html",
+    "titulo": "MATRIZ GENERAL DE CAPACITACIÓN Y ENTRENAMIENTO POR CARGOS",
+    "codigo": "MC-SST-01",
+    "version": "01",
+    "orientacion": "horizontal",
+    "origen": "1.PLANEAR/8.CAPACITACION.docx"
+  },
+  {
+    "id": "retencion-documental",
+    "nombre": "Tabla de Retención Documental",
+    "categoria": "1.PLANEAR",
+    "archivo": "retencion-documental.html",
+    "titulo": "TABLA DE RETENCIÓN DOCUMENTAL",
+    "codigo": "TRD-SST-01",
+    "version": "01",
+    "orientacion": "horizontal",
+    "origen": "1.PLANEAR/11.RETENCION DOCUMENTAL.docx"
   }
 ]

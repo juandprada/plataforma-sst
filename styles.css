@@ -251,6 +251,17 @@ button:disabled { opacity: .5; cursor: not-allowed; }
   text-align: right;
 }
 
+/* tabla-matriz: matriz de capacitación (partida en varios bloques con encabezado
+   repetido, ver plantillas/matriz-capacitacion.html). Celda de área con rowspan:
+   texto centrado y vertical, como el bloque de color del .docx. */
+.doc-tabla.tabla-matriz th { font-size: 8px; }
+.doc-tabla.tabla-matriz td { font-size: 9px; }
+.doc-tabla.tabla-matriz .mx-area {
+  text-align: center;
+  vertical-align: middle;
+  color: #000;
+}
+
 /* tabla-firmas: rejilla de firmas. Celdas altas con la línea abajo y espacio
    arriba para firmar (como en el .docx original). El segundo selector sube la
    especificidad para ganarle a `.doc-tabla td.firma-cel` (definido más abajo). */
