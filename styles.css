@@ -177,7 +177,8 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .doc--acta-conformacion-copasst .doc-body,
 .doc--acta-asignacion-funciones .doc-body,
 .doc--acta-responsabilidades-gerencia .doc-body,
-.doc--responsabilidades .doc-body { font-size: 16px; }
+.doc--responsabilidades .doc-body,
+.doc--acta-brigada-emergencias .doc-body { font-size: 16px; }
 .doc--objetivos .doc-tabla td, .doc--objetivos .doc-tabla th,
 .doc--politica-tabaco-alcohol-spa .doc-tabla td, .doc--politica-tabaco-alcohol-spa .doc-tabla th,
 .doc--politica-sst .doc-tabla td, .doc--politica-sst .doc-tabla th,
@@ -185,7 +186,8 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .doc--acta-conformacion-vigia .doc-tabla td, .doc--acta-conformacion-vigia .doc-tabla th,
 .doc--acta-conformacion-copasst .doc-tabla td, .doc--acta-conformacion-copasst .doc-tabla th,
 .doc--acta-asignacion-funciones .doc-tabla td, .doc--acta-asignacion-funciones .doc-tabla th,
-.doc--acta-responsabilidades-gerencia .doc-tabla td, .doc--acta-responsabilidades-gerencia .doc-tabla th {
+.doc--acta-responsabilidades-gerencia .doc-tabla td, .doc--acta-responsabilidades-gerencia .doc-tabla th,
+.doc--acta-brigada-emergencias .doc-tabla td, .doc--acta-brigada-emergencias .doc-tabla th {
   font-size: 14px;
 }
 /* Línea para LLENAR a mano con varios nombres en el mismo párrafo (p. ej. "designa a:

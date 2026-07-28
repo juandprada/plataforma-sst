@@ -207,5 +207,16 @@
     "version": "01",
     "orientacion": "horizontal",
     "origen": "1.PLANEAR/11.RETENCION DOCUMENTAL.docx"
+  },
+  {
+    "id": "acta-brigada-emergencias",
+    "nombre": "Acta Conformación Brigada de Emergencias",
+    "categoria": "2.HACER",
+    "archivo": "acta-brigada-emergencias.html",
+    "titulo": "ACTA DE CONFORMACIÓN DE LA BRIGADA DE EMERGENCIAS",
+    "codigo": "ACB-SST-01",
+    "version": "01",
+    "orientacion": "vertical",
+    "origen": "2.HACER/2.BRIGADA.docx"
   }
 ]
