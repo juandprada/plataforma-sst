@@ -195,6 +195,9 @@ async function generar() {
       // tipo "para los años {{ANIO}} y {{ANIO_SIGUIENTE}}").
       ANIO: String(anio),
       ANIO_SIGUIENTE: String(anio + 1),
+      // Fin de un periodo de dos años ("periodo {{ANIO}}-{{ANIO_MAS_2}}"): la brigada
+      // de emergencias se conforma por 2 años, igual que el COPASST y el CCL.
+      ANIO_MAS_2: String(anio + 2),
       LOGO: logoHTML(empresa),
       // Firma de la consultora (Karen Lizeth Bensur): se inserta automáticamente.
       FIRMA_CONSULTORA:
