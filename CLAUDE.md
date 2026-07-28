@@ -2,6 +2,25 @@
 
 Guía para agentes que trabajen en este repo. El uso para humanos está en `README.md`.
 
+## Modelo y thinking effort (verificar al empezar)
+
+**Antes de trabajar, comprobar que el modelo sea Sonnet con thinking bajo** — es el
+default de este repo y cubre la mayoría de las tareas. El agente **no puede cambiar el
+modelo**: si la tarea pide otra cosa, **decírselo al usuario** para que lo cambie con
+`/model` (y el thinking effort con su atajo), explicando por qué.
+
+| Tarea | Modelo | Thinking |
+|---|---|---|
+| Agregar/convertir un formato, editar plantillas, ajustar textos, publicar | **Sonnet** | **bajo** |
+| Varias plantillas a la vez, cotejar layout contra el `.docx`, dividir documentos | Sonnet | medio |
+| Algo "se ve mal" y no se sabe por qué; el bug no se reproduce | **Opus** | **alto** |
+| Decisiones de arquitectura (modelo de datos, sistema de variantes CSS) | **Opus** | alto |
+| Deducir reglas de formato del `.docx` → CSS (los factores ×1.2 y ×4/3 salieron de ahí) | Opus | alto |
+
+Regla práctica: **Sonnet/bajo por defecto; subir a Opus/alto solo ante un diagnóstico
+difícil o una decisión de diseño.** Añadir un formato ya es un patrón mecánico y
+verificable (convertir → ajustar → renderizar → comparar con Word), no necesita Opus.
+
 ## Qué es
 
 Sitio **estático** (HTML + JS puro, sin backend) en GitHub Pages. El técnico elige
