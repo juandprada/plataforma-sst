@@ -267,25 +267,6 @@ function conectarPanelPresupuesto() {
     solicitarGeneracion();
   });
 
-  $("#pp-reset").addEventListener("click", () => {
-    if (!empresaPanel) return;
-    delete AJUSTES[empresaPanel._id];
-    guardarAjustes();
-    if (editorAbierto) pintarItems(empresaPanel); // los inputs vuelven a lo calculado
-    solicitarGeneracion();
-  });
-
-  $("#pp-copiar").addEventListener("click", async () => {
-    const json = JSON.stringify(AJUSTES, null, 2);
-    try {
-      await navigator.clipboard.writeText(json);
-      setEstado("Ajustes copiados: pégalos en data/presupuesto.json → ajustes_por_empresa.");
-    } catch (err) {
-      console.warn(err);
-      console.log(json);
-      setEstado("No se pudo copiar; los ajustes quedaron en la consola del navegador.", true);
-    }
-  });
 }
 
 async function fetchText(url) {

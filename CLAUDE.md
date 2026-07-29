@@ -96,8 +96,10 @@ Input/Logo*.png →(tools/normalize_logos.py)→ logos/<id>.png
   Se guardan en `localStorage` (`sst.presupuesto.ajustes.v1`), por empresa y con clave
   `"<grupo>|<ítem>"` (no por índice, para que reordenar el catálogo no los rompa).
   Precedencia: catálogo+parámetros < `presupuesto.json:ajustes_por_empresa` <
-  localStorage; el botón "Copiar ajustes" da el JSON para pegar en `ajustes_por_empresa`
-  y volverlos permanentes (`presupuesto_to_json.py` conserva ese campo al regenerar).
+  localStorage. Para volverlos permanentes se copian del localStorage a
+  `ajustes_por_empresa` (`presupuesto_to_json.py` conserva ese campo al regenerar).
+  El panel es **deliberadamente mínimo** (solo los campos y "Listo"): deshacer = dejar
+  el campo vacío. No agregar botones de restablecer/exportar: el técnico no los usa.
   `filasPresupuesto()` es la única fuente de verdad: la usan la tabla y el editor, y sin
   ajustes su HTML es idéntico al de antes. El **documento no cambia**: los ajustes solo
   mueven números, no marcas ni estilos.

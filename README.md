@@ -25,9 +25,11 @@ los subtotales y totales recalculados. Los campos cambiados quedan resaltados.
 
 - Los cambios se **guardan en ese navegador**, por empresa: al volver a elegirla siguen
   ahí (avisa cuántos ítems hay ajustados). Otras empresas no se ven afectadas.
-- **Restablecer** devuelve todo a los valores calculados; **Listo** cierra el panel.
-- **Copiar ajustes (JSON)** sirve para hacerlos permanentes para todos: pegar lo copiado
-  en `data/presupuesto.json` → `ajustes_por_empresa` y publicar.
+- Para deshacer un cambio, **dejar el campo vacío**: vuelve a su valor calculado.
+- **Listo** cierra el panel.
+
+Para que un ajuste valga para todos (y no solo en ese navegador) hay que ponerlo en
+`data/presupuesto.json` → `ajustes_por_empresa` y publicar.
 
 ## Estructura
 

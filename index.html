@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Plataforma de Documentos SST</title>
-  <link rel="stylesheet" href="styles.css?v=43">
-  <link rel="stylesheet" href="print.css?v=43" media="print">
+  <link rel="stylesheet" href="styles.css?v=44">
+  <link rel="stylesheet" href="print.css?v=44" media="print">
   <!-- La app fija aquí el tamaño de página según la orientación del formato. -->
   <style id="page-orient">@page { size: Letter; margin: 0.6in; }</style>
 </head>
@@ -40,10 +40,9 @@
         <button type="button" id="pp-abrir">Sí, modificar</button>
       </p>
       <div id="pp-editor" hidden>
+        <p class="pp-nota">Deja un campo vacío para volver a su valor calculado.</p>
         <div id="pp-items"></div>
         <div class="pp-acciones">
-          <button type="button" id="pp-reset">Restablecer</button>
-          <button type="button" id="pp-copiar">Copiar ajustes (JSON)</button>
           <button type="button" id="pp-cerrar">Listo</button>
         </div>
       </div>
@@ -63,6 +62,6 @@
   <div id="salida-host" aria-hidden="true"><main id="salida" aria-live="polite"></main></div>
 
   <script src="assets/vendor/html2pdf.bundle.min.js"></script>
-  <script src="app.js?v=43"></script>
+  <script src="app.js?v=44"></script>
 </body>
 </html>
