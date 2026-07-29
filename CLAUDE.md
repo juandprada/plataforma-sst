@@ -153,6 +153,20 @@ Input/Logo*.png →(tools/normalize_logos.py)→ logos/<id>.png
   `filasPresupuesto()` es la única fuente de verdad: la usan la tabla y el editor, y sin
   ajustes su HTML es idéntico al de antes. El **documento no cambia**: los ajustes solo
   mueven números, no marcas ni estilos.
+- **Asistencia a capacitación = formato CALCULADO** (el segundo, tras Presupuesto): su
+  **página 1 depende de la capacitación elegida** en el selector "Capacitación", que la
+  app solo muestra en este formato (`renderSelectorCapacitacion` en `app.js`). El texto
+  vive en `data/capacitaciones.json` — 30 capacitaciones que **espejan
+  `matriz-capacitacion.html`** (nombres literales; si cambian allí, cambiarlos aquí) más
+  `politica-sst`, que es el contenido original del `.docx` y va **preseleccionado**, así
+  que el cotejo contra el Word sigue cuadrando. De cada una salen los tokens
+  `{{CAPACITACION}}`, `{{CAPACITACION_OBJETIVO}}` (completa la frase "…asegurar que todos
+  los trabajadores **{objetivo}**, promoviendo…") y `{{CAPACITACION_PUNTOS}}` (el `<ul>`,
+  va en `raw`). Lo que NO cambia entre capacitaciones —cultura preventiva y marco
+  normativo— se queda escrito en la plantilla. **El JSON lo edita el desarrollador, no el
+  técnico**: no hay UI de edición, a diferencia del panel del presupuesto. Al tocar los
+  `puntos` (8-12 por capacitación), re-verificar que **todas** sigan cabiendo en 2
+  páginas: es lo único que se rompe fácil.
 - **NO reautorar formatos complejos** (Plan de Emergencias, matrices IPEVR, hojas de
   cálculo). Van en `plantillas/PENDIENTES.md`, no en el manifest.
 - **Firma de la consultora**: token `{{FIRMA_CONSULTORA}}` (imagen `assets/firma-karen.png`,

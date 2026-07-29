@@ -1,0 +1,540 @@
+{
+  "_nota": "Contenido de la PÁGINA 1 del formato asistencia-a-capacitacion. Lo edita el desarrollador, NO el técnico (la app solo deja elegir). Los nombres espejan plantillas/matriz-capacitacion.html: si allí cambian, cambiarlos aquí también.",
+  "_estructura": "objetivo = completa la frase '...asegurar que todos los trabajadores {objetivo}, promoviendo una cultura preventiva orientada a:'. puntos = temario, 8-12 ítems (de eso depende que el documento siga cabiendo en 2 páginas).",
+  "grupos": [
+    {
+      "area": "General",
+      "items": [
+        {
+          "id": "politica-sst",
+          "nombre": "Política de Seguridad y Salud en el Trabajo",
+          "objetivo": "comprendan la importancia de la Política de Seguridad y Salud en el Trabajo (SST)",
+          "puntos": [
+            "Concepto y objetivos de la Política de SST.",
+            "Compromisos de la empresa en materia de prevención.",
+            "Derechos y deberes de los trabajadores frente al SG-SST.",
+            "Identificación de peligros y reporte de actos y condiciones inseguras.",
+            "Prevención de accidentes y enfermedades laborales.",
+            "Uso adecuado de elementos de protección personal (EPP).",
+            "Responsabilidades de empleadores, supervisores y trabajadores.",
+            "Procedimientos de emergencia y evacuación.",
+            "Importancia del orden y aseo en las áreas de trabajo.",
+            "Reporte e investigación de incidentes y accidentes laborales.",
+            "Promoción de hábitos de trabajo seguros.",
+            "Participación del Comité Paritario de Seguridad y Salud en el Trabajo (COPASST).",
+            "Medidas preventivas y correctivas.",
+            "Mejora continua del Sistema de Gestión de Seguridad y Salud en el Trabajo."
+          ]
+        }
+      ]
+    },
+    {
+      "area": "SG-SST",
+      "items": [
+        {
+          "id": "induccion-reinduccion",
+          "nombre": "Inducción y/o Reinducción al SG-SST",
+          "objetivo": "conozcan el Sistema de Gestión de Seguridad y Salud en el Trabajo de la empresa y el papel que cumplen dentro de él",
+          "puntos": [
+            "Qué es el SG-SST y para qué sirve en la empresa.",
+            "Política y objetivos de Seguridad y Salud en el Trabajo.",
+            "Estructura del sistema: COPASST o Vigía, Comité de Convivencia y Brigada de Emergencias.",
+            "Peligros y riesgos propios del cargo y del lugar de trabajo.",
+            "Derechos y deberes del trabajador frente al SG-SST.",
+            "Reporte de actos y condiciones inseguras.",
+            "Reporte de accidentes de trabajo y presuntas enfermedades laborales.",
+            "Elementos de protección personal asignados al cargo.",
+            "Plan de emergencias: rutas de evacuación y punto de encuentro.",
+            "Reglamento de higiene y seguridad industrial."
+          ]
+        },
+        {
+          "id": "funciones-cargo-riesgos",
+          "nombre": "Funciones de Cargo / Identificación de Riesgos y Peligros",
+          "objetivo": "identifiquen los peligros y riesgos asociados a las funciones de su cargo",
+          "puntos": [
+            "Funciones y responsabilidades del cargo en materia de SST.",
+            "Diferencia entre peligro, riesgo y consecuencia.",
+            "Clasificación de peligros: físico, químico, biológico, biomecánico, psicosocial y condiciones de seguridad.",
+            "Peligros identificados en cada área de trabajo de la empresa.",
+            "Matriz de identificación de peligros y valoración de riesgos (IPEVR).",
+            "Controles existentes y jerarquía de controles.",
+            "Tareas de alto riesgo y sus requisitos.",
+            "Reporte de condiciones peligrosas detectadas en el puesto de trabajo.",
+            "Autocuidado durante la ejecución de las tareas."
+          ]
+        },
+        {
+          "id": "ahorro-agua-energia",
+          "nombre": "Ahorro de agua y energía",
+          "objetivo": "adopten prácticas de uso eficiente del agua y la energía en la empresa",
+          "puntos": [
+            "Consumo de agua y energía en las instalaciones de la empresa.",
+            "Impacto ambiental y económico del consumo innecesario.",
+            "Buenas prácticas de ahorro de agua en baños, cocinas y procesos.",
+            "Buenas prácticas de ahorro de energía en iluminación y equipos.",
+            "Reporte oportuno de fugas, goteos y daños eléctricos.",
+            "Apagado de equipos y luces en áreas desocupadas.",
+            "Uso responsable de aires acondicionados y ventiladores.",
+            "Seguimiento a los indicadores de consumo.",
+            "Compromiso individual con el programa de ahorro."
+          ]
+        },
+        {
+          "id": "manejo-residuos",
+          "nombre": "Manejo de residuos",
+          "objetivo": "clasifiquen y dispongan correctamente los residuos generados en la empresa",
+          "puntos": [
+            "Tipos de residuos: aprovechables, no aprovechables, orgánicos y peligrosos.",
+            "Código de colores vigente para la separación en la fuente.",
+            "Ubicación y uso de los puntos ecológicos.",
+            "Manejo de residuos peligrosos y su almacenamiento temporal.",
+            "Riesgos para la salud por manipulación inadecuada de residuos.",
+            "Elementos de protección personal para el manejo de residuos.",
+            "Higiene y lavado de manos después de la manipulación.",
+            "Rutas de recolección y entrega al gestor autorizado.",
+            "Impacto ambiental de la disposición incorrecta."
+          ]
+        },
+        {
+          "id": "alta-gerencia",
+          "nombre": "Capacitación Alta Gerencia",
+          "objetivo": "conozcan las responsabilidades de la alta dirección frente al Sistema de Gestión de SST",
+          "puntos": [
+            "Obligaciones del empleador según el Decreto 1072 de 2015.",
+            "Estándares mínimos de la Resolución 0312 de 2019.",
+            "Asignación de responsabilidades y de recursos para el SG-SST.",
+            "Rendición de cuentas en todos los niveles de la empresa.",
+            "Revisión por la alta dirección: entradas, salidas y periodicidad.",
+            "Indicadores de estructura, proceso y resultado.",
+            "Plan de trabajo anual y su seguimiento.",
+            "Consecuencias legales del incumplimiento en SST.",
+            "Participación de la gerencia en la cultura preventiva."
+          ]
+        },
+        {
+          "id": "copasst",
+          "nombre": "Capacitación COPASTT",
+          "objetivo": "conozcan el funcionamiento y las funciones del Comité Paritario de Seguridad y Salud en el Trabajo (COPASST)",
+          "puntos": [
+            "Marco legal: Resolución 2013 de 1986 y Decreto 1072 de 2015.",
+            "Conformación, período y proceso de elección.",
+            "Funciones del COPASST y de cada uno de sus integrantes.",
+            "Reuniones ordinarias y extraordinarias: periodicidad y actas.",
+            "Inspecciones planeadas de seguridad.",
+            "Participación en la investigación de incidentes y accidentes.",
+            "Canales de comunicación con los trabajadores y con la gerencia.",
+            "Seguimiento a las recomendaciones y compromisos adquiridos.",
+            "Documentación y archivo de las actas."
+          ]
+        },
+        {
+          "id": "brigada",
+          "nombre": "Capacitación Brigada",
+          "objetivo": "conozcan la conformación y el papel de la Brigada de Emergencias",
+          "puntos": [
+            "Conformación de la brigada y perfil de los brigadistas.",
+            "Funciones antes, durante y después de la emergencia.",
+            "Clasificación de las emergencias que pueden presentarse en la empresa.",
+            "Cadena de llamadas y comunicación en emergencias.",
+            "Equipos de atención disponibles y su ubicación.",
+            "Coordinación con los organismos de socorro.",
+            "Rutas de evacuación y punto de encuentro.",
+            "Simulacros: propósito y evaluación.",
+            "Autoprotección del brigadista."
+          ]
+        },
+        {
+          "id": "ccl",
+          "nombre": "Capacitación CCL",
+          "objetivo": "conozcan el funcionamiento del Comité de Convivencia Laboral (CCL)",
+          "puntos": [
+            "Marco legal: Resoluciones 652 y 1356 de 2012.",
+            "Conformación, período y elección de los integrantes.",
+            "Funciones del Comité de Convivencia Laboral.",
+            "Qué es y qué no es acoso laboral (Ley 1010 de 2006).",
+            "Conductas que constituyen acoso laboral y sus modalidades.",
+            "Procedimiento para presentar una queja.",
+            "Confidencialidad y manejo reservado de la información.",
+            "Medidas preventivas y correctivas de convivencia.",
+            "Reuniones, actas y seguimiento a los casos."
+          ]
+        }
+      ]
+    },
+    {
+      "area": "Seguridad Industrial",
+      "items": [
+        {
+          "id": "orden-aseo",
+          "nombre": "Programa de Orden y aseo",
+          "objetivo": "mantengan el orden y el aseo en sus áreas de trabajo",
+          "puntos": [
+            "Importancia del orden y el aseo en la prevención de accidentes.",
+            "Metodología de las 5S aplicada al puesto de trabajo.",
+            "Almacenamiento seguro de materiales y herramientas.",
+            "Pasillos, salidas y zonas de circulación libres de obstáculos.",
+            "Atención de derrames y superficies resbalosas.",
+            "Limpieza de equipos y áreas al terminar la jornada.",
+            "Disposición de residuos en los recipientes correspondientes.",
+            "Inspecciones de orden y aseo.",
+            "Responsabilidad individual sobre el puesto de trabajo."
+          ]
+        },
+        {
+          "id": "prevencion-accidentes",
+          "nombre": "Prevención de Accidentes Laborales",
+          "objetivo": "identifiquen las causas de los accidentes laborales y las formas de prevenirlos",
+          "puntos": [
+            "Diferencia entre incidente, accidente de trabajo y enfermedad laboral.",
+            "Causas inmediatas: actos y condiciones inseguras.",
+            "Causas básicas: factores personales y factores del trabajo.",
+            "Estadísticas de accidentalidad de la empresa.",
+            "Reporte inmediato del accidente y atención del trabajador.",
+            "Investigación de accidentes e incidentes.",
+            "Medidas de control y planes de acción.",
+            "Autocuidado y percepción del riesgo.",
+            "Prevención de caídas, golpes, atrapamientos y cortes."
+          ]
+        },
+        {
+          "id": "senalizacion",
+          "nombre": "Señalización y Demarcación de Áreas",
+          "objetivo": "reconozcan la señalización y la demarcación de áreas de la empresa",
+          "puntos": [
+            "Propósito de la señalización en Seguridad y Salud en el Trabajo.",
+            "Colores de seguridad y su significado.",
+            "Señales de prohibición, obligación, advertencia y salvamento.",
+            "Señalización de los equipos contra incendio.",
+            "Demarcación de áreas de circulación y de almacenamiento.",
+            "Señalización de salidas de emergencia y rutas de evacuación.",
+            "Ubicación de la señalización en las instalaciones.",
+            "Conservación y reposición de la señalización deteriorada.",
+            "Obligación de respetar la señalización instalada."
+          ]
+        },
+        {
+          "id": "escaleras-andamios",
+          "nombre": "Uso seguro de escaleras y andamios",
+          "objetivo": "usen de forma segura las escaleras y los andamios",
+          "puntos": [
+            "Riesgos asociados al trabajo en niveles elevados.",
+            "Tipos de escaleras y selección según la tarea.",
+            "Inspección de la escalera antes de usarla.",
+            "Ángulo de apoyo correcto y aseguramiento de la base.",
+            "Regla de los tres puntos de apoyo al subir y bajar.",
+            "Armado, arriostramiento y nivelación de andamios.",
+            "Plataformas, barandas y rodapiés.",
+            "Cargas máximas admisibles y su distribución.",
+            "Prácticas prohibidas: improvisar apoyos o usar la escalera como plataforma.",
+            "Uso de protección contra caídas cuando la tarea lo exige."
+          ]
+        },
+        {
+          "id": "ruido-caliente-confinados",
+          "nombre": "Ruido Industrial, Trabajo en Caliente, Espacios Confinados",
+          "objetivo": "reconozcan los riesgos del ruido industrial, el trabajo en caliente y los espacios confinados",
+          "puntos": [
+            "Efectos del ruido sobre la audición y la salud.",
+            "Niveles de ruido en la empresa y medidas de control.",
+            "Uso correcto de la protección auditiva.",
+            "Trabajo en caliente: soldadura, corte y esmerilado.",
+            "Permiso de trabajo en caliente y vigilancia contra incendios.",
+            "Retiro de materiales combustibles del área de trabajo.",
+            "Definición y riesgos de los espacios confinados.",
+            "Atmósferas peligrosas: deficiencia de oxígeno, gases y vapores.",
+            "Permiso de ingreso, monitoreo y vigía en espacios confinados.",
+            "Procedimiento de rescate y prohibición del rescate improvisado."
+          ]
+        },
+        {
+          "id": "epp",
+          "nombre": "Uso y mantenimiento de EPPs",
+          "objetivo": "usen y conserven correctamente los elementos de protección personal (EPP)",
+          "puntos": [
+            "Qué son los EPP y en qué casos se requieren.",
+            "Jerarquía de controles: el EPP es la última barrera.",
+            "EPP asignados según el cargo y la tarea.",
+            "Protección de cabeza, ojos, oídos, vías respiratorias, manos y pies.",
+            "Colocación, ajuste y retiro correcto de cada elemento.",
+            "Inspección del EPP antes de cada uso.",
+            "Limpieza, almacenamiento y vida útil.",
+            "Reporte y reposición del EPP deteriorado.",
+            "Obligación legal de usarlos y consecuencias de no hacerlo."
+          ]
+        },
+        {
+          "id": "manejo-cargas",
+          "nombre": "Manejo de Cargas",
+          "objetivo": "apliquen técnicas seguras para el levantamiento y el manejo de cargas",
+          "puntos": [
+            "Riesgo biomecánico asociado al manejo manual de cargas.",
+            "Lesiones más frecuentes de la espalda y las articulaciones.",
+            "Límites de peso recomendados por trabajador.",
+            "Evaluación de la carga antes de levantarla.",
+            "Técnica correcta: flexionar las piernas, espalda recta y carga cerca del cuerpo.",
+            "Giros del cuerpo y posturas que se deben evitar.",
+            "Trabajo en equipo para cargas voluminosas o pesadas.",
+            "Uso de las ayudas mecánicas disponibles.",
+            "Pausas y alternancia de tareas."
+          ]
+        },
+        {
+          "id": "manejo-defensivo",
+          "nombre": "Manejo defensivo/Señales de tránsito/ Mantenimiento de Vehículos",
+          "objetivo": "conduzcan de forma defensiva y mantengan los vehículos en condiciones seguras",
+          "puntos": [
+            "Principios de la conducción defensiva.",
+            "Señales de tránsito reglamentarias, preventivas e informativas.",
+            "Distancia de seguimiento y velocidad según la vía.",
+            "Factores de riesgo: fatiga, distracción y uso del celular.",
+            "Alcohol, sustancias psicoactivas y medicamentos al conducir.",
+            "Inspección preoperacional del vehículo.",
+            "Mantenimiento preventivo: frenos, llantas, luces y niveles.",
+            "Documentos del vehículo y del conductor.",
+            "Actuación en caso de accidente de tránsito.",
+            "Uso del cinturón de seguridad y protección para motociclistas."
+          ]
+        }
+      ]
+    },
+    {
+      "area": "Brigada de Emergencias",
+      "items": [
+        {
+          "id": "simulacro-evacuacion",
+          "nombre": "Simulacro de evacuación",
+          "objetivo": "sepan cómo evacuar las instalaciones ante una emergencia",
+          "puntos": [
+            "Objetivo del simulacro de evacuación.",
+            "Tipos de emergencia que obligan a evacuar.",
+            "Alarma de evacuación y cómo reconocerla.",
+            "Rutas de evacuación y salidas de emergencia.",
+            "Punto de encuentro y conteo del personal.",
+            "Comportamiento durante la evacuación: no correr y no devolverse.",
+            "Apoyo a visitantes y a personas con movilidad reducida.",
+            "Funciones del coordinador de evacuación.",
+            "Evaluación del simulacro y oportunidades de mejora."
+          ]
+        },
+        {
+          "id": "extintores",
+          "nombre": "Manejo de Extintores",
+          "objetivo": "sepan usar los extintores disponibles en la empresa",
+          "puntos": [
+            "Teoría del fuego: triángulo y tetraedro del fuego.",
+            "Clases de fuego: A, B, C, D y K.",
+            "Tipos de extintores y su agente extintor.",
+            "Selección del extintor según la clase de fuego.",
+            "Ubicación y señalización de los extintores en la empresa.",
+            "Técnica PASS: halar, apuntar, presionar y barrer.",
+            "Distancia de ataque y posición respecto al viento.",
+            "Inspección mensual: presión, sello, manguera y fecha de recarga.",
+            "Cuándo NO se debe combatir el fuego y hay que evacuar.",
+            "Reporte del extintor usado o descargado."
+          ]
+        },
+        {
+          "id": "primeros-auxilios",
+          "nombre": "Primeros Auxilios",
+          "objetivo": "sepan prestar los primeros auxilios básicos ante una emergencia",
+          "puntos": [
+            "Qué son los primeros auxilios y cuáles son sus límites.",
+            "Bioseguridad del auxiliador y uso de guantes.",
+            "Evaluación de la escena y valoración del paciente.",
+            "Activación del sistema de emergencias y cadena de llamadas.",
+            "Manejo de heridas, hemorragias y quemaduras.",
+            "Inmovilización básica de fracturas y esguinces.",
+            "Atención de desmayos, convulsiones y crisis respiratorias.",
+            "Reanimación cardiopulmonar (RCP) básica.",
+            "Atragantamiento: maniobra de Heimlich.",
+            "Contenido, ubicación y revisión del botiquín."
+          ]
+        },
+        {
+          "id": "simulacro-derrames",
+          "nombre": "Simulacro de derrames",
+          "objetivo": "sepan actuar ante un derrame de productos químicos",
+          "puntos": [
+            "Productos químicos utilizados en la empresa y su peligrosidad.",
+            "Sistema Globalmente Armonizado (SGA): pictogramas y etiquetas.",
+            "Hojas de datos de seguridad (FDS) y cómo consultarlas.",
+            "Clasificación del derrame: menor, mediano y mayor.",
+            "Aislamiento y señalización del área afectada.",
+            "Elementos de protección personal para atender el derrame.",
+            "Uso del kit antiderrames: contención, absorción y recolección.",
+            "Disposición de los residuos generados en la atención.",
+            "Cuándo evacuar y solicitar apoyo externo.",
+            "Reporte e investigación del evento."
+          ]
+        }
+      ]
+    },
+    {
+      "area": "Medicina Preventiva y del Trabajo",
+      "items": [
+        {
+          "id": "alcohol-tabaco-spa",
+          "nombre": "Alcoholismo, tabaquismo y drogadicción.",
+          "objetivo": "conozcan los efectos del alcohol, el tabaco y las sustancias psicoactivas en el trabajo",
+          "puntos": [
+            "Política de prevención del consumo de tabaco, alcohol y sustancias psicoactivas.",
+            "Efectos del alcohol sobre la salud y el desempeño laboral.",
+            "Consecuencias del consumo de tabaco y del humo de segunda mano.",
+            "Sustancias psicoactivas y su impacto en la seguridad.",
+            "Relación entre el consumo y la accidentalidad laboral.",
+            "Señales de alerta y factores de riesgo.",
+            "Espacios libres de humo en la empresa.",
+            "Rutas de ayuda y apoyo institucional.",
+            "Confidencialidad y no discriminación."
+          ]
+        },
+        {
+          "id": "estilos-vida-saludables",
+          "nombre": "Estilos de Vida Saludables",
+          "objetivo": "adopten hábitos de vida saludables dentro y fuera del trabajo",
+          "puntos": [
+            "Qué es un estilo de vida saludable.",
+            "Alimentación balanceada durante la jornada laboral.",
+            "Hidratación adecuada.",
+            "Actividad física recomendada y pausas de movimiento.",
+            "Higiene del sueño y descanso.",
+            "Prevención de enfermedades crónicas no transmisibles.",
+            "Autocuidado y exámenes médicos periódicos.",
+            "Salud mental y equilibrio entre el trabajo y la vida personal.",
+            "Prevención del sedentarismo en el trabajo de oficina."
+          ]
+        },
+        {
+          "id": "motivacion-conflictos",
+          "nombre": "Motivación, Inteligencia Emocional, Resolución de Conflictos",
+          "objetivo": "fortalezcan la motivación, la inteligencia emocional y la resolución de conflictos",
+          "puntos": [
+            "La motivación en el entorno laboral y sus factores.",
+            "Componentes de la inteligencia emocional.",
+            "Reconocimiento y manejo de las propias emociones.",
+            "Empatía y relaciones interpersonales en el trabajo.",
+            "Comunicación asertiva.",
+            "Origen de los conflictos laborales.",
+            "Estrategias de resolución de conflictos.",
+            "Trabajo en equipo y respeto por la diferencia.",
+            "Canales internos para tramitar diferencias: Comité de Convivencia Laboral."
+          ]
+        },
+        {
+          "id": "pausas-activas",
+          "nombre": "Pausas activas",
+          "objetivo": "realicen pausas activas durante la jornada laboral",
+          "puntos": [
+            "Qué son las pausas activas y para qué sirven.",
+            "Riesgo biomecánico por posturas mantenidas y movimientos repetitivos.",
+            "Frecuencia y duración recomendadas.",
+            "Ejercicios de cuello y hombros.",
+            "Ejercicios de manos, muñecas y brazos.",
+            "Ejercicios de espalda y piernas.",
+            "Ejercicios visuales para el trabajo con pantallas.",
+            "Respiración y relajación.",
+            "Recomendaciones para no lesionarse durante los ejercicios."
+          ]
+        },
+        {
+          "id": "manejo-estres",
+          "nombre": "Manejo de estrés",
+          "objetivo": "identifiquen y manejen las situaciones de estrés laboral",
+          "puntos": [
+            "Qué es el estrés y cómo se manifiesta.",
+            "Diferencia entre el estrés positivo y el estrés nocivo.",
+            "Síntomas físicos, emocionales y de comportamiento.",
+            "Factores de riesgo psicosocial en el trabajo.",
+            "Consecuencias del estrés sostenido sobre la salud.",
+            "Organización del tiempo y priorización de tareas.",
+            "Técnicas de respiración y relajación.",
+            "Actividad física y descanso como factores protectores.",
+            "Cuándo y a quién pedir ayuda."
+          ]
+        },
+        {
+          "id": "higiene-postural",
+          "nombre": "Higiene Postural",
+          "objetivo": "adopten posturas adecuadas en su puesto de trabajo",
+          "puntos": [
+            "Qué son la higiene postural y la ergonomía.",
+            "Postura correcta sentado: espalda, cadera, rodillas y pies.",
+            "Ajuste de la silla, el escritorio y los apoyos.",
+            "Ubicación de la pantalla, el teclado y el mouse.",
+            "Postura correcta de pie y alternancia del apoyo.",
+            "Posturas al levantar y trasladar objetos.",
+            "Lesiones osteomusculares más frecuentes.",
+            "Señales de alerta: dolor, hormigueo y fatiga muscular.",
+            "Las pausas activas como complemento."
+          ]
+        },
+        {
+          "id": "salud-visual",
+          "nombre": "Salud visual",
+          "objetivo": "cuiden su salud visual en el trabajo",
+          "puntos": [
+            "Funcionamiento básico de la visión.",
+            "Riesgos visuales según el cargo.",
+            "Fatiga visual por el uso de pantallas.",
+            "Regla 20-20-20 para el descanso visual.",
+            "Iluminación adecuada del puesto de trabajo.",
+            "Defectos visuales frecuentes: miopía, hipermetropía y astigmatismo.",
+            "Protección ocular frente a partículas, químicos y radiación.",
+            "Importancia del examen visual periódico.",
+            "Qué hacer ante cuerpos extraños o salpicaduras en los ojos."
+          ]
+        },
+        {
+          "id": "riesgo-psicosocial",
+          "nombre": "Riesgo Psico-social",
+          "objetivo": "reconozcan los factores de riesgo psicosocial y sus efectos",
+          "puntos": [
+            "Qué es el riesgo psicosocial (Resolución 2646 de 2008).",
+            "Factores intralaborales: demandas, control, liderazgo y recompensa.",
+            "Factores extralaborales y condiciones individuales.",
+            "Efectos sobre la salud física y mental.",
+            "Evaluación del riesgo psicosocial en la empresa.",
+            "Prevención del acoso laboral.",
+            "Estrategias de intervención y promoción.",
+            "Apoyo social en el trabajo.",
+            "Canales de atención y rutas de ayuda."
+          ]
+        },
+        {
+          "id": "riesgo-biologico",
+          "nombre": "Riesgo Biológico (COVID-19)",
+          "objetivo": "conozcan las medidas de prevención frente al riesgo biológico",
+          "puntos": [
+            "Qué es el riesgo biológico y sus vías de transmisión.",
+            "Agentes biológicos asociados a la actividad de la empresa.",
+            "Lavado de manos: técnica y momentos clave.",
+            "Uso de tapabocas y demás elementos de protección.",
+            "Limpieza y desinfección de superficies y áreas comunes.",
+            "Etiqueta respiratoria y distanciamiento cuando aplique.",
+            "Manejo de residuos con riesgo biológico.",
+            "Actuación ante síntomas respiratorios o contacto estrecho.",
+            "Esquema de vacunación recomendado.",
+            "Reporte de casos y seguimiento."
+          ]
+        },
+        {
+          "id": "vigilancia-epidemiologica",
+          "nombre": "Programa de Vigilancia Epidemiológica",
+          "objetivo": "conozcan los programas de vigilancia epidemiológica de la empresa",
+          "puntos": [
+            "Qué es un programa de vigilancia epidemiológica (PVE).",
+            "Programas implementados según los riesgos de la empresa.",
+            "Exámenes médicos ocupacionales: de ingreso, periódicos y de retiro.",
+            "Confidencialidad de la historia clínica ocupacional.",
+            "Seguimiento a las recomendaciones médicas laborales.",
+            "Reporte de presuntas enfermedades laborales.",
+            "Indicadores de ausentismo y morbilidad.",
+            "Reubicación y adecuación del puesto de trabajo.",
+            "Participación del trabajador en el programa."
+          ]
+        }
+      ]
+    }
+  ]
+}

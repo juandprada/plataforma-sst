@@ -5,6 +5,10 @@ let EMPRESAS = [];
 let FORMATOS = [];
 let ENCABEZADO_TPL = "";
 let PRESUPUESTO = null; // data/presupuesto.json (parámetros por empresa + catálogo)
+let CAPACITACIONES = null; // data/capacitaciones.json (contenido de la página 1 del acta)
+
+// Formato cuya página 1 depende de la capacitación elegida (ver CAPACITACIONES).
+const FORMATO_ASISTENCIA = "asistencia-a-capacitacion";
 
 const $ = (sel) => document.querySelector(sel);
 
@@ -269,6 +273,36 @@ function conectarPanelPresupuesto() {
 
 }
 
+// ---- Asistencia a capacitación (formato calculado) -----------------------
+// La página 1 del acta cambia según la capacitación: su frase de objetivo y el temario
+// salen de data/capacitaciones.json (lo edita el desarrollador, no el técnico; la app
+// solo deja elegir). Lo que NO cambia entre capacitaciones —las viñetas de cultura
+// preventiva y el marco normativo— se queda escrito en la plantilla.
+
+// Todas las capacitaciones en una lista plana (los grupos son solo para el desplegable).
+function capacitaciones() {
+  return CAPACITACIONES ? CAPACITACIONES.grupos.flatMap((g) => g.items) : [];
+}
+
+function capacitacionElegida() {
+  const items = capacitaciones();
+  const sel = $("#sel-capacitacion");
+  return items.find((c) => c.id === (sel && sel.value)) || items[0] || null;
+}
+
+function puntosCapacitacionHTML(cap) {
+  if (!cap) return "";
+  return (
+    "<ul>" + cap.puntos.map((p) => `<li>${escapeHTML(p)}</li>`).join("") + "</ul>"
+  );
+}
+
+// Muestra el selector solo en el formato de asistencia (en el resto no pinta nada).
+function renderSelectorCapacitacion(formato) {
+  const campo = $("#campo-capacitacion");
+  if (campo) campo.hidden = formato.id !== FORMATO_ASISTENCIA;
+}
+
 async function fetchText(url) {
   const r = await fetch(url, { cache: "no-cache" });
   if (!r.ok) throw new Error(`No se pudo cargar ${url} (${r.status})`);
@@ -307,6 +341,23 @@ function poblarSelects() {
     selE.appendChild(o);
   }
 
+  // Capacitaciones agrupadas por área, igual que en la matriz de capacitación.
+  const selC = $("#sel-capacitacion");
+  if (selC && CAPACITACIONES) {
+    selC.innerHTML = "";
+    for (const grupo of CAPACITACIONES.grupos) {
+      const og = document.createElement("optgroup");
+      og.label = grupo.area;
+      for (const c of grupo.items) {
+        const o = document.createElement("option");
+        o.value = c.id;
+        o.textContent = c.nombre;
+        og.appendChild(o);
+      }
+      selC.appendChild(og);
+    }
+  }
+
   // Años disponibles: el actual y el anterior (hoy: 2026 y 2025). Muchos documentos
   // se firman para el año en curso, pero a veces hay que reponer los del año pasado.
   const selA = $("#sel-anio");
@@ -335,6 +386,9 @@ async function generar() {
 
     // Panel de ajustes: solo se muestra (y solo pregunta) en el formato presupuesto.
     renderPanelPresupuesto(formato, empresa);
+    // Selector de capacitación: solo en el acta de asistencia.
+    renderSelectorCapacitacion(formato);
+    const cap = capacitacionElegida();
 
     const cuerpoTpl = await fetchText(`plantillas/${formato.archivo}`);
 
@@ -357,9 +411,15 @@ async function generar() {
         '<img class="firma-img" src="assets/firma-karen.png" alt="Firma consultora">',
       // Tabla del presupuesto: se calcula por empresa (ver data/presupuesto.json).
       TABLA_PRESUPUESTO: tablaPresupuestoHTML(empresa),
+      // Página 1 del acta de asistencia (ver data/capacitaciones.json).
+      CAPACITACION: cap ? cap.nombre : "",
+      CAPACITACION_OBJETIVO: cap ? cap.objetivo : "",
+      CAPACITACION_PUNTOS: puntosCapacitacionHTML(cap),
     };
 
-    const raw = ["LOGO", "FIRMA_CONSULTORA", "TABLA_PRESUPUESTO"];
+    const raw = [
+      "LOGO", "FIRMA_CONSULTORA", "TABLA_PRESUPUESTO", "CAPACITACION_PUNTOS",
+    ];
     const encabezado = fillTokens(ENCABEZADO_TPL, ctx, raw);
     const cuerpo = fillTokens(cuerpoTpl, ctx, raw);
 
@@ -511,12 +571,14 @@ async function solicitarGeneracion() {
 async function init() {
   try {
     setEstado("Cargando datos…");
-    [EMPRESAS, FORMATOS, ENCABEZADO_TPL, PRESUPUESTO] = await Promise.all([
-      fetchJSON("data/empresas.json"),
-      fetchJSON("plantillas/manifest.json"),
-      fetchText("partials/encabezado.html"),
-      fetchJSON("data/presupuesto.json"),
-    ]);
+    [EMPRESAS, FORMATOS, ENCABEZADO_TPL, PRESUPUESTO, CAPACITACIONES] =
+      await Promise.all([
+        fetchJSON("data/empresas.json"),
+        fetchJSON("plantillas/manifest.json"),
+        fetchText("partials/encabezado.html"),
+        fetchJSON("data/presupuesto.json"),
+        fetchJSON("data/capacitaciones.json"),
+      ]);
     cargarAjustes(); // ajustes de presupuesto guardados en este navegador
     poblarSelects();
     conectarPanelPresupuesto();
@@ -525,6 +587,7 @@ async function init() {
     $("#sel-formato").addEventListener("change", solicitarGeneracion);
     $("#sel-empresa").addEventListener("change", solicitarGeneracion);
     $("#sel-anio").addEventListener("change", solicitarGeneracion);
+    $("#sel-capacitacion").addEventListener("change", solicitarGeneracion);
     solicitarGeneracion(); // genera el primer documento con la selección por defecto
   } catch (err) {
     console.error(err);
