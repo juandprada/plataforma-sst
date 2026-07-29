@@ -69,8 +69,18 @@ Input/Logo*.png →(tools/normalize_logos.py)→ logos/<id>.png
     también sale del `.docx` (header de sección): título 11pt→`.dh-nombre:15px`,
     Código/Versión/Página 10pt→`.dh-meta:13px`. Ojo: en el Word el título (11pt) es un poco
     MÁS chico que el cuerpo (12pt), no al revés.
-  - **Interlineado**: el conversor preserva el `line_spacing` por párrafo (OJO: múltiplo de
-    Word ≈ CSS ×1.2; docx 1.35 ≈ `line-height:1.6`, 1.5 ≈ 1.8).
+  - **Interlineado**: el conversor preserva el `line_spacing` por párrafo. OJO, hay DOS
+    reglas distintas en Word y python-docx las distingue por `line_spacing_rule`, incluso
+    **dentro del mismo `.docx`** (dos secciones del mismo archivo pueden usar cada una la
+    suya — pasó en `4.RESPONSABLE.docx`, medir por formato, no asumir para todo el archivo):
+    - `MULTIPLE` (`line_spacing` es un float, p. ej. 1.5): es relativo a la fuente →
+      CSS ×1.2 (docx 1.35 ≈ `line-height:1.6`, 1.5 ≈ 1.8).
+    - `EXACTLY`/`AT_LEAST` (`line_spacing` es un `Length`, usar `.pt`): es un valor
+      ABSOLUTO en puntos, no depende de la fuente → convertir con el mismo pt→px ×4/3 de
+      abajo y poner `line-height:Npx` (px, no un múltiplo unitless).
+  - **Listas numeradas**: si el párrafo tiene `w:numPr` (`p._p.find(qn('w:numPr'))` no es
+    `None`) es una lista numerada de Word, no viñetas — usar `<ol>`, no `<ul>` con "•".
+    Confundirlas es fácil si se arma la plantilla a mano en vez de con el conversor.
   - **Alineación**: a la **izquierda** (los `.docx` la usan; y es lo recomendado para
     documentos formales/accesibles, no justificado).
   - **Líneas de llenado**: el conversor marca con `.p-llenar` las líneas de formulario
@@ -80,7 +90,12 @@ Input/Logo*.png →(tools/normalize_logos.py)→ logos/<id>.png
 - **Conversor `tools/docx_to_html.py`**: párrafos/listas/tablas con celdas combinadas
   (gridSpan/vMerge). Une runs de un párrafo SIN salto (no partir palabras); párrafos y
   `w:br` → `<br>`. Tokeniza literales de empresas/representantes de muestra (mapa interno).
-  Abre `.docm` re-empaquetándolo. Genera solo el CUERPO (sin encabezado).
+  Abre `.docm` re-empaquetándolo. Genera solo el CUERPO (sin encabezado). Copia la altura
+  de cada fila del `.docx` a `<tr style="height:Npx">` (`_row_height_px`: `twips/15` = px)
+  — **si una tabla se arma a mano** (como `matriz-capacitacion.html`, partida en bloques
+  por página) hay que copiar esas alturas igual, con la misma fórmula; sin ellas el
+  navegador calcula la altura desde el texto (que suele ser chico, 8-9px) y la fila queda
+  a una fracción de su tamaño real en Word, dejando la tabla sin llenar la página.
 - **Presupuesto = formato CALCULADO** (único hasta ahora). Su `.docx` estaba conectado a
   `3.PRESUPUESTO.xlsx`, que era una calculadora. Ahora los datos viven en
   `data/presupuesto.json`: `parametros_por_empresa` (trabajadores, extintores, botiquines,

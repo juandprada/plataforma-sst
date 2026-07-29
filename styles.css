@@ -218,8 +218,12 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .doc--politica-tabaco-alcohol-spa .doc-body,
 .doc--politica-sst .doc-body,
 .doc--acta-asignacion-funciones .doc-body,
-.doc--acta-responsabilidades-gerencia .doc-body,
 .doc--responsabilidades .doc-body { line-height: 1.8; }
+/* acta-responsabilidades-gerencia: su .docx no usa un múltiplo (los de arriba), sino
+   interlineado EXACTO de 30pt por párrafo (medido con python-docx) — por eso va aparte,
+   como px absolutos (30pt×4/3) y no como línea relativa a la fuente. Da el aire generoso
+   entre cada responsabilidad numerada y el bloque de firma que trae el Word. */
+.doc--acta-responsabilidades-gerencia .doc-body { line-height: 40px; }
 
 /* Tamaño de letra POR FORMATO, igual que el .docx (medido con python-docx; pt→px ≈ ×4/3,
    p. ej. 12pt→16px). La base .doc=11px es más chica que los originales. Se sube el cuerpo
@@ -258,7 +262,7 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 /* Encabezados de sección dentro del cuerpo (párrafos en negrita del .docx). */
 .doc-h { font-weight: 700; text-align: left !important; margin: 12px 0 6px; }
 
-.doc-body ul { margin: 0 0 8px; padding-left: 20px; }
+.doc-body ul, .doc-body ol { margin: 0 0 8px; padding-left: 20px; }
 .doc-body li { margin-bottom: 4px; text-align: left; }
 
 .doc-tabla {
