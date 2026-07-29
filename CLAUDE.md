@@ -54,12 +54,28 @@ Input/Logo*.png →(tools/normalize_logos.py)→ logos/<id>.png
   base `.doc-tabla` (bordes/fuente) + **variantes reutilizables** que la plantilla elige
   según la función de la tabla — `.tabla-form` (filas altas para llenar a mano),
   `.tabla-firmas` (celdas altas con la línea abajo, espacio para firmar),
-  `.tabla-compacta` (ancho al contenido, para casillas como Ordinaria/Extraordinaria
-  donde el checkbox va junto a la etiqueta, no al extremo derecho). Para ajustes de
-  UN solo formato, la app pone en el `<article>` la clase de **ámbito** `doc--<id>`
-  (p. ej. `.doc--acta-conformacion-ccl .tabla-form td { … }`). Regla: primero variante
-  reusable; el ámbito por formato es solo para excepciones puntuales. Cotejar contra el
-  `.docx` original (anchos de columna, altos de fila) con Word→PDF para calibrar tamaños.
+  `.tabla-firma-suelta` (quita el borde de `.doc-tabla`; se combina CON `.tabla-firmas`,
+  p. ej. `class="doc-tabla tabla-firma-suelta tabla-firmas"`, cuando se quiere la celda
+  alta pero SIN caja — ver `presupuesto.html`), `.tabla-compacta` (ancho al contenido,
+  para casillas como Ordinaria/Extraordinaria donde el checkbox va junto a la etiqueta,
+  no al extremo derecho). Para ajustes de UN solo formato, la app pone en el `<article>`
+  la clase de **ámbito** `doc--<id>` (p. ej. `.doc--acta-conformacion-ccl .tabla-form td
+  { … }`). Regla: primero variante reusable; el ámbito por formato es solo para
+  excepciones puntuales. Cotejar contra el `.docx` original (anchos de columna, altos de
+  fila) con Word→PDF para calibrar tamaños.
+- **Bordes de tabla NO son siempre iguales entre formatos que se ven parecidos**: `.doc-tabla`
+  pone borde por defecto, pero el `.docx` puede desactivarlo con `w:tblBorders` (los 6 lados
+  en `val="none"`) para esa tabla puntual — pasó en `acta-conformacion-vigia.html` (tabla de
+  firmas sin caja) mientras que COPASST/CCL, con la misma variante `tabla-firmas`, sí la
+  traen (su `.docx` no trae `tblBorders`, hereda el borde visible por defecto). **No basta
+  con mirar el texto/estructura del XML — hay que revisar `tblPr/tblBorders` de esa tabla
+  específica** antes de asumir que una tabla "se ve como otra ya vista" comparte su estilo:
+  ```python
+  tblPr = tabla._tbl.find(qn('w:tblPr'))
+  borders = tblPr.find(qn('w:tblBorders')) if tblPr is not None else None
+  ```
+  Si `borders` es `None`, la tabla hereda el borde por defecto (visible); si trae `val="none"`
+  en todos los lados, va sin caja (agregar `.tabla-firma-suelta`).
 - **La salida debe parecerse al `.docx` de origen, medido POR FORMATO (no global)**. Con
   `python-docx` se mide tamaño de letra, `line_spacing` y alineación de cada `.docx`
   (`manifest.origen`) y se aplica por ámbito `.doc--<id>` en `styles.css`:
