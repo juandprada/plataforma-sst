@@ -239,7 +239,10 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .doc--acta-asignacion-funciones .doc-body,
 .doc--acta-responsabilidades-gerencia .doc-body,
 .doc--responsabilidades .doc-body,
-.doc--acta-brigada-emergencias .doc-body { font-size: 16px; }
+.doc--acta-brigada-emergencias .doc-body,
+.doc--reunion-vigia .doc-body,
+.doc--reunion-copasst .doc-body,
+.doc--reunion-ccl .doc-body { font-size: 16px; }
 .doc--objetivos .doc-tabla td, .doc--objetivos .doc-tabla th,
 .doc--politica-tabaco-alcohol-spa .doc-tabla td, .doc--politica-tabaco-alcohol-spa .doc-tabla th,
 .doc--politica-sst .doc-tabla td, .doc--politica-sst .doc-tabla th,
@@ -248,9 +251,15 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .doc--acta-conformacion-copasst .doc-tabla td, .doc--acta-conformacion-copasst .doc-tabla th,
 .doc--acta-asignacion-funciones .doc-tabla td, .doc--acta-asignacion-funciones .doc-tabla th,
 .doc--acta-responsabilidades-gerencia .doc-tabla td, .doc--acta-responsabilidades-gerencia .doc-tabla th,
-.doc--acta-brigada-emergencias .doc-tabla td, .doc--acta-brigada-emergencias .doc-tabla th {
+.doc--acta-brigada-emergencias .doc-tabla td, .doc--acta-brigada-emergencias .doc-tabla th,
+.doc--reunion-vigia .doc-tabla td, .doc--reunion-vigia .doc-tabla th,
+.doc--reunion-copasst .doc-tabla td, .doc--reunion-copasst .doc-tabla th,
+.doc--reunion-ccl .doc-tabla td, .doc--reunion-ccl .doc-tabla th {
   font-size: 14px;
 }
+/* reunion-vigia/copasst/ccl: a diferencia de asistencia (que sí es 8-9pt en el .docx),
+   estos formatos usan 12pt en TODA la tabla (medido con python-docx) — no son "densos"
+   a propósito, por eso van en el grupo de arriba y no se dejan en el tamaño base chico. */
 /* Línea para LLENAR a mano con varios nombres en el mismo párrafo (p. ej. "designa a:
    ___ como Presidente... se nombra a: ___ como Secretario"). Al envolver en menos
    líneas que Word, los guiones quedan pegados; se le da interlineado extra para que
@@ -261,6 +270,10 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 
 /* Encabezados de sección dentro del cuerpo (párrafos en negrita del .docx). */
 .doc-h { font-weight: 700; text-align: left !important; margin: 12px 0 6px; }
+/* Nota junto a un encabezado .doc-h (p. ej. "Marque con una X" junto a TEMA en los
+   formatos de reunión): en el .docx es un cuadro de texto flotante a la derecha del
+   título, no texto en línea — se aproxima flotándola a la derecha del mismo párrafo. */
+.doc-h .nota-marca { float: right; font-weight: 400; font-size: 11px; }
 
 .doc-body ul, .doc-body ol { margin: 0 0 8px; padding-left: 20px; }
 .doc-body li { margin-bottom: 4px; text-align: left; }

@@ -80,11 +80,19 @@ Input/Logo*.png →(tools/normalize_logos.py)→ logos/<id>.png
   `python-docx` se mide tamaño de letra, `line_spacing` y alineación de cada `.docx`
   (`manifest.origen`) y se aplica por ámbito `.doc--<id>` en `styles.css`:
   - **Tamaño de letra**: la base `.doc` es 11px; los `.docx` de texto suelen ser 12pt →
-    `font-size:16px` (conversión pt→px ≈ ×4/3). Los densos de tabla (asistencia, reuniones,
-    planes, TOC) se dejan chicos a propósito para que quepan las columnas. El **encabezado**
-    también sale del `.docx` (header de sección): título 11pt→`.dh-nombre:15px`,
-    Código/Versión/Página 10pt→`.dh-meta:13px`. Ojo: en el Word el título (11pt) es un poco
-    MÁS chico que el cuerpo (12pt), no al revés.
+    `font-size:16px` (conversión pt→px ≈ ×4/3). Los densos de tabla (asistencia, planes,
+    TOC) se dejan chicos a propósito para que quepan las columnas — pero **"tiene tablas"
+    NO implica "es denso"**: medir el `w:sz` de las celdas antes de dejarlo en el tamaño
+    base. Los formatos de **reunión** (vigía/COPASST/CCL) usan 12pt en toda la tabla y
+    estaban mal clasificados como densos: se veían diminutos y con media página vacía.
+    El **encabezado** también sale del `.docx` (header de sección): título
+    11pt→`.dh-nombre:15px`, Código/Versión/Página 10pt→`.dh-meta:13px`. Ojo: en el Word el
+    título (11pt) es un poco MÁS chico que el cuerpo (12pt), no al revés.
+  - **Alturas de fila que aplastan el contenido**: si el `.docx` trae `w:trHeight` sin
+    `hRule="exact"` (lo normal), es altura MÍNIMA — la fila crece si el texto no cabe.
+    Copiarla como `height:Npx` funciona mientras la letra sea la del Word; con valores
+    chiquitos (10-26px) y letra ya corregida, mejor omitirla y dejar que el contenido
+    mande, como hace Word.
   - **Interlineado**: el conversor preserva el `line_spacing` por párrafo. OJO, hay DOS
     reglas distintas en Word y python-docx las distingue por `line_spacing_rule`, incluso
     **dentro del mismo `.docx`** (dos secciones del mismo archivo pueden usar cada una la
