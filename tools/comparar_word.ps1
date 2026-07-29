@@ -12,7 +12,12 @@
   El PDF nuestro se obtiene generandolo en la app (ver README/skill verify) y se
   cotejan lado a lado. Requiere Microsoft Word instalado.
 #>
-param([string]$Id = "")
+param(
+  [string]$Id = "",
+  # Ruta alterna del .docx (solo con -Id). La usa comparar_word.py para pasar una copia
+  # saneada cuando el original tiene vinculos externos que cuelgan a Word (ver alli).
+  [string]$Src = ""
+)
 
 $ErrorActionPreference = "Stop"
 $repo = Split-Path -Parent $PSScriptRoot          # ...\plataforma-sst
@@ -35,7 +40,7 @@ $word.DisplayAlerts = 0          # wdAlertsNone
 $word.Options.UpdateLinksAtOpen = $false
 try {
   foreach ($f in $fmts) {
-    $src = Join-Path $root ($f.origen -replace '/', '\')
+    $src = if ($Src) { $Src } else { Join-Path $root ($f.origen -replace '/', '\') }
     $out = Join-Path $outDir ("word_" + $f.id + ".pdf")
     if (-not (Test-Path $src)) { Write-Output ("FALTA  " + $f.id + " :: " + $src); continue }
     try {

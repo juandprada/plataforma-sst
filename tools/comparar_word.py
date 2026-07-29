@@ -24,12 +24,15 @@ from __future__ import annotations
 import argparse
 import base64
 import json
+import os
+import re
 import subprocess
 import sys
+import zipfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from verificar_formato import REPO, ejecutar_sonda, servir  # noqa: E402
+from verificar_formato import RAIZ, REPO, ejecutar_sonda, servir  # noqa: E402
 
 SALIDA = REPO / "_compare"
 
@@ -87,6 +90,36 @@ def png_b64(ruta: Path) -> str:
     return "data:image/png;base64," + base64.b64encode(ruta.read_bytes()).decode()
 
 
+def sanear_vinculos(src: Path, destino: Path) -> Path | None:
+    """Si el .docx trae campos LINK a un archivo externo, devuelve una COPIA con esos
+    campos neutralizados; si no, None (se usa el original).
+
+    Hace falta porque `3.PRESUPUESTO.docx` enlaza `3.PRESUPUESTO.xlsx` (la calculadora
+    original) por una ruta que ya no existe — `D:\\...`. Al abrirlo por automatización,
+    Word intenta resolver el vínculo y se queda colgado indefinidamente, sin diálogo
+    visible que lo delate (corre con Visible=false). Vaciar la instrucción del campo
+    conserva el contenido del documento y evita que Word salga a buscar el .xlsx.
+    """
+    with zipfile.ZipFile(src) as z:
+        if "word/document.xml" not in z.namelist():
+            return None
+        xml = z.read("word/document.xml").decode("utf-8", errors="replace")
+        if not re.search(r"<w:instrText[^>]*>[^<]*LINK[^<]*</w:instrText>", xml):
+            return None
+        nuevo = re.sub(
+            r"(<w:instrText[^>]*>)[^<]*LINK[^<]*(</w:instrText>)", r"\1 \2", xml
+        )
+        destino.parent.mkdir(exist_ok=True)
+        with zipfile.ZipFile(destino, "w", zipfile.ZIP_DEFLATED) as out:
+            for item in z.infolist():
+                datos = z.read(item.filename)
+                if item.filename == "word/document.xml":
+                    datos = nuevo.encode("utf-8")
+                out.writestr(item, datos)
+    print(f"   (vínculo externo neutralizado en {src.name} para poder abrirlo)")
+    return destino
+
+
 def recortar(ruta: Path) -> None:
     """Quita el blanco sobrante de la captura. La ventana se abre más alta que el
     documento (no se sabe su alto hasta renderizarlo), y sin recortar la imagen sale
@@ -116,24 +149,24 @@ def main() -> int:
         return 1
 
     SALIDA.mkdir(exist_ok=True)
-    # Reutiliza el script que ya sabe manejar Word por COM.
-    ps = ["powershell", "-File", str(REPO / "tools/comparar_word.ps1")]
-    try:
-        subprocess.run(
-            ps + (["-Id", args.id] if args.id else []), check=False, timeout=120
-        )
-    except subprocess.TimeoutExpired:
-        # Ya pasó una vez: un .docx con vínculos a un archivo externo (p.ej. el que
-        # tenía una calculadora en Excel detrás) abre un diálogo de seguridad oculto
-        # (Visible=false) y Word se queda esperando un clic que nunca llega. El script
-        # ya lo suprime (DisplayAlerts=0), pero si vuelve a pasar, mejor fallar rápido
-        # que colgar el comando 10+ minutos sin avisar.
-        print("Word tardó más de 2 min exportando — puede haber quedado un WINWORD.EXE"
-              " colgado en un diálogo. Ciérralo (Task Manager) y vuelve a intentar.")
-        return 1
-
     manifest = json.loads((REPO / "plantillas/manifest.json").read_text(encoding="utf-8"))
     fmts = [f for f in manifest if f.get("origen") and (not args.id or f["id"] == args.id)]
+
+    # Exporta a PDF con Word (reutiliza el .ps1, que ya sabe manejar el COM), UNO POR UNO
+    # y con timeout: así un .docx problemático no se lleva por delante todo el lote.
+    for f in fmts:
+        src = RAIZ / f["origen"].replace("/", os.sep)
+        if not src.exists():
+            continue
+        orden = ["powershell", "-File", str(REPO / "tools/comparar_word.ps1"), "-Id", f["id"]]
+        saneado = sanear_vinculos(src, SALIDA / f"_sin_link_{f['id']}.docx")
+        if saneado:
+            orden += ["-Src", str(saneado)]
+        try:
+            subprocess.run(orden, check=False, timeout=120)
+        except subprocess.TimeoutExpired:
+            print(f"TIMEOUT  {f['id']}: Word tardó más de 2 min. Puede haber quedado un"
+                  " WINWORD.EXE colgado; ciérralo con el Administrador de tareas.")
 
     servidor = servir(args.puerto)
     try:

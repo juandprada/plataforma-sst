@@ -427,6 +427,7 @@ button:disabled { opacity: .5; cursor: not-allowed; }
    guiones abajo): mismo ajuste, aplicado directo a la imagen. En el Word la firma se
    apoya sobre la palabra "FIRMA" de la línea siguiente. */
 .doc--asistencia-a-capacitacion .firma-img { margin-bottom: -14px; }
+.doc--presupuesto .firma-img { margin-bottom: -12px; }
 .firmas .firma-linea {
   border-top: 1px solid #000;
   margin: 0 auto 4px;
