@@ -168,7 +168,20 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 /* ---- Estilo del documento (compartido con impresión) ---- */
 /* El margen de página lo aporta html2pdf. Un colchón horizontal mínimo evita que
    el borde derecho de las tablas quede pegado al canvas y html2canvas lo recorte. */
-.doc { padding: 0 4px; font-size: 11px; color: #000; }
+/* El DOCUMENTO usa Arial, como los .docx de origen (los 20 la declaran; 3176 usos
+   contra 4 de Calibri). Antes heredaba del body el stack de la INTERFAZ
+   ("Segoe UI", Roboto, Arial…), que es para los botones y selectores, no para el
+   documento: Segoe UI no es una neo-grotesca como Arial y mide distinto — el guion
+   bajo, por ejemplo, es bastante más angosto, y por eso las líneas de firma salían
+   cortas frente al Word. Liberation Sans/Arimo son métricamente compatibles con Arial
+   y cubren Linux; en Android no hay ninguna y cae en Roboto (más angosta): el PDF lo
+   genera el navegador del técnico, así que ahí sí puede verse distinto. */
+.doc {
+  padding: 0 4px;
+  font-size: 11px;
+  color: #000;
+  font-family: Arial, "Liberation Sans", Arimo, Helvetica, sans-serif;
+}
 
 .doc-header {
   display: grid;

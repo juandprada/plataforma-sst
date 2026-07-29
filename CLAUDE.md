@@ -76,6 +76,14 @@ Input/Logo*.png →(tools/normalize_logos.py)→ logos/<id>.png
   ```
   Si `borders` es `None`, la tabla hereda el borde por defecto (visible); si trae `val="none"`
   en todos los lados, va sin caja (agregar `.tabla-firma-suelta`).
+- **Tipografía del documento: Arial** (`.doc`), que es la que declaran los 20 `.docx`
+  de origen (3176 usos contra 4 de Calibri). **No confundir con la del `body`**, que es
+  el stack de la INTERFAZ (`"Segoe UI", Roboto, …`) para botones y selectores: el `.doc`
+  la heredaba por accidente y Segoe UI mide distinto (es humanista, no neo-grotesca),
+  con el guion bajo ~34% más angosto — de ahí que las líneas de firma salieran cortas
+  frente al Word. El stack lleva `Liberation Sans`/`Arimo` detrás, métricamente
+  compatibles con Arial, para Linux. Ojo: el PDF lo genera el navegador del técnico con
+  SUS fuentes; en Android no hay Arial ni compatibles y cae en Roboto (más angosta).
 - **La salida debe parecerse al `.docx` de origen, medido POR FORMATO (no global)**. Con
   `python-docx` se mide tamaño de letra, `line_spacing` y alineación de cada `.docx`
   (`manifest.origen`) y se aplica por ámbito `.doc--<id>` en `styles.css`:
