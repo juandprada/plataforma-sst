@@ -243,7 +243,6 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .doc--reunion-vigia .doc-body,
 .doc--reunion-copasst .doc-body,
 .doc--reunion-ccl .doc-body { font-size: 16px; }
-.doc--objetivos .doc-tabla td, .doc--objetivos .doc-tabla th,
 .doc--politica-tabaco-alcohol-spa .doc-tabla td, .doc--politica-tabaco-alcohol-spa .doc-tabla th,
 .doc--politica-sst .doc-tabla td, .doc--politica-sst .doc-tabla th,
 .doc--acta-conformacion-ccl .doc-tabla td, .doc--acta-conformacion-ccl .doc-tabla th,
@@ -257,6 +256,14 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .doc--reunion-ccl .doc-tabla td, .doc--reunion-ccl .doc-tabla th {
   font-size: 14px;
 }
+/* objetivos va aparte de ese grupo: su ÚNICA tabla es el bloque de firma, y en el
+   .docx está en 12pt igual que el cuerpo (no es una tabla de datos que haya que
+   encoger). Con 14px la línea de firma salía notablemente más corta que en el Word. */
+.doc--objetivos .doc-tabla td, .doc--objetivos .doc-tabla th { font-size: 16px; }
+/* Espacio para firmar: en el Word quedan 81px libres entre el último viñeteado y la
+   línea (medido sobre el PDF de Word); con el alto general de .tabla-firmas quedaban
+   19px, imposible firmar ahí. */
+.doc--objetivos .doc-tabla.tabla-firmas td.firma-cel { height: 164px; }
 /* reunion-vigia/copasst/ccl: a diferencia de asistencia (que sí es 8-9pt en el .docx),
    estos formatos usan 12pt en TODA la tabla (medido con python-docx) — no son "densos"
    a propósito, por eso van en el grupo de arriba y no se dejan en el tamaño base chico. */
