@@ -168,19 +168,38 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 /* ---- Estilo del documento (compartido con impresión) ---- */
 /* El margen de página lo aporta html2pdf. Un colchón horizontal mínimo evita que
    el borde derecho de las tablas quede pegado al canvas y html2canvas lo recorte. */
-/* El DOCUMENTO usa Arial, como los .docx de origen (los 20 la declaran; 3176 usos
-   contra 4 de Calibri). Antes heredaba del body el stack de la INTERFAZ
-   ("Segoe UI", Roboto, Arial…), que es para los botones y selectores, no para el
-   documento: Segoe UI no es una neo-grotesca como Arial y mide distinto — el guion
-   bajo, por ejemplo, es bastante más angosto, y por eso las líneas de firma salían
-   cortas frente al Word. Liberation Sans/Arimo son métricamente compatibles con Arial
-   y cubren Linux; en Android no hay ninguna y cae en Roboto (más angosta): el PDF lo
-   genera el navegador del técnico, así que ahí sí puede verse distinto. */
+/* Fuente del DOCUMENTO, empaquetada en el repo (ver assets/fuentes/LEEME.md).
+   Arimo es métricamente idéntica a Arial —cada carácter mide exactamente lo mismo,
+   verificado con fontTools: 0 diferencias— y su licencia OFL sí permite redistribuirla,
+   a diferencia de Arial. Va empaquetada porque el PDF lo genera el navegador del
+   técnico con SUS fuentes: en Android no hay Arial y el documento salía con otras
+   medidas que el Word. */
+@font-face {
+  font-family: "Doc Sans";
+  src: url("assets/fuentes/arimo-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;   /* nunca dibujar con una fuente de reemplazo: el PDF se captura
+                            de la pantalla y un swap a media captura saldría en el PDF */
+}
+@font-face {
+  font-family: "Doc Sans";
+  src: url("assets/fuentes/arimo-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+}
+
+/* El DOCUMENTO usa Arial (la declaran los 20 .docx de origen: 3176 usos contra 4 de
+   Calibri). Antes heredaba del body el stack de la INTERFAZ ("Segoe UI", Roboto,
+   Arial…), que es para botones y selectores: Segoe UI no es una neo-grotesca como
+   Arial y mide distinto —el guion bajo es ~34% más angosto—, y por eso las líneas de
+   firma salían cortas frente al Word. */
 .doc {
   padding: 0 4px;
   font-size: 11px;
   color: #000;
-  font-family: Arial, "Liberation Sans", Arimo, Helvetica, sans-serif;
+  font-family: "Doc Sans", Arial, "Liberation Sans", Helvetica, sans-serif;
 }
 
 .doc-header {

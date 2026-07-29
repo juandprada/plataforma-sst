@@ -394,12 +394,30 @@ let ultimoBlobUrl = null;
 
 // Genera el PDF (sin diálogo de impresión, para evitar el encabezado nativo del
 // navegador en móvil) y lo muestra en un visor embebido con controles nativos.
+// Espera a que la fuente del documento esté cargada. html2canvas CAPTURA LA PANTALLA:
+// si la woff2 aún no llegó, el PDF sale dibujado con la fuente de reemplazo (más
+// angosta) y con otros cortes de línea que el Word. Solo la primera vez tarda algo;
+// después está en la caché del navegador.
+async function esperarFuente() {
+  if (!document.fonts) return;
+  try {
+    await Promise.all([
+      document.fonts.load('400 16px "Doc Sans"'),
+      document.fonts.load('700 16px "Doc Sans"'),
+    ]);
+    await document.fonts.ready;
+  } catch (err) {
+    console.warn("No se pudo confirmar la carga de la fuente del documento.", err);
+  }
+}
+
 async function generarPDF() {
   const doc = $("#salida .doc");
   if (!doc) {
     setEstado("Primero genera la vista previa.", true);
     return;
   }
+  await esperarFuente();
   const horizontal = $("#salida").classList.contains("horizontal");
   // Ancho = área de contenido (página menos 0.6in de margen a cada lado):
   // horizontal 11in-1.2in=9.8in, vertical 8.5in-1.2in=7.3in (a 96dpi).
