@@ -401,6 +401,15 @@ button:disabled { opacity: .5; cursor: not-allowed; }
    responsabilidades. `.firma-top` la sobrescribe donde aplica. */
 .firma-img { max-height: 42px; max-width: 85%; object-fit: contain; }
 .firma-top .firma-img { max-height: 46px; max-width: 90%; object-fit: contain; }
+/* Dentro de una celda de tabla el texto va a la izquierda, así que la firma se apoya
+   sobre el inicio de la línea y no centrada (en `.firmas`, que es un bloque centrado,
+   sí va al centro). */
+.doc-tabla td .firma-top { justify-content: flex-start; }
+/* Ámbito por formato: en el .docx de este acta las celdas de firma van alineadas
+   ARRIBA (vAlign por defecto), no abajo como el resto. Importa porque el cargo de la
+   consultora ocupa dos renglones y el del representante uno: alineando abajo, el
+   bloque más alto sube y las dos líneas de firma quedan a distinta altura. */
+.doc--acta-asignacion-funciones .doc-tabla td.firma-cel { vertical-align: top; }
 .firmas .firma-linea {
   border-top: 1px solid #000;
   margin: 0 auto 4px;
