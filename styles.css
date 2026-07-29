@@ -427,7 +427,14 @@ button:disabled { opacity: .5; cursor: not-allowed; }
    guiones abajo): mismo ajuste, aplicado directo a la imagen. En el Word la firma se
    apoya sobre la palabra "FIRMA" de la línea siguiente. */
 .doc--asistencia-a-capacitacion .firma-img { margin-bottom: -14px; }
-.doc--presupuesto .firma-img { margin-bottom: -12px; }
+.doc--presupuesto .firma-top { margin-bottom: -12px; }
+/* Las celdas de firma van en 11pt en el .docx (docDefaults w:sz=22), no en el 10px
+   base de las tablas: con 10px la línea de guiones salía notablemente más corta que en
+   el Word. La tabla de importes sí se queda chica a propósito (es densa).
+   Y van alineadas ARRIBA con la zona de firma reservada en las TRES celdas (en el .docx
+   las tres abren con dos párrafos vacíos): así el cargo de la consultora puede envolver
+   a dos renglones sin arrastrar su línea, que es lo que pasaba alineando abajo. */
+.doc--presupuesto .doc-tabla td.firma-cel { font-size: 15px; vertical-align: top; }
 .firmas .firma-linea {
   border-top: 1px solid #000;
   margin: 0 auto 4px;
