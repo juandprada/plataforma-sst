@@ -536,7 +536,12 @@ async function generarPDF() {
     visor.hidden = false;
     visor.innerHTML =
       `<iframe class="visor-frame" title="Vista del PDF" src="${url}"></iframe>`;
-    visor.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Desplazamiento INSTANTÁNEO, no "smooth": la animación seguía corriendo cuando
+    // empezaba la siguiente generación y movía la página DESPUÉS del scrollTo(0,0) de
+    // abajo, así que html2canvas capturaba desplazado ~37px. Eso metía una banda blanca
+    // arriba de cada página y recortaba el final de la última (se veía en la página de
+    // firmas del acta de asistencia, que es la más alta).
+    visor.scrollIntoView({ behavior: "auto", block: "start" });
     setEstado("PDF listo: usa el visor para hacer zoom, imprimir o descargar.");
   } catch (err) {
     console.error(err);

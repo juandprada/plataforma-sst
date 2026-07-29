@@ -33,6 +33,10 @@ body {
   border-bottom: 1px solid var(--borde);
 }
 .field { display: flex; flex-direction: column; gap: .35rem; min-width: 240px; flex: 1; }
+/* Sin esto el atributo `hidden` no oculta nada: cualquier `display` de autor le gana al
+   `display:none` del navegador. Le pasa al selector de capacitación, que solo debe verse
+   en el formato de asistencia (mismo parche que ya tienen #panel-presupuesto y #visor). */
+.field[hidden] { display: none; }
 .field label { font-weight: 600; font-size: .85rem; }
 .field select {
   padding: .55rem .6rem;
