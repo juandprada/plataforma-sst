@@ -462,7 +462,9 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 /* Aquí no hay .firma-top (la firma va suelta entre <br>, no en celda con línea de
    guiones abajo): mismo ajuste, aplicado directo a la imagen. En el Word la firma se
    apoya sobre la palabra "FIRMA" de la línea siguiente. */
-.doc--asistencia-a-capacitacion .firma-img { margin-bottom: -14px; }
+/* Aquí la línea de firma es "FIRMA______": sin el desplazamiento a la derecha la firma
+   caía encima de la palabra, no sobre los guiones. */
+.doc--asistencia-a-capacitacion .firma-img { margin-bottom: -14px; margin-left: 38px; }
 .doc--presupuesto .firma-top { margin-bottom: -12px; }
 /* Las celdas de firma van en 11pt en el .docx (docDefaults w:sz=22), no en el 10px
    base de las tablas: con 10px la línea de guiones salía notablemente más corta que en
