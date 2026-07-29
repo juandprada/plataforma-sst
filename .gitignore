@@ -16,7 +16,9 @@ venv/
 # Archivos Office temporales (por si se copian plantillas fuente)
 ~$*
 
-# QA: PDFs temporales del comparador Word (tools/comparar_word.ps1) y pruebas sueltas
+# QA: salida del cotejo contra Word (tools/comparar_word.py) y las páginas/sondas
+# temporales que inyectan los verificadores en la raíz (se borran solas, salvo crash).
 _compare/
 *roto.pdf
 _*.html
+_*.js

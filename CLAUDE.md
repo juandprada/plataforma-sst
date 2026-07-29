@@ -156,37 +156,56 @@ Input/Logo*.png →(tools/normalize_logos.py)→ logos/<id>.png
 
 ## Verificar un cambio (obligatorio antes de dar por hecho)
 
-Servir y renderizar a PDF con Chrome headless, luego inspeccionar el PDF:
+**Los dos comandos de abajo NO son opcionales ni "si da tiempo".** Los cinco errores de
+formato que llegaron a producción (matriz aplastada, bordes de la tabla de firmas del
+vigía, viñetas donde el Word numera, interlineado del acta de gerencia, letra diminuta en
+los formatos de reunión) se colaron porque el cotejo contra el Word se degradó a "cuento
+páginas y miro que no falte texto". **Cotejar significa medir y MIRAR el Word**, no
+contar páginas.
+
+**1. Verificador automático — lo medible.** Extrae del `.docx` (`manifest.origen`) letra,
+alto de fila, bordes, listas numeradas, interlineado y cuadros de texto flotantes, y los
+contrasta contra el DOM que renderiza la app en Chrome headless. Detecta los cinco
+errores de arriba:
 
 ```bash
-python -m http.server 8000
-# componer preview con styles.css + print.css + @page de la orientación, y:
-"/c/Program Files/Google/Chrome/Application/chrome.exe" --headless --disable-gpu \
-  --no-pdf-header-footer --print-to-pdf=out.pdf "http://localhost:8000/_preview.html"
+python tools/verificar_formato.py                      # todos
+python tools/verificar_formato.py --id reunion-vigia   # uno solo
 ```
 
-Revisar: logo contenido en su caja, Código/Versión, tablas/merges, saltos de página,
-tildes/ñ, y que no queden tokens `{{...}}`. Probar varias empresas y ambas orientaciones.
+ERROR = diferencia clara contra el Word; AVISO = revisar a ojo. Sale con código 1 si hay
+algún ERROR. Notas al leerlo:
+- Si dos formatos comparten `origen` (vigía/COPASST, funciones/gerencia), cada plantilla
+  tiene solo MITAD del archivo: las comprobaciones globales (texto, interlineado) se
+  omiten solas y las de tabla se emparejan por contenido.
+- El emparejamiento tabla-`.docx` ↔ tabla-render es por texto, así que aguanta que la
+  plantilla parta una tabla larga en bloques por página (matriz).
 
-**Paso final — cotejar contra el Word original.** Cada formato guarda su `.docx` de
-origen en `manifest.origen` (ruta relativa a la raíz `sst\`). Convertirlo a PDF temporal
-y compararlo lado a lado con el PDF que genera la app:
+**2. Cotejo visual — lo que solo se ve.** Proporción, aire, saltos: para eso hay que
+mirar, y el comando deja las dos cosas lado a lado en una sola página:
 
 ```bash
-powershell -File tools/comparar_word.ps1                    # todos -> _compare/word_<id>.pdf
-powershell -File tools/comparar_word.ps1 -Id acta-conformacion-ccl   # uno solo
+python tools/comparar_word.py                    # todos  -> _compare/<id>.html
+python tools/comparar_word.py --id reunion-vigia # uno solo
 ```
 
-`_compare/` es temporal (gitignored). Comparar tamaños de celda/fila, saltos y que no
-falte contenido. Nota: el `.docx` trae datos de muestra (otra empresa/logo, años viejos);
-lo que se coteja es la **presentación**, no los valores (que la app tokeniza).
+Abre `_compare/<id>.html`: cada página del Word junto a la captura de la app. Requiere
+Word instalado (exporta el `.docx` vía `tools/comparar_word.ps1`, que sigue sirviendo
+suelto si solo se quiere el PDF) y `pip install pymupdf`.
+
+`_compare/` es temporal (gitignored). Nota: el `.docx` trae datos de muestra (otra
+empresa/logo, años viejos); lo que se coteja es la **presentación**, no los valores.
+
+Además, al tocar plantillas o CSS: logo contenido en su caja, Código/Versión,
+tablas/merges, saltos de página, tildes/ñ, y que no queden tokens `{{...}}`. Probar
+varias empresas y ambas orientaciones.
 
 ## Datos
 
 `data/empresas.json` es la única fuente (generada de `EMPRESAS.xlsx`). Actualizar =
 editar el `.xlsx`, correr `xlsx_to_json.py` + `normalize_logos.py`, commit. Sin Google
 Sheets ni dependencias externas. Herramientas: Python 3 con `openpyxl`, `Pillow`,
-`python-docx`.
+`python-docx` y, solo para el cotejo visual, `pymupdf`.
 
 ## Publicar
 
