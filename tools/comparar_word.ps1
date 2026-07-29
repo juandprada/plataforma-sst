@@ -26,6 +26,13 @@ if (-not $fmts) { Write-Output "Sin formatos con 'origen' (o id no encontrado)."
 
 $word = New-Object -ComObject Word.Application
 $word.Visible = $false
+# Sin esto, un .docx con vinculos a un archivo externo (p.ej. 3.PRESUPUESTO.docx, que
+# estaba conectado a 3.PRESUPUESTO.xlsx como calculadora) abre un dialogo de seguridad
+# preguntando si actualizar los vinculos. Como Visible=false, el dialogo queda oculto
+# y la automatizacion se cuelga esperando un clic que nunca llega. DisplayAlerts=0
+# contesta esos avisos con la opcion por defecto (no actualizar) sin mostrarlos.
+$word.DisplayAlerts = 0          # wdAlertsNone
+$word.Options.UpdateLinksAtOpen = $false
 try {
   foreach ($f in $fmts) {
     $src = Join-Path $root ($f.origen -replace '/', '\')

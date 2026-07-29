@@ -417,6 +417,16 @@ button:disabled { opacity: .5; cursor: not-allowed; }
    consultora ocupa dos renglones y el del representante uno: alineando abajo, el
    bloque más alto sube y las dos líneas de firma quedan a distinta altura. */
 .doc--acta-asignacion-funciones .doc-tabla td.firma-cel { vertical-align: top; }
+/* Firma escaneada de Karen APOYADA sobre la línea (como una firma real), no flotando
+   arriba: por defecto .firma-top solo la pega al borde de su caja (align-items:
+   flex-end), que en la práctica deja aire antes de la línea/`.firma-linea` siguiente.
+   Ámbito por formato porque .firma-top también la usan otros formatos sin este ajuste. */
+.doc--acta-asignacion-funciones .firma-top { margin-bottom: -30px; }
+.doc--plan-de-trabajo-anual .firma-top { margin-bottom: -16px; }
+/* Aquí no hay .firma-top (la firma va suelta entre <br>, no en celda con línea de
+   guiones abajo): mismo ajuste, aplicado directo a la imagen. En el Word la firma se
+   apoya sobre la palabra "FIRMA" de la línea siguiente. */
+.doc--asistencia-a-capacitacion .firma-img { margin-bottom: -14px; }
 .firmas .firma-linea {
   border-top: 1px solid #000;
   margin: 0 auto 4px;

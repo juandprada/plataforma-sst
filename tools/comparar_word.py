@@ -118,7 +118,19 @@ def main() -> int:
     SALIDA.mkdir(exist_ok=True)
     # Reutiliza el script que ya sabe manejar Word por COM.
     ps = ["powershell", "-File", str(REPO / "tools/comparar_word.ps1")]
-    subprocess.run(ps + (["-Id", args.id] if args.id else []), check=False)
+    try:
+        subprocess.run(
+            ps + (["-Id", args.id] if args.id else []), check=False, timeout=120
+        )
+    except subprocess.TimeoutExpired:
+        # Ya pasó una vez: un .docx con vínculos a un archivo externo (p.ej. el que
+        # tenía una calculadora en Excel detrás) abre un diálogo de seguridad oculto
+        # (Visible=false) y Word se queda esperando un clic que nunca llega. El script
+        # ya lo suprime (DisplayAlerts=0), pero si vuelve a pasar, mejor fallar rápido
+        # que colgar el comando 10+ minutos sin avisar.
+        print("Word tardó más de 2 min exportando — puede haber quedado un WINWORD.EXE"
+              " colgado en un diálogo. Ciérralo (Task Manager) y vuelve a intentar.")
+        return 1
 
     manifest = json.loads((REPO / "plantillas/manifest.json").read_text(encoding="utf-8"))
     fmts = [f for f in manifest if f.get("origen") and (not args.id or f["id"] == args.id)]

@@ -148,6 +148,15 @@ Input/Logo*.png →(tools/normalize_logos.py)→ logos/<id>.png
   raw en `app.js`). El conversor la inserta automáticamente en celdas de tabla que tengan
   "Karen" junto a una línea de firma (`____` o `FIRMA___`). El bloque `{{ANIO}}`/
   `{{ANIO_SIGUIENTE}}` sale de pares de años consecutivos del `.docx`.
+  - **La firma debe APOYARSE sobre la línea**, no flotar separada arriba (así firma
+    a mano la gente): por defecto `.firma-top`/`.firma-img` dejan la imagen pegada al
+    borde de su caja, pero eso deja aire antes de la línea siguiente. Se corrige con
+    `margin-bottom` negativo en la imagen o en `.firma-top`, **por ámbito de formato**
+    (`.doc--<id> .firma-top { margin-bottom: -Npx; }`) — el valor no es el mismo en
+    todos: depende de cuánto aire meta cada plantilla entre la imagen y la línea
+    (`acta-asignacion-funciones` −30px, `plan-de-trabajo-anual` −16px,
+    `asistencia-a-capacitacion`, sin `.firma-top`, va directo en `.firma-img` −14px).
+    Ajustar a ojo con `tools/comparar_word.py` y recortar la imagen para verla de cerca.
 - **Plantillas con edición manual (NO regenerar a ciegas)**: `plan-de-mejora.html` y
   `tabla-de-contenido.html` son hechas a mano; `plan-de-trabajo-anual.html` tiene el
   bloque de firmas `.firmas` a mano. Regenerar estas pierde los ajustes.
