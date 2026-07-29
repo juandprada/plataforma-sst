@@ -38,6 +38,8 @@
       "pago_mensual_asesoria": 250000
     }
   },
+  "_ajustes_por_empresa": "Overrides permanentes de valor unitario/cantidad por ítem: {\"<empresa_id>\": {\"<grupo>|<item>\": {\"vu\": n, \"cant\": n}}}. Se pegan con el botón 'Copiar ajustes' del panel de la app.",
+  "ajustes_por_empresa": {},
   "catalogo": [
     {
       "grupo": "Sistema de Gestión de Seguridad y Salud en el Trabajo",

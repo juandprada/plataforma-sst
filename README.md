@@ -16,6 +16,19 @@ Reemplaza el proceso manual de combinar correspondencia en Word.
 2. Elegir **Formato** y **Empresa**.
 3. **Generar vista previa** → **Descargar PDF** → destino *Guardar como PDF*.
 
+### Cambiar precios o cantidades del Presupuesto
+
+Solo en el formato **Presupuesto** aparece la línea *"¿Deseas modificar alguna cantidad
+o valor?"*. Al pulsar **Sí, modificar** se abre la lista de ítems, cada uno con su
+**valor unitario** y su **cantidad**; al salir del campo, el PDF se vuelve a generar con
+los subtotales y totales recalculados. Los campos cambiados quedan resaltados.
+
+- Los cambios se **guardan en ese navegador**, por empresa: al volver a elegirla siguen
+  ahí (avisa cuántos ítems hay ajustados). Otras empresas no se ven afectadas.
+- **Restablecer** devuelve todo a los valores calculados; **Listo** cierra el panel.
+- **Copiar ajustes (JSON)** sirve para hacerlos permanentes para todos: pegar lo copiado
+  en `data/presupuesto.json` → `ajustes_por_empresa` y publicar.
+
 ## Estructura
 
 ```

@@ -54,6 +54,11 @@ function logoHTML(empresa) {
 // El .xlsx original es una calculadora: la tabla sale de 5 parámetros por empresa
 // (trabajadores, extintores, botiquines, aires, pago de asesoría) y de un catálogo
 // de ítems con su precio base. Ambos viven en data/presupuesto.json.
+//
+// Encima del cálculo van los AJUSTES: valor unitario y/o cantidad puestos a mano para
+// una empresa y un ítem concretos (panel "¿Deseas modificar…?"). Precedencia:
+//   catálogo + parámetros  <  presupuesto.json:ajustes_por_empresa  <  localStorage
+// Pegar los ajustes locales en `ajustes_por_empresa` los vuelve permanentes para todos.
 
 const pesos = (n) => "$ " + Math.round(n).toLocaleString("es-CO");
 
@@ -66,30 +71,94 @@ function valorRegla(regla, params) {
   return "por" in regla ? base * (Number(params[regla.por]) || 0) : base;
 }
 
-// Arma la tabla del presupuesto (grupos + subtotales + totales) para una empresa.
-function tablaPresupuestoHTML(empresa) {
-  if (!PRESUPUESTO) return "<p>No se pudo cargar el presupuesto.</p>";
+const AJUSTES_KEY = "sst.presupuesto.ajustes.v1";
+let AJUSTES = {}; // { <empresa._id>: { "<grupo>|<item>": {vu?, cant?} } }
+
+function cargarAjustes() {
+  try {
+    AJUSTES = JSON.parse(localStorage.getItem(AJUSTES_KEY) || "{}") || {};
+  } catch (err) {
+    console.warn("Ajustes de presupuesto ilegibles, se ignoran.", err);
+    AJUSTES = {};
+  }
+}
+
+function guardarAjustes() {
+  try {
+    localStorage.setItem(AJUSTES_KEY, JSON.stringify(AJUSTES));
+  } catch (err) {
+    console.warn("No se pudieron guardar los ajustes.", err);
+  }
+}
+
+// Ajustes efectivos de una empresa: los del JSON (permanentes) + los locales.
+function ajustesDe(empresaId) {
+  const delJSON = (PRESUPUESTO && PRESUPUESTO.ajustes_por_empresa) || {};
+  const merge = {};
+  for (const [clave, val] of Object.entries(delJSON[empresaId] || {})) {
+    merge[clave] = { ...val };
+  }
+  for (const [clave, val] of Object.entries(AJUSTES[empresaId] || {})) {
+    merge[clave] = { ...merge[clave], ...val };
+  }
+  return merge;
+}
+
+// Guarda (o borra, con valor null/NaN) un ajuste local. Si el valor vuelve a coincidir
+// con el calculado, se borra: así el ítem queda "sin ajuste" y sigue las fórmulas.
+function setAjuste(empresaId, clave, campo, valor, base) {
+  const porEmpresa = AJUSTES[empresaId] || (AJUSTES[empresaId] = {});
+  const item = porEmpresa[clave] || (porEmpresa[clave] = {});
+  if (valor == null || !Number.isFinite(valor) || valor === base) delete item[campo];
+  else item[campo] = valor;
+  if (!Object.keys(item).length) delete porEmpresa[clave];
+  if (!Object.keys(porEmpresa).length) delete AJUSTES[empresaId];
+  guardarAjustes();
+}
+
+// Filas calculadas del presupuesto (con ajustes aplicados). Única fuente de verdad:
+// la usan tanto la tabla del documento como el panel de edición.
+function filasPresupuesto(empresa) {
+  if (!PRESUPUESTO) return null;
   const params = {
     ...PRESUPUESTO.parametros_default,
     ...(PRESUPUESTO.parametros_por_empresa[empresa._id] || {}),
   };
+  const ajustes = ajustesDe(empresa._id);
+
+  return PRESUPUESTO.catalogo.map((grupo) => ({
+    grupo: grupo.grupo,
+    items: grupo.items.map((item) => {
+      const clave = grupo.grupo + "|" + item.nombre;
+      const aj = ajustes[clave] || {};
+      const vuBase = valorRegla(item.vu, params);
+      const cantBase = valorRegla(item.cant, params);
+      const vu = Number.isFinite(aj.vu) ? aj.vu : vuBase;
+      const cant = Number.isFinite(aj.cant) ? aj.cant : cantBase;
+      return { nombre: item.nombre, clave, vu, cant, vuBase, cantBase };
+    }),
+  }));
+}
+
+// Arma la tabla del presupuesto (grupos + subtotales + totales) para una empresa.
+function tablaPresupuestoHTML(empresa) {
+  const grupos = filasPresupuesto(empresa);
+  if (!grupos) return "<p>No se pudo cargar el presupuesto.</p>";
 
   const filas = [];
   let total = 0;
-  for (const grupo of PRESUPUESTO.catalogo) {
+  for (const grupo of grupos) {
     filas.push(
       `<tr class="pr-grupo"><td colspan="4">${escapeHTML(grupo.grupo)}</td></tr>`
     );
     let subtotal = 0;
     for (const item of grupo.items) {
-      const vu = valorRegla(item.vu, params);
-      const cant = valorRegla(item.cant, params);
-      const t = vu * cant;
+      const t = item.vu * item.cant;
       subtotal += t;
       filas.push(
         `<tr><td>${escapeHTML(item.nombre)}</td>` +
-          `<td class="pr-num">${pesos(vu)}</td>` +
-          `<td class="pr-num">${cant}</td>` +
+          `<td class="pr-num">${pesos(item.vu)}</td>` +
+          `<td class="pr-num">${item.cant}</td>` +
           `<td class="pr-num">${pesos(t)}</td></tr>`
       );
     }
@@ -114,6 +183,109 @@ function tablaPresupuestoHTML(empresa) {
     filas.join("") +
     "</table>"
   );
+}
+
+// ---- Panel de ajustes (solo en el formato presupuesto) --------------------
+// No se ve por defecto: con el formato presupuesto aparece una sola línea preguntando
+// si se desea modificar algo; el editor se despliega solo si el usuario dice que sí.
+
+let editorAbierto = false;
+let empresaPanel = null; // empresa que está mostrando el editor
+let empresaPintada = null; // _id de la empresa cuyos inputs están en el DOM
+
+function renderPanelPresupuesto(formato, empresa) {
+  const panel = $("#panel-presupuesto");
+  if (!panel) return;
+  if (formato.id !== "presupuesto" || !PRESUPUESTO) {
+    panel.hidden = true;
+    editorAbierto = false;
+    $("#pp-editor").hidden = true;
+    return;
+  }
+  panel.hidden = false;
+  empresaPanel = empresa;
+
+  const n = Object.keys(ajustesDe(empresa._id)).length;
+  $("#pp-aviso").textContent = n
+    ? ` (hay ${n} ${n === 1 ? "ítem ajustado" : "ítems ajustados"} para esta empresa)`
+    : "";
+  $("#pp-editor").hidden = !editorAbierto;
+  // Repintar solo si cambió la empresa: rehacer los inputs en cada regeneración le
+  // quitaría el foco (y el valor a medio escribir) a quien está editando.
+  if (editorAbierto && empresaPintada !== empresa._id) pintarItems(empresa);
+}
+
+// Una fila por ítem: nombre + valor unitario + cantidad, precargados con lo vigente.
+function pintarItems(empresa) {
+  empresaPintada = empresa._id;
+  const grupos = filasPresupuesto(empresa);
+  const partes = [];
+  for (const grupo of grupos) {
+    partes.push(`<h3 class="pp-grupo">${escapeHTML(grupo.grupo)}</h3>`);
+    for (const item of grupo.items) {
+      const editadoVu = item.vu !== item.vuBase;
+      const editadoCant = item.cant !== item.cantBase;
+      partes.push(
+        `<div class="pp-item">` +
+          `<span class="pp-nombre">${escapeHTML(item.nombre)}</span>` +
+          `<label class="pp-campo">Valor unitario` +
+          `<input type="number" min="0" step="1000" value="${item.vu}"` +
+          ` data-clave="${escapeHTML(item.clave)}" data-campo="vu"` +
+          ` data-base="${item.vuBase}" class="${editadoVu ? "pp-editado" : ""}"></label>` +
+          `<label class="pp-campo">Cantidad` +
+          `<input type="number" min="0" step="1" value="${item.cant}"` +
+          ` data-clave="${escapeHTML(item.clave)}" data-campo="cant"` +
+          ` data-base="${item.cantBase}" class="${editadoCant ? "pp-editado" : ""}"></label>` +
+          `</div>`
+      );
+    }
+  }
+  $("#pp-items").innerHTML = partes.join("");
+}
+
+function conectarPanelPresupuesto() {
+  $("#pp-abrir").addEventListener("click", () => {
+    editorAbierto = true;
+    $("#pp-editor").hidden = false;
+    if (empresaPanel) pintarItems(empresaPanel);
+  });
+
+  $("#pp-cerrar").addEventListener("click", () => {
+    editorAbierto = false;
+    $("#pp-editor").hidden = true;
+  });
+
+  // `change` (no `input`): así el PDF se regenera al salir del campo, no por tecla.
+  $("#pp-items").addEventListener("change", (ev) => {
+    const input = ev.target.closest("input[data-clave]");
+    if (!input || !empresaPanel) return;
+    const base = Number(input.dataset.base);
+    const valor = input.value === "" ? null : Number(input.value);
+    setAjuste(empresaPanel._id, input.dataset.clave, input.dataset.campo, valor, base);
+    if (valor == null || !Number.isFinite(valor)) input.value = base; // vacío = calculado
+    input.classList.toggle("pp-editado", Number(input.value) !== base);
+    solicitarGeneracion();
+  });
+
+  $("#pp-reset").addEventListener("click", () => {
+    if (!empresaPanel) return;
+    delete AJUSTES[empresaPanel._id];
+    guardarAjustes();
+    if (editorAbierto) pintarItems(empresaPanel); // los inputs vuelven a lo calculado
+    solicitarGeneracion();
+  });
+
+  $("#pp-copiar").addEventListener("click", async () => {
+    const json = JSON.stringify(AJUSTES, null, 2);
+    try {
+      await navigator.clipboard.writeText(json);
+      setEstado("Ajustes copiados: pégalos en data/presupuesto.json → ajustes_por_empresa.");
+    } catch (err) {
+      console.warn(err);
+      console.log(json);
+      setEstado("No se pudo copiar; los ajustes quedaron en la consola del navegador.", true);
+    }
+  });
 }
 
 async function fetchText(url) {
@@ -179,6 +351,9 @@ async function generar() {
       return;
     }
     const anio = Number($("#sel-anio").value) || new Date().getFullYear();
+
+    // Panel de ajustes: solo se muestra (y solo pregunta) en el formato presupuesto.
+    renderPanelPresupuesto(formato, empresa);
 
     const cuerpoTpl = await fetchText(`plantillas/${formato.archivo}`);
 
@@ -343,12 +518,13 @@ async function init() {
       fetchText("partials/encabezado.html"),
       fetchJSON("data/presupuesto.json"),
     ]);
+    cargarAjustes(); // ajustes de presupuesto guardados en este navegador
     poblarSelects();
+    conectarPanelPresupuesto();
     setEstado("");
     // Auto-genera el PDF al elegir formato o empresa (sin botones), serializado.
     $("#sel-formato").addEventListener("change", solicitarGeneracion);
     $("#sel-empresa").addEventListener("change", solicitarGeneracion);
-    $("#sel-anio").addEventListener("change", solicitarGeneracion);
     $("#sel-anio").addEventListener("change", solicitarGeneracion);
     solicitarGeneracion(); // genera el primer documento con la selección por defecto
   } catch (err) {

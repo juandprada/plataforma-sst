@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Plataforma de Documentos SST</title>
-  <link rel="stylesheet" href="styles.css?v=42">
-  <link rel="stylesheet" href="print.css?v=42" media="print">
+  <link rel="stylesheet" href="styles.css?v=43">
+  <link rel="stylesheet" href="print.css?v=43" media="print">
   <!-- La app fija aquí el tamaño de página según la orientación del formato. -->
   <style id="page-orient">@page { size: Letter; margin: 0.6in; }</style>
 </head>
@@ -32,6 +32,23 @@
       <p id="estado" class="estado" role="status"></p>
     </section>
 
+    <!-- Ajustes del presupuesto: la app solo muestra esta sección en ese formato, y
+         el editor solo se abre si el usuario responde que sí (ver app.js). -->
+    <section id="panel-presupuesto" hidden>
+      <p class="pp-pregunta">
+        ¿Deseas modificar alguna cantidad o valor?<span id="pp-aviso"></span>
+        <button type="button" id="pp-abrir">Sí, modificar</button>
+      </p>
+      <div id="pp-editor" hidden>
+        <div id="pp-items"></div>
+        <div class="pp-acciones">
+          <button type="button" id="pp-reset">Restablecer</button>
+          <button type="button" id="pp-copiar">Copiar ajustes (JSON)</button>
+          <button type="button" id="pp-cerrar">Listo</button>
+        </div>
+      </div>
+    </section>
+
     <p class="hint">
       Elige un <strong>formato</strong> y una <strong>empresa</strong>: el PDF se genera
       solo y aparece abajo en el visor, con controles para hacer zoom, imprimir o
@@ -46,6 +63,6 @@
   <div id="salida-host" aria-hidden="true"><main id="salida" aria-live="polite"></main></div>
 
   <script src="assets/vendor/html2pdf.bundle.min.js"></script>
-  <script src="app.js?v=42"></script>
+  <script src="app.js?v=43"></script>
 </body>
 </html>

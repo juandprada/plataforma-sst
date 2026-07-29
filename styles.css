@@ -58,6 +58,62 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .estado.error { color: #b42318; }
 .hint { margin: 0; padding: .6rem 1.5rem; font-size: .85rem; color: #475467; }
 
+/* Panel de ajustes del presupuesto (solo UI, no toca el documento). Se muestra
+   únicamente en el formato presupuesto y el editor se abre bajo demanda. */
+#panel-presupuesto {
+  padding: .75rem 1.5rem;
+  background: #fff;
+  border-bottom: 1px solid var(--borde);
+}
+#panel-presupuesto[hidden], #pp-editor[hidden] { display: none; }
+.pp-pregunta {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  flex-wrap: wrap;
+  margin: 0;
+  font-size: .9rem;
+  color: #475467;
+}
+#pp-aviso { color: #b54708; font-weight: 600; }
+#pp-abrir { background: var(--gris); color: var(--azul); padding: .35rem .8rem; font-size: .85rem; }
+#pp-editor { margin-top: .9rem; }
+.pp-grupo {
+  margin: .9rem 0 .4rem;
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  color: var(--azul);
+}
+.pp-item {
+  display: flex;
+  align-items: flex-end;
+  gap: .75rem;
+  flex-wrap: wrap;
+  padding: .35rem 0;
+  border-bottom: 1px solid var(--gris);
+}
+.pp-nombre { flex: 1 1 260px; font-size: .9rem; }
+.pp-campo {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  font-size: .75rem;
+  color: #475467;
+}
+.pp-campo input {
+  width: 8.5rem;
+  padding: .35rem .5rem;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  font-size: .9rem;
+}
+/* Campo con valor puesto a mano (distinto del calculado por las fórmulas). */
+.pp-campo input.pp-editado { border-color: #b54708; background: #fff8f0; font-weight: 600; }
+.pp-acciones { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: .9rem; }
+.pp-acciones button { background: var(--gris); color: var(--azul); padding: .45rem .9rem; font-size: .85rem; }
+#pp-cerrar { background: var(--azul); color: #fff; }
+
 /* Visor del PDF (iframe con controles nativos) + botón de descarga. */
 #visor { max-width: 11in; margin: 1rem auto 0; padding: 0 1rem; }
 #visor[hidden] { display: none; }

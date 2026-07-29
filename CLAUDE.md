@@ -89,6 +89,18 @@ Input/Logo*.png →(tools/normalize_logos.py)→ logos/<id>.png
   inyecta con el token `{{TABLA_PRESUPUESTO}}` (va en `raw`, es HTML). Para actualizar
   precios (inflación) se edita el JSON, no el código; los parámetros se regeneran del
   .xlsx con `tools/presupuesto_to_json.py`. Empresas sin datos usan `parametros_default`.
+- **Ajustes puntuales del presupuesto** (valor unitario / cantidad de UN ítem para UNA
+  empresa): el técnico los hace desde la web. El panel **no se ve por defecto**: con el
+  formato `presupuesto` aparece solo la línea "¿Deseas modificar alguna cantidad o
+  valor?" y el editor se despliega si dice que sí (`renderPanelPresupuesto` en `app.js`).
+  Se guardan en `localStorage` (`sst.presupuesto.ajustes.v1`), por empresa y con clave
+  `"<grupo>|<ítem>"` (no por índice, para que reordenar el catálogo no los rompa).
+  Precedencia: catálogo+parámetros < `presupuesto.json:ajustes_por_empresa` <
+  localStorage; el botón "Copiar ajustes" da el JSON para pegar en `ajustes_por_empresa`
+  y volverlos permanentes (`presupuesto_to_json.py` conserva ese campo al regenerar).
+  `filasPresupuesto()` es la única fuente de verdad: la usan la tabla y el editor, y sin
+  ajustes su HTML es idéntico al de antes. El **documento no cambia**: los ajustes solo
+  mueven números, no marcas ni estilos.
 - **NO reautorar formatos complejos** (Plan de Emergencias, matrices IPEVR, hojas de
   cálculo). Van en `plantillas/PENDIENTES.md`, no en el manifest.
 - **Firma de la consultora**: token `{{FIRMA_CONSULTORA}}` (imagen `assets/firma-karen.png`,

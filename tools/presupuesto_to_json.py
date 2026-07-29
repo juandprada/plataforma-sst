@@ -131,11 +131,23 @@ def leer_parametros():
 
 def main():
     por_empresa = leer_parametros()
+    # Los ajustes manuales (valor/cantidad por ítem, del panel de la app) NO salen del
+    # .xlsx: se conservan tal cual si ya estaban en el JSON.
+    ajustes = {}
+    if SALIDA.exists():
+        previo = json.loads(SALIDA.read_text(encoding="utf-8"))
+        ajustes = previo.get("ajustes_por_empresa", {})
     salida = {
         "_origen": "1.PLANEAR/3.PRESUPUESTO.xlsx (regenerar con tools/presupuesto_to_json.py)",
         "moneda": "COP",
         "parametros_default": DEFAULT,
         "parametros_por_empresa": por_empresa,
+        "_ajustes_por_empresa": (
+            'Overrides permanentes de valor unitario/cantidad por ítem: '
+            '{"<empresa_id>": {"<grupo>|<item>": {"vu": n, "cant": n}}}. '
+            "Se pegan con el botón 'Copiar ajustes' del panel de la app."
+        ),
+        "ajustes_por_empresa": ajustes,
         "catalogo": CATALOGO,
     }
     SALIDA.parent.mkdir(exist_ok=True)
