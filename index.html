@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Plataforma de Documentos SST</title>
-  <link rel="stylesheet" href="styles.css?v=51">
-  <link rel="stylesheet" href="print.css?v=51" media="print">
+  <link rel="stylesheet" href="styles.css?v=52">
+  <link rel="stylesheet" href="print.css?v=52" media="print">
   <!-- La app fija aquí el tamaño de página según la orientación del formato. -->
   <style id="page-orient">@page { size: Letter; margin: 0.6in; }</style>
 </head>
@@ -14,6 +14,12 @@
     ⚠️ Por favor, utiliza un computador de escritorio.<br><br>
     La generación de PDFs está deshabilitada en dispositivos móviles para garantizar que el formato y la paginación de los documentos se impriman con total exactitud.
   </div>
+  <script>
+    if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+      document.getElementById('mobile-warning').style.display = 'flex';
+      document.write('<style>.app-chrome, #visor-pdf, #salida { display: none !important; }</style>');
+    }
+  </script>
   <div class="app-chrome">
     <header class="app-header">
       <h1>Plataforma de Documentos SST</h1>

@@ -328,15 +328,6 @@ button:disabled { opacity: .5; cursor: not-allowed; }
   font-weight: bold;
 }
 
-@media screen and (max-width: 768px) {
-  #mobile-warning {
-    display: flex;
-  }
-  .app-chrome, #visor-pdf, #salida {
-    display: none !important;
-  }
-}
-
 /* El área de controles. Usa un layout de cuadrícula (CSS Grid) para alinear
    el título y los selectores sin depender de flotantes. */
 /* Nota junto a un encabezado .doc-h (p. ej. "Marque con una X" junto a TEMA en los
