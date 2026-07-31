@@ -237,9 +237,14 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .dh-meta tr:last-child th, .dh-meta tr:last-child td { border-bottom: 0; }
 .dh-meta th { width: 46px; background: #f0f0f0; }
 
-/* La tabla de contenido no lleva metadatos en el encabezado (código, página) */
-.doc--tabla-de-contenido .doc-header { grid-template-columns: 120px 1fr; }
+/* La tabla de contenido no lleva metadatos y su encabezado es limpio (sin bordes, título centrado) */
+.doc--tabla-de-contenido .doc-header {
+  grid-template-columns: 120px 1fr 120px;
+  border: none;
+}
+.doc--tabla-de-contenido .dh-logo { border-right: none; }
 .doc--tabla-de-contenido .dh-meta { display: none; }
+.doc--tabla-de-contenido .doc-header::after { content: ""; display: block; }
 
 /* Interlineado POR FORMATO, igual que los .docx originales (medido con python-docx;
    la conversión lo perdía y el texto salía sencillo, sin aire para escribir a mano
