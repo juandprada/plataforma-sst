@@ -1,0 +1,59 @@
+{
+  "_nota": "Contenido del formato de inspección genérico.",
+  "items": [
+    {
+      "id": "extintores",
+      "nombre": "Inspección de Extintores",
+      "objetivo": "Verificar el estado y ubicación de los extintores de la empresa.",
+      "puntos": [
+        "Ubicación y señalización adecuada.",
+        "Acceso libre y sin obstrucciones.",
+        "Presión en el rango verde del manómetro.",
+        "Manguera y boquilla en buen estado.",
+        "Fecha de recarga vigente.",
+        "Cilindro sin abolladuras ni corrosión.",
+        "Pasador y sello de seguridad intactos."
+      ]
+    },
+    {
+      "id": "botiquines",
+      "nombre": "Inspección de Botiquines",
+      "objetivo": "Verificar la dotación y estado de los botiquines de primeros auxilios.",
+      "puntos": [
+        "Ubicación visible y de fácil acceso.",
+        "Señalización adecuada.",
+        "Dotación completa según el riesgo de la empresa.",
+        "Elementos en buen estado y empaques sellados.",
+        "Medicamentos e insumos sin fechas de vencimiento expiradas.",
+        "Lista de elementos de dotación visible y actualizada."
+      ]
+    },
+    {
+      "id": "epp",
+      "nombre": "Inspección de Elementos de Protección Personal (EPP)",
+      "objetivo": "Verificar el uso, estado y mantenimiento de los EPP suministrados a los trabajadores.",
+      "puntos": [
+        "Los trabajadores utilizan los EPP requeridos para su labor.",
+        "Los EPP se encuentran en buen estado de conservación.",
+        "Se realiza limpieza y mantenimiento periódico de los EPP.",
+        "Los EPP se almacenan correctamente cuando no están en uso.",
+        "Los trabajadores conocen cómo inspeccionar sus EPP.",
+        "Se realiza reposición oportuna de EPP deteriorados."
+      ]
+    },
+    {
+      "id": "locativa",
+      "nombre": "Inspección Locativa",
+      "objetivo": "Verificar las condiciones de infraestructura, orden y aseo de las instalaciones.",
+      "puntos": [
+        "Pisos libres de obstáculos, grietas o desniveles peligrosos.",
+        "Paredes y techos en buen estado, sin humedades ni desprendimientos.",
+        "Escaleras con barandas, pasamanos y cintas antideslizantes.",
+        "Áreas de circulación despejadas y señalizadas.",
+        "Iluminación suficiente y lámparas en buen estado.",
+        "Baños limpios, dotados y con baterías sanitarias funcionando.",
+        "Condiciones generales de orden y aseo adecuadas."
+      ]
+    }
+  ]
+}

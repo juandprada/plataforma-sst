@@ -228,5 +228,15 @@
     "codigo": "MR-SST-01",
     "version": "01",
     "orientacion": "horizontal"
+  },
+  {
+    "id": "formato-inspeccion",
+    "nombre": "Formato de Inspección",
+    "categoria": "2.HACER",
+    "archivo": "formato-inspeccion.html",
+    "titulo": "FORMATO DE INSPECCIÓN SG-SST",
+    "codigo": "FI-SST-02",
+    "version": "01",
+    "orientacion": "vertical"
   }
 ]

@@ -7,11 +7,14 @@ let ENCABEZADO_TPL = "";
 let PRESUPUESTO = null; // data/presupuesto.json (parámetros por empresa + catálogo)
 let CAPACITACIONES = null; // data/capacitaciones.json (contenido de la página 1 del acta)
 let GTC45_DATA = null;    // data/gtc45.json (mapeo de peligros + resultados por empresa)
+let INSPECCIONES = null;  // data/inspecciones.json
 
 // Formato cuya página 1 depende de la capacitación elegida (ver CAPACITACIONES).
 const FORMATO_ASISTENCIA = "asistencia-a-capacitacion";
 // Formato calculado: matriz de riesgos IPVER (GTC45). Depende del cargo elegido.
 const FORMATO_IPVER = "matriz-ipver";
+// Formato cuya página 1 depende de la inspección elegida (ver INSPECCIONES).
+const FORMATO_INSPECCION = "formato-inspeccion";
 
 const $ = (sel) => document.querySelector(sel);
 
@@ -484,6 +487,27 @@ function renderSelectorCapacitacion(formato) {
   if (campo) campo.hidden = formato.id !== FORMATO_ASISTENCIA;
 }
 
+// ---- Inspecciones (formato calculado) ------------------------------------
+function inspecciones() {
+  return INSPECCIONES ? INSPECCIONES.items : [];
+}
+
+function inspeccionElegida() {
+  const items = inspecciones();
+  const sel = $("#sel-inspeccion");
+  return items.find((i) => i.id === (sel && sel.value)) || items[0] || null;
+}
+
+function puntosInspeccionHTML(insp) {
+  if (!insp) return "";
+  return "<ul>" + insp.puntos.map((p) => `<li>${escapeHTML(p)}</li>`).join("") + "</ul>";
+}
+
+function renderSelectorInspeccion(formato) {
+  const campo = $("#campo-inspeccion");
+  if (campo) campo.hidden = formato.id !== FORMATO_INSPECCION;
+}
+
 async function fetchText(url) {
   const r = await fetch(url, { cache: "no-cache" });
   if (!r.ok) throw new Error(`No se pudo cargar ${url} (${r.status})`);
@@ -539,6 +563,18 @@ function poblarSelects() {
     }
   }
 
+  // Inspecciones disponibles.
+  const selI = $("#sel-inspeccion");
+  if (selI && INSPECCIONES) {
+    selI.innerHTML = "";
+    for (const insp of INSPECCIONES.items) {
+      const o = document.createElement("option");
+      o.value = insp.id;
+      o.textContent = insp.nombre;
+      selI.appendChild(o);
+    }
+  }
+
   // Años disponibles: el actual y el anterior (hoy: 2026 y 2025). Muchos documentos
   // se firman para el año en curso, pero a veces hay que reponer los del año pasado.
   const selA = $("#sel-anio");
@@ -571,7 +607,11 @@ async function generar() {
     renderSelectorCapacitacion(formato);
     // Selector de cargo: solo en la matriz IPVER.
     renderSelectorCargoIPVER(formato);
+    // Selector de inspección: solo en el formato de inspección.
+    renderSelectorInspeccion(formato);
+    
     const cap = capacitacionElegida();
+    const insp = inspeccionElegida();
 
     const cuerpoTpl = await fetchText(`plantillas/${formato.archivo}`);
 
@@ -600,11 +640,15 @@ async function generar() {
       CAPACITACION: cap ? cap.nombre : "",
       CAPACITACION_OBJETIVO: cap ? cap.objetivo : "",
       CAPACITACION_PUNTOS: puntosCapacitacionHTML(cap),
+      // Página 1 del formato de inspección.
+      INSPECCION_NOMBRE: insp ? insp.nombre : "",
+      INSPECCION_OBJETIVO: insp ? insp.objetivo : "",
+      INSPECCION_PUNTOS: puntosInspeccionHTML(insp),
     };
 
     const raw = [
       "LOGO", "FIRMA_CONSULTORA", "TABLA_PRESUPUESTO", "TABLA_IPVER",
-      "CAPACITACION_PUNTOS",
+      "CAPACITACION_PUNTOS", "INSPECCION_PUNTOS",
     ];
     const encabezado = fillTokens(ENCABEZADO_TPL, ctx, raw);
     const cuerpo = fillTokens(cuerpoTpl, ctx, raw);
@@ -762,7 +806,7 @@ async function solicitarGeneracion() {
 async function init() {
   try {
     setEstado("Cargando datos…");
-    [EMPRESAS, FORMATOS, ENCABEZADO_TPL, PRESUPUESTO, CAPACITACIONES, GTC45_DATA] =
+    [EMPRESAS, FORMATOS, ENCABEZADO_TPL, PRESUPUESTO, CAPACITACIONES, GTC45_DATA, INSPECCIONES] =
       await Promise.all([
         fetchJSON("data/empresas.json"),
         fetchJSON("plantillas/manifest.json"),
@@ -770,6 +814,7 @@ async function init() {
         fetchJSON("data/presupuesto.json"),
         fetchJSON("data/capacitaciones.json"),
         fetchJSON("data/gtc45.json"),
+        fetchJSON("data/inspecciones.json"),
       ]);
     cargarAjustes(); // ajustes de presupuesto guardados en este navegador
     poblarSelects();
@@ -781,6 +826,7 @@ async function init() {
     $("#sel-anio").addEventListener("change", solicitarGeneracion);
     $("#sel-capacitacion").addEventListener("change", solicitarGeneracion);
     $("#sel-cargo-ipver").addEventListener("change", solicitarGeneracion);
+    $("#sel-inspeccion").addEventListener("change", solicitarGeneracion);
     solicitarGeneracion(); // genera el primer documento con la selección por defecto
   } catch (err) {
     console.error(err);

@@ -183,6 +183,9 @@ Input/Logo*.png →(tools/normalize_logos.py)→ logos/<id>.png
   SAS/LTDA/SA). Los cálculos GTC45 (ND×NE=NP, NP×NC=NR, interpretaciones, semáforo
   de aceptabilidad) se portan del script R (`motor_analisis.R`) a JS puro. Empresas
   sin datos muestran un aviso amarillo. Orientación horizontal (landscape).
+- **Formato de Inspección = formato CALCULADO** (el cuarto, tras IPVER):
+  similar a Asistencia a Capacitación, **depende de la inspección elegida** en el
+  selector "Inspección". Los datos y puntos a revisar viven en `data/inspecciones.json`.
 - **NO reautorar formatos complejos** (Plan de Emergencias, hojas de cálculo). Van
   en `plantillas/PENDIENTES.md`, no en el manifest.
 - **Firma de la consultora**: token `{{FIRMA_CONSULTORA}}` (imagen `assets/firma-karen.png`,
