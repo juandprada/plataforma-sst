@@ -613,7 +613,13 @@ async function generar() {
     const cap = capacitacionElegida();
     const insp = inspeccionElegida();
 
-    const cuerpoTpl = await fetchText(`plantillas/${formato.archivo}`);
+    let archivoTpl = formato.archivo;
+    let tituloFmt = formato.titulo || formato.nombre;
+    if (formato.id === FORMATO_INSPECCION && insp) {
+      archivoTpl = insp.archivo;
+      tituloFmt = insp.nombre;
+    }
+    const cuerpoTpl = await fetchText(`plantillas/${archivoTpl}`);
 
     // Contexto = datos de empresa + metadatos del formato + logo (HTML).
     const ctx = {
@@ -621,7 +627,7 @@ async function generar() {
       // Nombre del representante en Título (viene en MAYÚSCULAS desde el Excel),
       // para unificar con la firma de la consultora que va en Título.
       REPRESENTANTE_LEGAL: tituloCase(empresa.REPRESENTANTE_LEGAL || ""),
-      TITULO: formato.titulo || formato.nombre,
+      TITULO: tituloFmt,
       CODIGO: formato.codigo || "",
       VERSION: formato.version || "",
       // Año del documento: lo elige el usuario en el selector (encabezado y textos
