@@ -499,7 +499,7 @@ function inspeccionElegida() {
 }
 
 function puntosInspeccionHTML(insp) {
-  if (!insp) return "";
+  if (!insp || !insp.puntos) return "";
   return "<ul>" + insp.puntos.map((p) => `<li>${escapeHTML(p)}</li>`).join("") + "</ul>";
 }
 
