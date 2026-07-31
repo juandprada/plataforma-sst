@@ -660,7 +660,11 @@ async function generar() {
     const cuerpo = fillTokens(cuerpoTpl, ctx, raw);
 
     // Orientación de página (vertical por defecto / horizontal si aplica).
-    const horizontal = (formato.orientacion || "vertical") === "horizontal";
+    let orientacion = formato.orientacion || "vertical";
+    if (formato.id === FORMATO_INSPECCION && insp && insp.orientacion) {
+      orientacion = insp.orientacion;
+    }
+    const horizontal = orientacion === "horizontal";
     document.getElementById("page-orient").textContent =
       `@page { size: Letter ${horizontal ? "landscape" : "portrait"}; margin: 0.6in; }`;
     $("#salida").classList.toggle("horizontal", horizontal);

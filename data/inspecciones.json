@@ -4,47 +4,56 @@
     {
       "id": "extintores",
       "nombre": "INSPECCIÓN DE EXTINTORES",
-      "archivo": "inspeccion-extintores.html"
+      "archivo": "inspeccion-extintores.html",
+      "orientacion": "horizontal"
     },
     {
       "id": "botiquines",
       "nombre": "INSPECCIÓN DE BOTIQUINES",
-      "archivo": "inspeccion-botiquines.html"
+      "archivo": "inspeccion-botiquines.html",
+      "orientacion": "horizontal"
     },
     {
       "id": "simulacro",
       "nombre": "SIMULACRO DE EVACUACIÓN",
-      "archivo": "inspeccion-simulacro.html"
+      "archivo": "inspeccion-simulacro.html",
+      "orientacion": "vertical"
     },
     {
       "id": "dotacion-brigada",
       "nombre": "DOTACIÓN Y EQUIPO BRIGADA DE EMERGENCIA",
-      "archivo": "inspeccion-dotacion-brigada.html"
+      "archivo": "inspeccion-dotacion-brigada.html",
+      "orientacion": "vertical"
     },
     {
       "id": "locativa",
       "nombre": "INSPECCIÓN DE SEGURIDAD, ORDEN Y ASEO",
-      "archivo": "inspeccion-locativa.html"
+      "archivo": "inspeccion-locativa.html",
+      "orientacion": "vertical"
     },
     {
       "id": "mantenimiento",
       "nombre": "PROGRAMACIÓN Y SEGUIMIENTO MANTENIMIENTO",
-      "archivo": "inspeccion-mantenimiento.html"
+      "archivo": "inspeccion-mantenimiento.html",
+      "orientacion": "horizontal"
     },
     {
       "id": "comportamiento",
       "nombre": "OBSERVACIÓN DE COMPORTAMIENTO",
-      "archivo": "inspeccion-comportamiento.html"
+      "archivo": "inspeccion-comportamiento.html",
+      "orientacion": "vertical"
     },
     {
       "id": "kit-derrames",
       "nombre": "INSPECCIÓN KIT DE DERRAMES",
-      "archivo": "inspeccion-kit-derrames.html"
+      "archivo": "inspeccion-kit-derrames.html",
+      "orientacion": "horizontal"
     },
     {
       "id": "periodicidad",
       "nombre": "PERIODICIDAD DE INSPECCIONES",
-      "archivo": "inspeccion-periodicidad.html"
+      "archivo": "inspeccion-periodicidad.html",
+      "orientacion": "horizontal"
     }
   ]
 }
