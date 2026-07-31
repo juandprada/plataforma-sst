@@ -470,7 +470,7 @@
           ]
         },
         "NAT_01": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Ocasional",
           "cargos": [
             "Servicios Generales",
@@ -502,7 +502,7 @@
           ]
         },
         "SEG_04": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Frecuente",
           "cargos": [
             "Servicios Generales",
@@ -510,7 +510,7 @@
           ]
         },
         "SEG_06": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Ocasional",
           "cargos": [
             "Servicios Generales",
