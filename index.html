@@ -15,7 +15,11 @@
     La generación de PDFs está deshabilitada en dispositivos móviles para garantizar que el formato y la paginación de los documentos se impriman con total exactitud.
   </div>
   <script>
-    if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    const isMobile = navigator.userAgentData
+      ? navigator.userAgentData.mobile
+      : /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      
+    if (isMobile) {
       document.getElementById('mobile-warning').style.display = 'flex';
       document.write('<style>.app-chrome, #visor-pdf, #salida { display: none !important; }</style>');
     }
