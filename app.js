@@ -6,9 +6,12 @@ let FORMATOS = [];
 let ENCABEZADO_TPL = "";
 let PRESUPUESTO = null; // data/presupuesto.json (parámetros por empresa + catálogo)
 let CAPACITACIONES = null; // data/capacitaciones.json (contenido de la página 1 del acta)
+let GTC45_DATA = null;    // data/gtc45.json (mapeo de peligros + resultados por empresa)
 
 // Formato cuya página 1 depende de la capacitación elegida (ver CAPACITACIONES).
 const FORMATO_ASISTENCIA = "asistencia-a-capacitacion";
+// Formato calculado: matriz de riesgos IPVER (GTC45). Depende del cargo elegido.
+const FORMATO_IPVER = "matriz-ipver";
 
 const $ = (sel) => document.querySelector(sel);
 
@@ -273,6 +276,184 @@ function conectarPanelPresupuesto() {
 
 }
 
+// ---- Matriz IPVER (formato calculado — riesgos GTC45) ---------------------
+// La tabla se calcula por empresa y cargo desde data/gtc45.json (storage).
+// El storage combina el mapeo de peligros (catálogo estático del CSV) con los
+// resultados de la encuesta SurveyJS por empresa. El script tools/gtc45_to_json.py
+// actualiza el storage con merge/upsert cuando llegan encuestas nuevas.
+
+// Tablas GTC45 (constantes del estándar, no van en el JSON).
+const TABLA_ND = {
+  "Muy Alto": 10, "Alto": 6, "Medio": 2, "Bajo": null, "No Aplica": 0,
+};
+const TABLA_NE = {
+  "Continua": 4, "Frecuente": 3, "Ocasional": 2, "Esporadica": 1, "No Aplica": 0,
+};
+
+// Normaliza nombre de empresa para buscar match en el storage (misma lógica que el
+// script Python: minúsculas, sin sufijos societarios, sin espacios extra).
+function normalizarNombre(nombre) {
+  return nombre.trim().toLowerCase()
+    .replace(/\b(s\.?a\.?s\.?|s\.?a\.?|ltda\.?|e\.?u\.?)\b/g, "")
+    .replace(/\s+/g, " ").trim();
+}
+
+// Busca la empresa del selector en los resultados GTC45 (matching flexible).
+function buscarEmpresaGTC45(empresa) {
+  if (!GTC45_DATA || !GTC45_DATA.resultados_por_empresa) return null;
+  const clave = normalizarNombre(empresa.EMPRESA || "");
+  return GTC45_DATA.resultados_por_empresa[clave] || null;
+}
+
+// Cargo seleccionado en el selector de la IPVER.
+function cargoIPVERElegido() {
+  const sel = $("#sel-cargo-ipver");
+  return sel ? sel.value : "Administrativo";
+}
+
+// ¿El peligro aplica al cargo seleccionado?
+function peligroAplicaACargo(peligro, cargo) {
+  if (!peligro || !peligro.cargos || !peligro.cargos.length) return false;
+  const cargoLow = cargo.toLowerCase();
+  return peligro.cargos.some((c) => {
+    const cl = c.toLowerCase();
+    return cl === "todos" || cl === cargoLow;
+  });
+}
+
+// Calcula los valores GTC45 para un peligro evaluado.
+function calcularRiesgoGTC45(deficiencia, exposicion, nc) {
+  const nd = TABLA_ND[deficiencia];
+  const ne = TABLA_NE[exposicion] || 0;
+  const esBajo = deficiencia === "Bajo";
+
+  let np, nr;
+  if (esBajo) {
+    np = null;  // Bajo → directo a Nivel IV
+    nr = 20;    // Valor fijo según la metodología
+  } else {
+    np = (nd || 0) * ne;
+    nr = np * nc;
+  }
+
+  let inp;
+  if (esBajo) inp = "N/A";
+  else if (np >= 24) inp = "Muy Alto";
+  else if (np >= 10) inp = "Alto";
+  else if (np >= 6) inp = "Medio";
+  else inp = "Bajo";
+
+  let inr;
+  if (nr >= 600) inr = "I";
+  else if (nr >= 150) inr = "II";
+  else if (nr >= 40) inr = "III";
+  else inr = "IV";
+
+  const aceptabilidad = {
+    "I": "NO ACEPTABLE",
+    "II": "NO ACEPTABLE O ACEPTABLE CON CONTROL ESPECÍFICO",
+    "III": "MEJORABLE",
+    "IV": "ACEPTABLE",
+  }[inr];
+
+  return { nd: esBajo ? "—" : nd, ne, np: esBajo ? "—" : np, nc, nr, inp, inr, aceptabilidad };
+}
+
+// Clase CSS para colorear la celda de nivel de riesgo.
+function claseNivelRiesgo(inr) {
+  return { "I": "nr-i", "II": "nr-ii", "III": "nr-iii", "IV": "nr-iv" }[inr] || "";
+}
+
+// Arma la tabla HTML de la matriz IPVER para una empresa y cargo.
+function tablaIPVERHTML(empresa) {
+  const datos = buscarEmpresaGTC45(empresa);
+  if (!datos) {
+    return '<p class="ipver-sin-datos">Esta empresa no tiene datos de inspección GTC45. ' +
+      'Llene la encuesta de inspección y ejecute <code>tools/gtc45_to_json.py</code> ' +
+      'para generar los datos.</p>';
+  }
+
+  const cargo = cargoIPVERElegido();
+  const mapeo = GTC45_DATA.mapeo_peligros || [];
+  const peligros = datos.peligros || {};
+
+  // Filtrar peligros que aplican al cargo seleccionado.
+  const filas = [];
+  for (const cat of mapeo) {
+    const p = peligros[cat.panel_id];
+    if (!p) continue;  // No evaluado o "No Aplica"
+    if (!peligroAplicaACargo(p, cargo)) continue;
+
+    const r = calcularRiesgoGTC45(p.deficiencia, p.exposicion, cat.nc);
+    filas.push({ cat, p, r });
+  }
+
+  if (!filas.length) {
+    return `<p class="ipver-sin-datos">No hay peligros identificados para el cargo ` +
+      `<strong>${escapeHTML(cargo)}</strong> en esta empresa.</p>`;
+  }
+
+  // Encabezado de la tabla (columnas GTC45).
+  const th = `<tr class="ipver-header">
+    <th rowspan="2">Proceso</th>
+    <th rowspan="2">Peligro</th>
+    <th rowspan="2">Efectos Posibles</th>
+    <th colspan="3">Controles Existentes</th>
+    <th colspan="7">Evaluación del Riesgo</th>
+    <th rowspan="2">Aceptabilidad</th>
+    <th rowspan="2">Requisito Legal</th>
+  </tr>
+  <tr class="ipver-header">
+    <th>Fuente</th><th>Medio</th><th>Individuo / EPP</th>
+    <th>ND</th><th>NE</th><th>NP</th><th>NC</th><th>NR</th>
+    <th>Int. NR</th><th>Int. NP</th>
+  </tr>`;
+
+  const rows = filas.map(({ cat, p, r }) => {
+    const controlInd = [cat.control_individuo, cat.control_epp]
+      .filter((x) => x && x !== "NA" && x !== "No aplica").join("; ");
+    const controlFuente = (!cat.control_fuente || cat.control_fuente === "NA")
+      ? "—" : cat.control_fuente;
+    return `<tr>
+      <td>${escapeHTML(cat.proceso)}</td>
+      <td>${escapeHTML(cat.actividades)}</td>
+      <td>${escapeHTML(cat.efectos_posibles)}</td>
+      <td>${escapeHTML(controlFuente)}</td>
+      <td>${escapeHTML(cat.control_medio)}</td>
+      <td>${escapeHTML(controlInd || "—")}</td>
+      <td class="ipver-num">${r.nd}</td>
+      <td class="ipver-num">${r.ne}</td>
+      <td class="ipver-num">${r.np}</td>
+      <td class="ipver-num">${r.nc}</td>
+      <td class="ipver-num ${claseNivelRiesgo(r.inr)}">${r.nr}</td>
+      <td class="ipver-num ${claseNivelRiesgo(r.inr)}">${r.inr}</td>
+      <td class="ipver-num">${escapeHTML(r.inp)}</td>
+      <td class="${claseNivelRiesgo(r.inr)}">${escapeHTML(r.aceptabilidad)}</td>
+      <td class="ipver-legal">${escapeHTML(cat.requisito_legal)}</td>
+    </tr>`;
+  });
+
+  // Encabezado informativo: empresa, cargo, # trabajadores.
+  const trab = datos.trabajadores || {};
+  const totalTrab = (trab.admin || 0) + (trab.operarios || 0) +
+    (trab.servicios || 0) + (trab.conductores || 0);
+  const infoHeader = `<div class="ipver-info">
+    <p><strong>Cargo / Área evaluada:</strong> ${escapeHTML(cargo)} &nbsp;|&nbsp;
+    <strong>Total trabajadores:</strong> ${totalTrab}
+    (Admin: ${trab.admin || 0}, Operarios: ${trab.operarios || 0}, ` +
+    `Serv. Generales: ${trab.servicios || 0}, Conductores: ${trab.conductores || 0})</p>
+  </div>`;
+
+  return infoHeader +
+    '<table class="doc-tabla tabla-ipver">' + th + rows.join("") + '</table>';
+}
+
+// Muestra el selector de cargo solo en el formato IPVER (en el resto no pinta nada).
+function renderSelectorCargoIPVER(formato) {
+  const campo = $("#campo-cargo-ipver");
+  if (campo) campo.hidden = formato.id !== FORMATO_IPVER;
+}
+
 // ---- Asistencia a capacitación (formato calculado) -----------------------
 // La página 1 del acta cambia según la capacitación: su frase de objetivo y el temario
 // salen de data/capacitaciones.json (lo edita el desarrollador, no el técnico; la app
@@ -388,6 +569,8 @@ async function generar() {
     renderPanelPresupuesto(formato, empresa);
     // Selector de capacitación: solo en el acta de asistencia.
     renderSelectorCapacitacion(formato);
+    // Selector de cargo: solo en la matriz IPVER.
+    renderSelectorCargoIPVER(formato);
     const cap = capacitacionElegida();
 
     const cuerpoTpl = await fetchText(`plantillas/${formato.archivo}`);
@@ -411,6 +594,8 @@ async function generar() {
         '<img class="firma-img" src="assets/firma-karen.png" alt="Firma consultora">',
       // Tabla del presupuesto: se calcula por empresa (ver data/presupuesto.json).
       TABLA_PRESUPUESTO: tablaPresupuestoHTML(empresa),
+      // Tabla de la matriz IPVER: se calcula por empresa y cargo (ver data/gtc45.json).
+      TABLA_IPVER: tablaIPVERHTML(empresa),
       // Página 1 del acta de asistencia (ver data/capacitaciones.json).
       CAPACITACION: cap ? cap.nombre : "",
       CAPACITACION_OBJETIVO: cap ? cap.objetivo : "",
@@ -418,7 +603,8 @@ async function generar() {
     };
 
     const raw = [
-      "LOGO", "FIRMA_CONSULTORA", "TABLA_PRESUPUESTO", "CAPACITACION_PUNTOS",
+      "LOGO", "FIRMA_CONSULTORA", "TABLA_PRESUPUESTO", "TABLA_IPVER",
+      "CAPACITACION_PUNTOS",
     ];
     const encabezado = fillTokens(ENCABEZADO_TPL, ctx, raw);
     const cuerpo = fillTokens(cuerpoTpl, ctx, raw);
@@ -576,13 +762,14 @@ async function solicitarGeneracion() {
 async function init() {
   try {
     setEstado("Cargando datos…");
-    [EMPRESAS, FORMATOS, ENCABEZADO_TPL, PRESUPUESTO, CAPACITACIONES] =
+    [EMPRESAS, FORMATOS, ENCABEZADO_TPL, PRESUPUESTO, CAPACITACIONES, GTC45_DATA] =
       await Promise.all([
         fetchJSON("data/empresas.json"),
         fetchJSON("plantillas/manifest.json"),
         fetchText("partials/encabezado.html"),
         fetchJSON("data/presupuesto.json"),
         fetchJSON("data/capacitaciones.json"),
+        fetchJSON("data/gtc45.json"),
       ]);
     cargarAjustes(); // ajustes de presupuesto guardados en este navegador
     poblarSelects();
@@ -593,6 +780,7 @@ async function init() {
     $("#sel-empresa").addEventListener("change", solicitarGeneracion);
     $("#sel-anio").addEventListener("change", solicitarGeneracion);
     $("#sel-capacitacion").addEventListener("change", solicitarGeneracion);
+    $("#sel-cargo-ipver").addEventListener("change", solicitarGeneracion);
     solicitarGeneracion(); // genera el primer documento con la selección por defecto
   } catch (err) {
     console.error(err);

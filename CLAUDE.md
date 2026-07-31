@@ -167,8 +167,24 @@ Input/Logo*.png →(tools/normalize_logos.py)→ logos/<id>.png
   técnico**: no hay UI de edición, a diferencia del panel del presupuesto. Al tocar los
   `puntos` (8-12 por capacitación), re-verificar que **todas** sigan cabiendo en 2
   páginas: es lo único que se rompe fácil.
-- **NO reautorar formatos complejos** (Plan de Emergencias, matrices IPEVR, hojas de
-  cálculo). Van en `plantillas/PENDIENTES.md`, no en el manifest.
+- **Matriz IPVER = formato CALCULADO** (el tercero, tras Presupuesto y Asistencia):
+  genera la Matriz de Identificación de Peligros, Valoración y Evaluación de Riesgos
+  (GTC-45) **por empresa y cargo**. El selector "Cargo / Área" solo se muestra en
+  este formato (`renderSelectorCargoIPVER` en `app.js`). Los datos viven en
+  `data/gtc45.json` (storage), que combina dos fuentes:
+  - `reportes/gtc45/mapeo_peligros.csv` — catálogo estático de 31 peligros con su NC,
+    efectos, controles y requisito legal.
+  - `reportes/gtc45/gtc45results.json` — resultados de la encuesta SurveyJS (ND,
+    NE, cargos afectados) por empresa.
+  **Modelo de dos archivos**: `data/gtc45.json` es el STORAGE acumulativo; el script
+  `tools/gtc45_to_json.py` hace merge/upsert: empresas nuevas se agregan, existentes
+  se reemplazan si la encuesta es más reciente (por `HappendAt`). El matching entre
+  la empresa del selector y el storage es por nombre normalizado (minúsculas, sin
+  SAS/LTDA/SA). Los cálculos GTC45 (ND×NE=NP, NP×NC=NR, interpretaciones, semáforo
+  de aceptabilidad) se portan del script R (`motor_analisis.R`) a JS puro. Empresas
+  sin datos muestran un aviso amarillo. Orientación horizontal (landscape).
+- **NO reautorar formatos complejos** (Plan de Emergencias, hojas de cálculo). Van
+  en `plantillas/PENDIENTES.md`, no en el manifest.
 - **Firma de la consultora**: token `{{FIRMA_CONSULTORA}}` (imagen `assets/firma-karen.png`,
   raw en `app.js`). El conversor la inserta automáticamente en celdas de tabla que tengan
   "Karen" junto a una línea de firma (`____` o `FIRMA___`). El bloque `{{ANIO}}`/

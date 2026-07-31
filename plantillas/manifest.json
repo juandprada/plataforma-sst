@@ -218,5 +218,15 @@
     "version": "01",
     "orientacion": "vertical",
     "origen": "2.HACER/2.BRIGADA.docx"
+  },
+  {
+    "id": "matriz-ipver",
+    "nombre": "Matriz IPVER (Riesgos GTC45)",
+    "categoria": "2.HACER",
+    "archivo": "matriz-ipver.html",
+    "titulo": "MATRIZ DE IDENTIFICACIÓN DE PELIGROS, VALORACIÓN Y EVALUACIÓN DE RIESGOS",
+    "codigo": "MR-SST-01",
+    "version": "01",
+    "orientacion": "horizontal"
   }
 ]

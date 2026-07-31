@@ -1,0 +1,676 @@
+{
+  "mapeo_peligros": [
+    {
+      "panel_id": "BIO_01",
+      "proceso": "Biológico",
+      "actividades": "Virus y Bacterias",
+      "nc": 60,
+      "efectos_posibles": "Muerte, Enfermedades infectocontagiosas",
+      "peor_consecuencia": "Muerte",
+      "control_fuente": "NA",
+      "control_medio": "Sistemas de ventilación con filtros HEPA, Cabinas de seguridad biológica, Desinfección de superficies",
+      "control_individuo": "Protocolo de Bioseguridad, Capacitación en Orden y Aseo, Capacitación en Riesgo Biológico",
+      "control_epp": "Tapabocas",
+      "requisito_legal": "Decreto 1072 de 2015; Ley 9 de 1979"
+    },
+    {
+      "panel_id": "BIO_02",
+      "proceso": "Biológico",
+      "actividades": "Hongos",
+      "nc": 25,
+      "efectos_posibles": "Infecciones, reacciones alérgicas",
+      "peor_consecuencia": "Enfermedad Respiratoria",
+      "control_fuente": "Control de humedad y eliminación de focos de crecimiento",
+      "control_medio": "Sistemas de ventilación y filtración de aire",
+      "control_individuo": "Protocolo de Bioseguridad, Capacitación en Orden y Aseo",
+      "control_epp": "Guantes, Respirador con filtro P100",
+      "requisito_legal": "Decreto 1072 de 2015; Ley 9 de 1979"
+    },
+    {
+      "panel_id": "BIO_03",
+      "proceso": "Biológico",
+      "actividades": "Rickettsias, Parásitos",
+      "nc": 60,
+      "efectos_posibles": "Infecciones parasitarias, reacciones alérgicas",
+      "peor_consecuencia": "Enfermedad Parasitaria Grave",
+      "control_fuente": "NA",
+      "control_medio": "Programa de control de plagas y saneamiento básico",
+      "control_individuo": "Capacitación sobre vías de transmisión y prevención, Higiene personal",
+      "control_epp": "Ropa de trabajo de manga larga, Guantes",
+      "requisito_legal": "Decreto 1072 de 2015; Ley 9 de 1979"
+    },
+    {
+      "panel_id": "BIO_04",
+      "proceso": "Biológico",
+      "actividades": "Picaduras y Mordeduras",
+      "nc": 60,
+      "efectos_posibles": "Enfermedades infecciosas, lesiones",
+      "peor_consecuencia": "Lesiones Graves / Enfermedad",
+      "control_fuente": "Eliminación de hábitats (malezas, escombros)",
+      "control_medio": "Esquema de Fumigación, Programa de Orden y Aseo",
+      "control_individuo": "Capacitación en reconocimiento de fauna peligrosa y protocolos de actuación",
+      "control_epp": "Ropa protectora (botas altas, pantalón grueso)",
+      "requisito_legal": "Decreto 1072 de 2015; Ley 9 de 1979"
+    },
+    {
+      "panel_id": "BIO_05",
+      "proceso": "Biológico",
+      "actividades": "Fluidos o excrementos",
+      "nc": 60,
+      "efectos_posibles": "Enfermedades infectocontagiosas",
+      "peor_consecuencia": "Enfermedad Infectocontagiosa Grave",
+      "control_fuente": "NA",
+      "control_medio": "Limpieza y desinfección de superficies y áreas, Contenedores para residuos biológicos",
+      "control_individuo": "Protocolo de manejo de derrames biológicos, Higiene personal estricta",
+      "control_epp": "Guantes de nitrilo, Protección ocular, Bata impermeable",
+      "requisito_legal": "Decreto 1072 de 2015; Decreto 351 de 2014"
+    },
+    {
+      "panel_id": "FIS_01",
+      "proceso": "Físico",
+      "actividades": "Ruido (impacto, intermitente, continuo)",
+      "nc": 25,
+      "efectos_posibles": "Trastornos del sueño, irritabilidad, cansancio, pérdida de audición",
+      "peor_consecuencia": "Hipoacusia (Sordera Profesional)",
+      "control_fuente": "Mantenimiento preventivo de maquinaria, Compra de equipos de bajo nivel sonoro",
+      "control_medio": "Aislamiento acústico de la fuente, Barreras acústicas",
+      "control_individuo": "Rotación de personal, Limitación del tiempo de exposición",
+      "control_epp": "Orejeras, Bandas, Tapones",
+      "requisito_legal": "Resolución 1792 de 1990; Resolución 2400 de 1979"
+    },
+    {
+      "panel_id": "FIS_02",
+      "proceso": "Físico",
+      "actividades": "Iluminación (deficiencia o exceso)",
+      "nc": 10,
+      "efectos_posibles": "Fatiga visual, cefalea, malestar ocular",
+      "peor_consecuencia": "Trastornos Visuales Crónicos",
+      "control_fuente": "Diseño adecuado de la iluminación",
+      "control_medio": "Mantenimiento de luminarias, Instalación de persianas o películas en ventanas",
+      "control_individuo": "Pausas Activas",
+      "control_epp": "Filtros o pantallas para monitores",
+      "requisito_legal": "Resolución 2400 de 1979; RETILAP"
+    },
+    {
+      "panel_id": "FIS_03",
+      "proceso": "Físico",
+      "actividades": "Vibración (cuerpo entero, segmentaria)",
+      "nc": 25,
+      "efectos_posibles": "Trastornos musculoesqueléticos, Síndrome mano-brazo, pérdida de sensibilidad",
+      "peor_consecuencia": "Síndrome de Vibración Mano-Brazo",
+      "control_fuente": "Selección de herramientas de baja vibración, Mantenimiento de equipos",
+      "control_medio": "Uso de mangos o asientos antivibratorios",
+      "control_individuo": "Formación en técnicas de trabajo que minimicen la exposición",
+      "control_epp": "Guantes antivibración",
+      "requisito_legal": "Resolución 2400 de 1979; Decreto 1072 de 2015"
+    },
+    {
+      "panel_id": "FIS_04",
+      "proceso": "Físico",
+      "actividades": "Temperaturas Extremas (calor o frío)",
+      "nc": 25,
+      "efectos_posibles": "Disconfort Térmico",
+      "peor_consecuencia": "Golpe de Calor / Hipotermia",
+      "control_fuente": "NA",
+      "control_medio": "Extractores, Aislamiento térmico de tuberías o equipos calientes, Zonas de descanso climatizadas",
+      "control_individuo": "Puntos de Hidratación, Plan de aclimatación, Rotación de tareas",
+      "control_epp": "Ropa térmica o refrigerante según el caso",
+      "requisito_legal": "Resolución 2400 de 1979"
+    },
+    {
+      "panel_id": "FIS_05",
+      "proceso": "Físico",
+      "actividades": "Presión atmosférica",
+      "nc": 25,
+      "efectos_posibles": "Mal de altura, enfermedad por descompresión",
+      "peor_consecuencia": "Enfermedad por Descompresión Grave",
+      "control_fuente": "NA",
+      "control_medio": "Uso de cámaras de presurización o despresurización",
+      "control_individuo": "Aclimatación progresiva, Chequeos médicos específicos",
+      "control_epp": "Equipos de respiración autónoma (si aplica)",
+      "requisito_legal": "Resolución 2400 de 1979"
+    },
+    {
+      "panel_id": "FIS_06",
+      "proceso": "Físico",
+      "actividades": "Radiaciones Ionizantes (Rayos X, gamma)",
+      "nc": 100,
+      "efectos_posibles": "Cáncer, mutaciones genéticas, muerte",
+      "peor_consecuencia": "Muerte",
+      "control_fuente": "Encapsulamiento de la fuente radiactiva",
+      "control_medio": "Blindaje (plomo, hormigón), Señalización y delimitación de zonas",
+      "control_individuo": "Dosimetría personal, Reducción de tiempo de exposición, Aumento de distancia",
+      "control_epp": "Trajes y delantales plomados, Gafas plomadas",
+      "requisito_legal": "Resolución 482 de 2018; Resolución 181434 de 2002"
+    },
+    {
+      "panel_id": "FIS_07",
+      "proceso": "Físico",
+      "actividades": "Radiaciones No Ionizantes (Láser, UV, IR)",
+      "nc": 25,
+      "efectos_posibles": "Fatiga visual, malestar ocular, quemaduras, ceguera",
+      "peor_consecuencia": "Ceguera",
+      "control_fuente": "Confinamiento del haz (láser)",
+      "control_medio": "Uso de Mamparas, Señalización de advertencia",
+      "control_individuo": "Restricción de acceso, Capacitación en riesgos por radiación",
+      "control_epp": "Careta para soldar, Guantes, Ropa de protección UV/IR",
+      "requisito_legal": "Resolución 2400 de 1979"
+    },
+    {
+      "panel_id": "QUI_01",
+      "proceso": "Químico",
+      "actividades": "Polvos orgánicos e inorgánicos",
+      "nc": 60,
+      "efectos_posibles": "Ronquera, anginas, fibrosis, cáncer",
+      "peor_consecuencia": "Cáncer",
+      "control_fuente": "Sustitución por materiales en pellets o húmedos",
+      "control_medio": "Sistemas de extracción localizada, Nebulización de agua para asentar el polvo",
+      "control_individuo": "Procedimientos de trabajo en húmedo, Limpieza por aspiración",
+      "control_epp": "Respirador con filtro para polvos/humos",
+      "requisito_legal": "Decreto 1496 de 2018; Ley 55 de 1993"
+    },
+    {
+      "panel_id": "QUI_02",
+      "proceso": "Químico",
+      "actividades": "Fibras",
+      "nc": 100,
+      "efectos_posibles": "Irritación, fibrosis pulmonar, cáncer",
+      "peor_consecuencia": "Asbestosis, Mesotelioma",
+      "control_fuente": "Sustitución de material (ej. amianto)",
+      "control_medio": "Sistemas de extracción y ventilación localizada, Aislamiento del área",
+      "control_individuo": "Procedimientos de trabajo que minimicen la generación de polvo",
+      "control_epp": "Respirador con filtro P100, Traje desechable",
+      "requisito_legal": "Ley 1968 de 2019; Decreto 1496 de 2018"
+    },
+    {
+      "panel_id": "QUI_03",
+      "proceso": "Químico",
+      "actividades": "Líquidos (nieblas y rocíos)",
+      "nc": 60,
+      "efectos_posibles": "Irritación, mareos, asfixia, intoxicación",
+      "peor_consecuencia": "Muerte (Asfixia/Intoxicación)",
+      "control_fuente": "Sustitución por productos menos peligrosos, Uso de métodos de aplicación que no generen aerosol",
+      "control_medio": "Sistemas de extracción localizada, Cabinas de aspersión",
+      "control_individuo": "Procedimientos de trabajo seguro, Medición de contaminantes",
+      "control_epp": "Traje químico, Guantes, Protección ocular, Respirador para vapores",
+      "requisito_legal": "Decreto 1496 de 2018; Ley 55 de 1993"
+    },
+    {
+      "panel_id": "QUI_04",
+      "proceso": "Químico",
+      "actividades": "Gases y vapores",
+      "nc": 60,
+      "efectos_posibles": "Irritación, mareos, asfixia, intoxicación",
+      "peor_consecuencia": "Muerte (Asfixia/Intoxicación)",
+      "control_fuente": "Sustitución por sustancias menos tóxicas o volátiles",
+      "control_medio": "Ventilación por extracción localizada, Monitores de gases",
+      "control_individuo": "Procedimientos de trabajo seguro, Restricción de acceso",
+      "control_epp": "Respirador con cartucho para vapores orgánicos o gases específicos",
+      "requisito_legal": "Decreto 1496 de 2018; Ley 55 de 1993"
+    },
+    {
+      "panel_id": "PSI_01",
+      "proceso": "Psicosocial",
+      "actividades": "Gestión organizacional",
+      "nc": 25,
+      "efectos_posibles": "Estrés, irritabilidad, apatía laboral, desmotivación, depresión",
+      "peor_consecuencia": "Trastornos de Ansiedad / Depresión Severa",
+      "control_fuente": "Definición clara de roles y responsabilidades, Políticas de comunicación claras",
+      "control_medio": "Creación de canales de participación, Programas de reconocimiento",
+      "control_individuo": "Capacitación en liderazgo y gestión de equipos, Talleres de comunicación asertiva",
+      "control_epp": "No aplica",
+      "requisito_legal": "Resolución 2646 de 2008; Resolución 2404 de 2019"
+    },
+    {
+      "panel_id": "PSI_02",
+      "proceso": "Psicosocial",
+      "actividades": "Características de la organización del trabajo",
+      "nc": 25,
+      "efectos_posibles": "Estrés, irritabilidad, apatía laboral, desmotivación, depresión",
+      "peor_consecuencia": "Trastornos de Ansiedad / Depresión Severa",
+      "control_fuente": "Diseño de cargas de trabajo equilibradas, Flexibilidad horaria",
+      "control_medio": "Fomento de apoyo social entre compañeros y supervisores",
+      "control_individuo": "Capacitación Manejo de Estrés, Pausas Activas",
+      "control_epp": "No aplica",
+      "requisito_legal": "Resolución 2646 de 2008; Resolución 2404 de 2019"
+    },
+    {
+      "panel_id": "BIO_M_01",
+      "proceso": "Biomecánico",
+      "actividades": "Postura (prolongada, forzada)",
+      "nc": 25,
+      "efectos_posibles": "Malestar cervical/abdominal, trastornos en espalda, circulatorios y nerviosos",
+      "peor_consecuencia": "Trastorno Musculoesquelético Crónico",
+      "control_fuente": "Rediseño del puesto de trabajo para evitar posturas forzadas",
+      "control_medio": "Asiento Ergonómico, Plataformas de altura regulable",
+      "control_individuo": "Pausas Activas, Capacitación en higiene postural",
+      "control_epp": "No aplica",
+      "requisito_legal": "Decreto 1072 de 2015; Resolución 2400 de 1979"
+    },
+    {
+      "panel_id": "BIO_M_02",
+      "proceso": "Biomecánico",
+      "actividades": "Esfuerzo",
+      "nc": 25,
+      "efectos_posibles": "Enfermedades por trauma acumulativo del sistema osteomuscular",
+      "peor_consecuencia": "Lesión Musculoesquelética Incapacitante",
+      "control_fuente": "Automatización de tareas de gran esfuerzo",
+      "control_medio": "Uso de ayudas mecánicas (grúas, carretillas)",
+      "control_individuo": "Capacitación en sistema de izaje de cargas, Rotación de puestos",
+      "control_epp": "Guantes de agarre",
+      "requisito_legal": "Decreto 1072 de 2015; Resolución 2400 de 1979"
+    },
+    {
+      "panel_id": "BIO_M_03",
+      "proceso": "Biomecánico",
+      "actividades": "Movimiento repetitivo",
+      "nc": 25,
+      "efectos_posibles": "Trauma acumulativo, síndrome del túnel del carpo, epicondilitis, tendinitis",
+      "peor_consecuencia": "Síndrome del Túnel del Carpo Severo",
+      "control_fuente": "Rediseño de herramientas para un agarre neutral",
+      "control_medio": "Superficies de trabajo a altura regulable, Rotación de tareas",
+      "control_individuo": "Pausas Activas, Capacitación en micro pausas",
+      "control_epp": "No aplica",
+      "requisito_legal": "Decreto 1072 de 2015; Resolución 2400 de 1979"
+    },
+    {
+      "panel_id": "BIO_M_04",
+      "proceso": "Biomecánico",
+      "actividades": "Manipulación manual de cargas",
+      "nc": 25,
+      "efectos_posibles": "Lesiones osteomusculares en la espalda",
+      "peor_consecuencia": "Hernia Discal / Lesión de Espalda Crónica",
+      "control_fuente": "Reducir el peso de las cargas (empaques más pequeños)",
+      "control_medio": "Disponer de ayudas mecánicas (carretillas, transpaletas)",
+      "control_individuo": "Capacitación en manipulación manual de cargas, Exámenes Ocupacionales",
+      "control_epp": "Guantes de seguridad para agarre, Calzado de seguridad",
+      "requisito_legal": "Decreto 1072 de 2015; Resolución 2400 de 1979"
+    },
+    {
+      "panel_id": "SEG_01",
+      "proceso": "Condiciones de Seguridad",
+      "actividades": "Mecánico (máquinas, herramientas)",
+      "nc": 60,
+      "efectos_posibles": "Heridas, golpes, laceraciones leves",
+      "peor_consecuencia": "Fracturas / Heridas Graves",
+      "control_fuente": "Guardas de seguridad en partes móviles, Dispositivos de paro de emergencia",
+      "control_medio": "Demarcación de áreas de trabajo, Barreras físicas",
+      "control_individuo": "Capacitación en Orden y Aseo, Inspecciones, Bloqueo y Etiquetado (LOTO)",
+      "control_epp": "Gafas de seguridad, Guantes anticorte, Calzado de seguridad",
+      "requisito_legal": "Resolución 2400 de 1979"
+    },
+    {
+      "panel_id": "SEG_02",
+      "proceso": "Condiciones de Seguridad",
+      "actividades": "Eléctrico (alta y baja tensión)",
+      "nc": 100,
+      "efectos_posibles": "Fibrilación ventricular, quemaduras, shock",
+      "peor_consecuencia": "Muerte",
+      "control_fuente": "Instalaciones eléctricas certificadas y con mantenimiento",
+      "control_medio": "Puesta a tierra de equipos, Tableros con interruptores diferenciales",
+      "control_individuo": "Capacitación 5 Reglas de Oro, Procedimientos de trabajo seguro (LOTO)",
+      "control_epp": "Guantes y Botas Dieléctricas, Ropa ignífuga",
+      "requisito_legal": "RETIE; Resolución 5018 de 2019"
+    },
+    {
+      "panel_id": "SEG_03",
+      "proceso": "Condiciones de Seguridad",
+      "actividades": "Locativo (superficies, almacenamiento, orden)",
+      "nc": 25,
+      "efectos_posibles": "Politraumatismos en sistema osteomuscular, contusiones",
+      "peor_consecuencia": "Politraumatismo",
+      "control_fuente": "Diseño adecuado de pasillos y áreas de almacenamiento",
+      "control_medio": "Demarcación de áreas de trabajo, Cintas antideslizantes, Barandillas",
+      "control_individuo": "Capacitación en Orden y Aseo, Inspecciones periódicas",
+      "control_epp": "Calzado antideslizante",
+      "requisito_legal": "Resolución 2400 de 1979"
+    },
+    {
+      "panel_id": "SEG_04",
+      "proceso": "Condiciones de Seguridad",
+      "actividades": "Tecnológico (explosión, fuga, incendio)",
+      "nc": 100,
+      "efectos_posibles": "Muerte, politraumatismos",
+      "peor_consecuencia": "Muerte",
+      "control_fuente": "Sistemas de detección de fugas, Almacenamiento seguro de inflamables",
+      "control_medio": "Extintores, Sistemas de supresión automática (rociadores), Muros cortafuego",
+      "control_individuo": "Brigada de emergencias, Plan de evacuación y simulacros",
+      "control_epp": "Traje ignífugo, Equipo de respiración autónoma (ERA)",
+      "requisito_legal": "Resolución 2400 de 1979; Decreto 1072 de 2015"
+    },
+    {
+      "panel_id": "SEG_05",
+      "proceso": "Condiciones de Seguridad",
+      "actividades": "Accidentes de tránsito",
+      "nc": 100,
+      "efectos_posibles": "Muerte, Heridas abiertas, Traumas craneoencefálicos",
+      "peor_consecuencia": "Muerte",
+      "control_fuente": "Mantenimiento preventivo de vehículos, Planificación de rutas seguras",
+      "control_medio": "Uso de vehículos con altos estándares de seguridad (ABS, airbags)",
+      "control_individuo": "Capacitación en manejo defensivo, Políticas sobre fatiga y distracción",
+      "control_epp": "Cinturón de seguridad, Casco (motociclistas)",
+      "requisito_legal": "Ley 1503 de 2011; Res. 20223040040595 de 2022"
+    },
+    {
+      "panel_id": "SEG_06",
+      "proceso": "Condiciones de Seguridad",
+      "actividades": "Públicos (robos, atracos, asaltos)",
+      "nc": 60,
+      "efectos_posibles": "Muerte, Heridas abiertas, Traumas craneoencefálicos",
+      "peor_consecuencia": "Muerte",
+      "control_fuente": "Eliminar manejo de efectivo, Planificación de rutas y horarios",
+      "control_medio": "Sistemas de comunicación (radio, celular), GPS en vehículos",
+      "control_individuo": "Capacitación en manejo de situaciones de riesgo público, Protocolos de actuación",
+      "control_epp": "No aplica",
+      "requisito_legal": "Decreto 1072 de 2015"
+    },
+    {
+      "panel_id": "SEG_07",
+      "proceso": "Condiciones de Seguridad",
+      "actividades": "Trabajo en alturas",
+      "nc": 100,
+      "efectos_posibles": "Caídas, Politraumatismos, Muerte",
+      "peor_consecuencia": "Muerte",
+      "control_fuente": "Realizar el trabajo desde el suelo siempre que sea posible (pértigas)",
+      "control_medio": "Uso de plataformas elevadoras, andamios certificados, barandillas perimetrales",
+      "control_individuo": "Permisos de Trabajo en Alturas, Plan de rescate",
+      "control_epp": "Línea de Vida y Arnés de Seguridad",
+      "requisito_legal": "Resolución 4272 de 2021"
+    },
+    {
+      "panel_id": "SEG_08",
+      "proceso": "Condiciones de Seguridad",
+      "actividades": "Espacios confinados",
+      "nc": 100,
+      "efectos_posibles": "Asfixia, intoxicación, atrapamiento, muerte",
+      "peor_consecuencia": "Muerte",
+      "control_fuente": "Evitar la entrada realizando el trabajo desde el exterior (si es viable)",
+      "control_medio": "Ventilación forzada, Medición y monitoreo continuo de la atmósfera",
+      "control_individuo": "Permiso de entrada, Vigía externo, Plan de rescate",
+      "control_epp": "Arnés de seguridad, Equipo de respiración autónoma (ERA)",
+      "requisito_legal": "Resolución 0491 de 2020"
+    },
+    {
+      "panel_id": "NAT_01",
+      "proceso": "Fenómenos Naturales",
+      "actividades": "Sismo o Terremoto",
+      "nc": 100,
+      "efectos_posibles": "Heridas, golpes, fracturas",
+      "peor_consecuencia": "Aplastamiento / Fracturas Graves",
+      "control_fuente": "NA",
+      "control_medio": "Anclaje de estanterías y equipos, Señalización de rutas de evacuación y puntos seguros",
+      "control_individuo": "Plan de emergencias, Simulacros de evacuación",
+      "control_epp": "Kit de emergencias (casco, guantes, linterna)",
+      "requisito_legal": "Ley 1523 de 2012; Decreto 1072 de 2015"
+    }
+  ],
+  "resultados_por_empresa": {
+    "te recuperamos": {
+      "nombre_original": "Te recuperamos",
+      "_clave": "te recuperamos",
+      "_timestamp": 1750955820168,
+      "trabajadores": {
+        "admin": 10,
+        "operarios": 1,
+        "servicios": 1,
+        "conductores": 0
+      },
+      "peligros": {
+        "BIO_01": {
+          "deficiencia": "Medio",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Servicios Generales",
+            "Administrativo"
+          ]
+        },
+        "BIO_05": {
+          "deficiencia": "Medio",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Servicios Generales"
+          ]
+        },
+        "BIO_M_01": {
+          "deficiencia": "Bajo",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Administrativo"
+          ]
+        },
+        "BIO_M_03": {
+          "deficiencia": "Bajo",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Administrativo",
+            "Servicios Generales"
+          ]
+        },
+        "BIO_M_04": {
+          "deficiencia": "Medio",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Administrativo",
+            "Servicios Generales"
+          ]
+        },
+        "FIS_01": {
+          "deficiencia": "Bajo",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Servicios Generales",
+            "Administrativo"
+          ]
+        },
+        "FIS_02": {
+          "deficiencia": "Medio",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Administrativo"
+          ]
+        },
+        "NAT_01": {
+          "deficiencia": "Medio",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Servicios Generales",
+            "Administrativo"
+          ]
+        },
+        "PSI_01": {
+          "deficiencia": "Bajo",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Administrativo",
+            "Servicios Generales"
+          ]
+        },
+        "PSI_02": {
+          "deficiencia": "Bajo",
+          "exposicion": "Continua",
+          "cargos": [
+            "Administrativo",
+            "Servicios Generales"
+          ]
+        },
+        "SEG_03": {
+          "deficiencia": "Alto",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Servicios Generales",
+            "Administrativo"
+          ]
+        },
+        "SEG_04": {
+          "deficiencia": "Medio",
+          "exposicion": "Frecuente",
+          "cargos": [
+            "Servicios Generales",
+            "Administrativo"
+          ]
+        },
+        "SEG_06": {
+          "deficiencia": "Medio",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Servicios Generales",
+            "Administrativo"
+          ]
+        }
+      }
+    },
+    "lotto hotel boutique": {
+      "nombre_original": "Lotto hotel boutique",
+      "_clave": "lotto hotel boutique",
+      "_timestamp": 1749759774665,
+      "trabajadores": {
+        "admin": 0,
+        "operarios": 0,
+        "servicios": 0,
+        "conductores": 0
+      },
+      "peligros": {
+        "BIO_01": {
+          "deficiencia": "Medio",
+          "exposicion": "Frecuente",
+          "cargos": [
+            "Servicios Generales"
+          ]
+        },
+        "BIO_02": {
+          "deficiencia": "Alto",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Todos"
+          ]
+        },
+        "BIO_03": {
+          "deficiencia": "Medio",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Todos"
+          ]
+        },
+        "BIO_04": {
+          "deficiencia": "Medio",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Todos"
+          ]
+        },
+        "BIO_05": {
+          "deficiencia": "Medio",
+          "exposicion": "Frecuente",
+          "cargos": [
+            "Servicios Generales"
+          ]
+        },
+        "BIO_M_01": {
+          "deficiencia": "Bajo",
+          "exposicion": "Continua",
+          "cargos": [
+            "Todos"
+          ]
+        },
+        "BIO_M_02": {
+          "deficiencia": "Bajo",
+          "exposicion": "Frecuente",
+          "cargos": [
+            "Servicios Generales"
+          ]
+        },
+        "BIO_M_03": {
+          "deficiencia": "Alto",
+          "exposicion": "Continua",
+          "cargos": [
+            "Todos"
+          ]
+        },
+        "BIO_M_04": {
+          "deficiencia": "Medio",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Todos"
+          ]
+        },
+        "FIS_01": {
+          "deficiencia": "Bajo",
+          "exposicion": "Continua",
+          "cargos": [
+            "Administrativo"
+          ]
+        },
+        "FIS_02": {
+          "deficiencia": "Bajo",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Servicios Generales"
+          ]
+        },
+        "FIS_07": {
+          "deficiencia": "Medio",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Todos"
+          ]
+        },
+        "NAT_01": {
+          "deficiencia": "Muy Alto",
+          "exposicion": "Continua",
+          "cargos": [
+            "Todos"
+          ]
+        },
+        "PSI_01": {
+          "deficiencia": "Bajo",
+          "exposicion": "Continua",
+          "cargos": [
+            "Todos"
+          ]
+        },
+        "PSI_02": {
+          "deficiencia": "Medio",
+          "exposicion": "Continua",
+          "cargos": [
+            "Todos"
+          ]
+        },
+        "QUI_01": {
+          "deficiencia": "Medio",
+          "exposicion": "Frecuente",
+          "cargos": [
+            "Servicios Generales"
+          ]
+        },
+        "QUI_02": {
+          "deficiencia": "Medio",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Servicios Generales"
+          ]
+        },
+        "SEG_03": {
+          "deficiencia": "Bajo",
+          "exposicion": "Continua",
+          "cargos": [
+            "Todos"
+          ]
+        },
+        "SEG_04": {
+          "deficiencia": "Alto",
+          "exposicion": "Frecuente",
+          "cargos": [
+            "Todos"
+          ]
+        },
+        "SEG_06": {
+          "deficiencia": "Medio",
+          "exposicion": "Continua",
+          "cargos": [
+            "Administrativo"
+          ]
+        }
+      }
+    }
+  }
+}

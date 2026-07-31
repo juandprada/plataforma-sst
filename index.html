@@ -35,6 +35,17 @@
         <label for="sel-capacitacion">Capacitación</label>
         <select id="sel-capacitacion"></select>
       </div>
+      <!-- Solo en el formato IPVER: elige el cargo/área para la matriz de riesgos.
+           La app lo muestra y oculta según el formato seleccionado. -->
+      <div class="field" id="campo-cargo-ipver" hidden>
+        <label for="sel-cargo-ipver">Cargo / Área</label>
+        <select id="sel-cargo-ipver">
+          <option value="Administrativo">Administrativo</option>
+          <option value="Producción">Producción</option>
+          <option value="Servicios Generales">Servicios Generales</option>
+          <option value="Conductores">Conductores</option>
+        </select>
+      </div>
       <p id="estado" class="estado" role="status"></p>
     </section>
 
