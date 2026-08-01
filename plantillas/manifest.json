@@ -1,5 +1,16 @@
 [
   {
+    "id": "licencia",
+    "nombre": "Licencia del Sistema SST",
+    "categoria": "General",
+    "archivo": "",
+    "titulo": "Licencia del Sistema SST",
+    "codigo": "",
+    "version": "",
+    "orientacion": "vertical",
+    "estatico": "assets/licencia.pdf"
+  },
+  {
     "id": "tabla-de-contenido",
     "nombre": "Tabla de Contenido",
     "categoria": "General",

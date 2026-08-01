@@ -601,6 +601,18 @@ async function generar() {
     }
     const anio = Number($("#sel-anio").value) || new Date().getFullYear();
 
+    if (formato.estatico) {
+      setEstado(`Descargando archivo estático: ${formato.nombre}...`);
+      const link = document.createElement("a");
+      link.href = formato.estatico;
+      link.download = formato.nombre + ".pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      setEstado(`Descarga iniciada para ${formato.nombre}.`);
+      return;
+    }
+
     // Panel de ajustes: solo se muestra (y solo pregunta) en el formato presupuesto.
     renderPanelPresupuesto(formato, empresa);
     // Selector de capacitación: solo en el acta de asistencia.
