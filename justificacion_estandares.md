@@ -34,6 +34,7 @@ Según el Artículo 3 de la Resolución 0312, a estas microempresas se les exige
 *   **Matriz y entrega de EPPs:** Controles directos en el trabajador.
 *   **Evaluación Inicial y Plan de Mejora:** Según los artículos 25 y 26, todas las empresas sin importar su tamaño deben autoevaluarse y formular un plan de cierre de brechas.
 *   **Indicadores Mínimos de SST:** Según el Artículo 30, todas las empresas sin excepción deben llevar registro estadístico básico de su accidentalidad y enfermedad laboral (frecuencia, severidad, prevalencia, etc.).
+*   **Auditoría Interna:** Por mandato expreso del Decreto 1072 (Art. 2.2.4.6.29), todas las empresas, independientemente de su tamaño, deben realizar una auditoría anual para verificar el cumplimiento del SG-SST.
 
 ### ★★ Nivel Intermedio (21 Estándares)
 **¿A quién aplica?** Empresas de **11 a 50 trabajadores** clasificadas con riesgo I, II o III.
@@ -55,7 +56,6 @@ Según el Artículo 16 de la Res 0312. Estas empresas deben aplicar la totalidad
 *   **Incluye obligatoriamente los estándares de niveles anteriores.**
 *   **Matriz Legal:** Elemento formal de planeación avanzada.
 *   **Indicadores de Gestión Avanzados (Estructura, Proceso y Resultado):** Mientras todas las empresas llevan indicadores de accidentalidad básicos, las de 60 estándares deben montar la batería completa de gestión exigida por el Decreto 1072.
-*   **Auditoría Interna:** Un requisito del 1072 para la mejora continua exhaustiva.
 *   **Profesiogramas:** Control avanzado y técnico sobre los requerimientos biomédicos de los cargos.
 *   **Contratación y Adquisiciones (Proveedores):** La empresa es solidariamente responsable, por lo que debe exigir SST a toda su cadena de suministro.
 *   **Gestión de Cambio:** Procedimientos documentados si cambia la maquinaria, el software o la estructura organizacional.
