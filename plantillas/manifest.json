@@ -15,7 +15,7 @@
     "nombre": "Tabla de Contenido",
     "categoria": "General",
     "archivo": "tabla-de-contenido.html",
-    "titulo": "TABLA DE CONTENIDO<br>SISTEMA DE GESTIÓN DE SEGURIDAD Y SALUD EN EL TRABAJO",
+    "titulo": "TABLA DE CONTENIDO<br><span style=\"font-size: 0.75em;\">SISTEMA DE GESTIÓN DE SEGURIDAD Y SALUD EN EL TRABAJO</span>",
     "codigo": "",
     "version": "",
     "orientacion": "vertical",
