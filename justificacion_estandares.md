@@ -32,6 +32,7 @@ Según el Artículo 3 de la Resolución 0312, a estas microempresas se les exige
 *   **Evaluaciones Médicas Ocupacionales:** Garantizar la aptitud de los trabajadores para el cargo.
 *   **Matriz IPVER:** Identificar los peligros (el corazón de todo el sistema).
 *   **Matriz y entrega de EPPs:** Controles directos en el trabajador.
+*   **Evaluación Inicial y Plan de Mejora:** Según los artículos 25 y 26, todas las empresas sin importar su tamaño deben autoevaluarse y formular un plan de cierre de brechas.
 
 ### ★★ Nivel Intermedio (21 Estándares)
 **¿A quién aplica?** Empresas de **11 a 50 trabajadores** clasificadas con riesgo I, II o III.
@@ -39,12 +40,10 @@ Según el Artículo 3 de la Resolución 0312, a estas microempresas se les exige
 **Justificación Documental:**
 Según el Artículo 9 de la Res 0312. Al tener más empleados, el Decreto 1072 exige un grado mayor de organización formal. Ya no basta con "hacer lo básico"; se debe evidenciar planeación estratégica e involucramiento del personal.
 *   **Incluye obligatoriamente los 7 estándares de Nivel Básico.**
-*   **Políticas y Objetivos:** Alta dirección formalmente comprometida.
+*   **Políticas SST:** Alta dirección formalmente comprometida (Ojo: Los "Objetivos" se auditan formalmente en 60 estándares).
 *   **Comités (COPASST/Vigía y Convivencia):** Según la ley (Res 2013/86), empresas con menos de 10 trabajadores eligen un **Vigía** de SST. Las de 10 o más conforman el **COPASST**. Al pasar al nivel de 21 estándares (11 a 50 empleados), la conformación paritaria del COPASST y del Comité de Convivencia se vuelve un ítem obligatorio de evaluación.
-*   **Emergencias:** Acta de Brigada y Simulacros obligatorios, ya que hay más vidas en juego en un solo lugar.
-*   **Inspecciones Formales:** Rutinas de chequeo a botiquines, extintores e instalaciones.
+*   **Emergencias:** Acta de Brigada, Documento Base del Plan y Simulacros obligatorios, ya que hay más vidas en juego en un solo lugar.
 *   **Gestión de incidentes:** Reportes FURAT/FUREL e investigación formal.
-*   **Evaluación Inicial y Plan de Mejora.**
 
 ### ★★★ Nivel Avanzado (60 Estándares)
 **¿A quién aplica?** Empresas de **más de 50 trabajadores** (riesgo I, II, III, IV o V) y empresas de **cualquier tamaño** clasificadas en riesgo Alto (IV o V).
@@ -52,9 +51,11 @@ Según el Artículo 9 de la Res 0312. Al tener más empleados, el Decreto 1072 e
 **Justificación Documental:**
 Según el Artículo 16 de la Res 0312. Estas empresas deben aplicar la totalidad del Decreto 1072. Requieren un sistema maduro, medible y auditable de manera externa.
 *   **Incluye obligatoriamente los estándares de niveles anteriores.**
+*   **Objetivos del SG-SST y Matriz Legal:** Elementos formales de planeación avanzada.
+*   **Inspecciones Sistemáticas Documentadas:** Rutinas estrictas de chequeo a botiquines, extintores, EPPs e instalaciones.
 *   **Indicadores de Gestión (Estructura, Proceso y Resultado):** Ya no basta con hacer cosas, hay que demostrar con estadísticas que el sistema funciona.
 *   **Auditoría Interna:** Un requisito del 1072 para la mejora continua exhaustiva.
-*   **Programas de Vigilancia Epidemiológica:** Control avanzado y científico sobre enfermedades laborales.
+*   **Programas de Vigilancia Epidemiológica y Profesiogramas:** Control avanzado y científico sobre enfermedades laborales.
 *   **Contratación y Adquisiciones (Proveedores):** La empresa es solidariamente responsable, por lo que debe exigir SST a toda su cadena de suministro.
 *   **Gestión de Cambio:** Procedimientos documentados si cambia la maquinaria, el software o la estructura organizacional.
 
