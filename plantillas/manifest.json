@@ -248,6 +248,125 @@
     "titulo": "FORMATO DE INSPECCIÓN SG-SST",
     "codigo": "FI-SST-02",
     "version": "01",
+  },
+  {
+    "id": "matriz-comunicacion",
+    "nombre": "Matriz de Comunicación",
+    "categoria": "1.PLANEAR",
+    "archivo": "matriz-comunicacion.html",
+    "titulo": "MATRIZ DE COMUNICACIÓN INTERNA Y EXTERNA",
+    "codigo": "MC-SST-02",
+    "version": "01",
+    "orientacion": "horizontal"
+  },
+  {
+    "id": "matriz-legal",
+    "nombre": "Matriz Legal",
+    "categoria": "1.PLANEAR",
+    "archivo": "matriz-legal.html",
+    "titulo": "MATRIZ DE IDENTIFICACIÓN DE REQUISITOS LEGALES",
+    "codigo": "ML-SST-01",
+    "version": "01",
+    "orientacion": "horizontal"
+  },
+  {
+    "id": "seleccion-proveedor",
+    "nombre": "Selección de Proveedores",
+    "categoria": "1.PLANEAR",
+    "archivo": "seleccion-proveedor.html",
+    "titulo": "FORMATO DE SELECCIÓN Y EVALUACIÓN DE PROVEEDORES",
+    "codigo": "SP-SST-01",
+    "version": "01",
+    "orientacion": "vertical"
+  },
+  {
+    "id": "verificacion-contratistas",
+    "nombre": "Verificación de Contratistas",
+    "categoria": "1.PLANEAR",
+    "archivo": "verificacion-contratistas.html",
+    "titulo": "FORMATO DE VERIFICACIÓN DE CONTRATISTAS",
+    "codigo": "VC-SST-01",
+    "version": "01",
+    "orientacion": "vertical"
+  },
+  {
+    "id": "gestion-cambio",
+    "nombre": "Gestión de Cambio",
+    "categoria": "2.HACER",
+    "archivo": "gestion-cambio.html",
+    "titulo": "REGISTRO DE GESTIÓN DE CAMBIO",
+    "codigo": "GC-SST-01",
+    "version": "01",
+    "orientacion": "vertical"
+  },
+  {
+    "id": "investigacion-at",
+    "nombre": "Investigación de Accidentes",
+    "categoria": "2.HACER",
+    "archivo": "investigacion-at.html",
+    "titulo": "FORMATO DE INVESTIGACIÓN DE INCIDENTES Y ACCIDENTES DE TRABAJO",
+    "codigo": "IA-SST-01",
+    "version": "01",
+    "orientacion": "vertical"
+  },
+  {
+    "id": "entrega-epps",
+    "nombre": "Entrega de EPPs",
+    "categoria": "2.HACER",
+    "archivo": "entrega-epps.html",
+    "titulo": "REGISTRO DE ENTREGA DE ELEMENTOS DE PROTECCIÓN PERSONAL",
+    "codigo": "EPP-SST-01",
+    "version": "01",
+    "orientacion": "vertical"
+  },
+  {
+    "id": "indicadores",
+    "nombre": "Indicadores de Gestión",
+    "categoria": "3.VERIFICAR",
+    "archivo": "indicadores.html",
+    "titulo": "INDICADORES DEL SISTEMA DE GESTIÓN DE SST",
+    "codigo": "IG-SST-01",
+    "version": "01",
+    "orientacion": "vertical"
+  },
+  {
+    "id": "revision-direccion",
+    "nombre": "Acta de Revisión por la Dirección",
+    "categoria": "3.VERIFICAR",
+    "archivo": "revision-direccion.html",
+    "titulo": "ACTA DE REVISIÓN POR LA ALTA DIRECCIÓN",
+    "codigo": "RD-SST-01",
+    "version": "01",
+    "orientacion": "vertical"
+  },
+  {
+    "id": "auditoria-interna",
+    "nombre": "Informe Auditoría Interna",
+    "categoria": "3.VERIFICAR",
+    "archivo": "auditoria-interna.html",
+    "titulo": "INFORME DE RESULTADOS DE AUDITORÍA INTERNA SG-SST",
+    "codigo": "AI-SST-01",
+    "version": "01",
+    "orientacion": "vertical"
+  },
+  {
+    "id": "acciones-correctivas",
+    "nombre": "Acciones Correctivas y Preventivas",
+    "categoria": "4.ACTUAR",
+    "archivo": "acciones-correctivas.html",
+    "titulo": "REGISTRO DE ACCIONES CORRECTIVAS Y PREVENTIVAS",
+    "codigo": "ACP-SST-01",
+    "version": "01",
+    "orientacion": "vertical"
+  },
+  {
+    "id": "medicina-preventiva",
+    "nombre": "Medicina Preventiva",
+    "categoria": "4.ACTUAR",
+    "archivo": "medicina-preventiva.html",
+    "titulo": "PROGRAMA DE MEDICINA PREVENTIVA Y DEL TRABAJO",
+    "codigo": "MP-SST-01",
+    "version": "01",
     "orientacion": "vertical"
   }
 ]
