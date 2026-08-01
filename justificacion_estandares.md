@@ -44,6 +44,7 @@ Según el Artículo 9 de la Res 0312. Al tener más empleados, el Decreto 1072 e
 *   **Comités (COPASST/Vigía y Convivencia):** Según la ley (Res 2013/86), empresas con menos de 10 trabajadores eligen un **Vigía** de SST. Las de 10 o más conforman el **COPASST**. Al pasar al nivel de 21 estándares (11 a 50 empleados), la conformación paritaria del COPASST y del Comité de Convivencia se vuelve un ítem obligatorio de evaluación.
 *   **Emergencias e Inspecciones:** Acta de Brigada, Documento Base del Plan y Simulacros obligatorios. Además, para demostrar operatividad de emergencias y mantenimiento, se requieren inspecciones documentadas (botiquines, extintores, EPPs, locativas).
 *   **Gestión de incidentes:** Reportes FURAT/FUREL e investigación formal.
+*   **Medicina Preventiva y Vigilancia Epidemiológica:** La resolución exige desarrollar actividades preventivas y programas de vigilancia epidemiológica acordes al diagnóstico de salud (Ítem 12).
 
 ### ★★★ Nivel Avanzado (60 Estándares)
 **¿A quién aplica?** Empresas de **más de 50 trabajadores** (riesgo I, II, III, IV o V) y empresas de **cualquier tamaño** clasificadas en riesgo Alto (IV o V).
@@ -54,7 +55,7 @@ Según el Artículo 16 de la Res 0312. Estas empresas deben aplicar la totalidad
 *   **Objetivos del SG-SST y Matriz Legal:** Elementos formales de planeación avanzada.
 *   **Indicadores de Gestión (Estructura, Proceso y Resultado):** Ya no basta con hacer cosas, hay que demostrar con estadísticas que el sistema funciona.
 *   **Auditoría Interna:** Un requisito del 1072 para la mejora continua exhaustiva.
-*   **Programas de Vigilancia Epidemiológica y Profesiogramas:** Control avanzado y científico sobre enfermedades laborales.
+*   **Profesiogramas:** Control avanzado y técnico sobre los requerimientos biomédicos de los cargos.
 *   **Contratación y Adquisiciones (Proveedores):** La empresa es solidariamente responsable, por lo que debe exigir SST a toda su cadena de suministro.
 *   **Gestión de Cambio:** Procedimientos documentados si cambia la maquinaria, el software o la estructura organizacional.
 
