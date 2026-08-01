@@ -39,19 +39,27 @@ Según el Artículo 3 de la Resolución 0312, a estas microempresas se les exige
 *   **Matriz de Comunicación:** Es el mecanismo para evidenciar que se comunican las políticas, riesgos y controles a los trabajadores (Art. 2.2.4.6.14).
 *   **Gestión del Cambio:** Todas las empresas deben evaluar los riesgos antes de implementar cambios internos, como maquinaria o procesos (Art. 2.2.4.6.26).
 *   **Reporte de Actos y Condiciones Inseguras:** Es un deber legal de todos los trabajadores (Art. 2.2.4.6.10) informar sobre peligros, por lo que toda empresa debe proveer el mecanismo para recibir estos reportes.
+*   **Asignación de Responsabilidades y Recursos:** Mandato del Decreto 1072 (Art. 2.2.4.6.8).
+*   **Comités (COPASST/Vigía y Convivencia):** Las Resoluciones 2013/86 y 652/12 obligan a toda empresa a tener un Vigía de SST (si <10 empleados) y un Comité de Convivencia Laboral.
+*   **Políticas y Objetivos de SST:** Mandato del Decreto 1072 (Art. 2.2.4.6.5 y 2.2.4.6.7). Toda empresa debe tener una política y metas claras.
+*   **Política de Alcohol y Tabaco:** Obligatoria para todos por la Resolución 1075 de 1992.
+*   **Gestión de Incidentes (FURAT, FUREL, Investigaciones):** Las Resoluciones 1401/07 y 156/05 no eximen a ninguna microempresa de investigar y reportar accidentes.
+*   **Plan de Emergencias (Brigada, Documento, Simulacro):** Mandato del Decreto 1072 (Art. 2.2.4.6.25). Un incendio no discrimina el tamaño de la empresa.
+*   **Revisión por Alta Dirección:** Mandato del Decreto 1072 (Art. 2.2.4.6.31).
+*   **Acciones Correctivas y Preventivas:** Mandato del Decreto 1072 (Art. 2.2.4.6.33).
 
 ### ★★ Nivel Intermedio (21 Estándares)
 **¿A quién aplica?** Empresas de **11 a 50 trabajadores** clasificadas con riesgo I, II o III.
 
 **Justificación Documental:**
-Según el Artículo 9 de la Res 0312. Al tener más empleados, el Decreto 1072 exige un grado mayor de organización formal. Ya no basta con "hacer lo básico"; se debe evidenciar planeación estratégica e involucramiento del personal.
+Según el Artículo 9 de la Res 0312. Estas empresas requieren un nivel mayor de estructuración formal, registros detallados y control sobre terceros.
 *   **Incluye obligatoriamente los 7 estándares de Nivel Básico.**
-*   **Políticas y Objetivos SST:** La política demuestra el compromiso de la alta dirección. Además, por mandato del Decreto 1072, toda política debe fijar **Objetivos** medibles, los cuales son verificables en este nivel.
-*   **Comités (COPASST/Vigía y Convivencia):** Según la ley (Res 2013/86), empresas con menos de 10 trabajadores eligen un **Vigía** de SST. Las de 10 o más conforman el **COPASST**. Al pasar al nivel de 21 estándares (11 a 50 empleados), la conformación paritaria del COPASST y del Comité de Convivencia se vuelve un ítem obligatorio de evaluación.
-*   **Emergencias e Inspecciones:** Acta de Brigada, Documento Base del Plan y Simulacros obligatorios. Además, para demostrar operatividad de emergencias y mantenimiento (Ítem 18), se requieren inspecciones documentadas (botiquines, extintores, EPPs, locativas, y **vehículos** si aplican).
-*   **Gestión de incidentes y Medidas Correctivas:** Reportes FURAT/FUREL e investigación formal. La investigación obliga a generar **acciones correctivas y preventivas**, y la empresa debe implementarlas (Ítem 16).
-*   **Medicina Preventiva y Vigilancia Epidemiológica:** Desarrollar actividades preventivas y programas de vigilancia epidemiológica acordes al diagnóstico de salud (Ítem 12).
-*   **Contratación y Adquisiciones (Proveedores):** Por el Decreto 1072 y la figura de **responsabilidad solidaria**, la empresa contratante debe exigir y verificar SST a toda su cadena de suministro, siendo los 21 estándares la línea base para esta verificación.
+*   **Reglamento de Higiene y Seguridad Industrial (RHSI):** El Código Sustantivo del Trabajo (Art. 349) exige este reglamento formal solo a empresas con 10 o más trabajadores.
+*   **Inspecciones Formales y Mantenimiento:** Para demostrar control operativo (Ítem 18), se requieren inspecciones mensuales documentadas en formatos específicos (botiquines, extintores, locativas, EPPs, vehículos) y mantenimientos preventivos formales.
+*   **Medicina Preventiva y Vigilancia Epidemiológica:** Actividades formales de salud pública y epidemiología requeridas por el Ítem 12.
+*   **Contratación y Adquisiciones (Proveedores):** La línea base para evaluar a terceros y garantizar la responsabilidad solidaria de la cadena de suministro.
+*   **Perfil de Cargos y Procedimientos Formales:** Documentación rígida de RRHH y protocolos operativos.
+*   **Tabla de Retención Documental:** Herramienta formal de archivo.
 
 ### ★★★ Nivel Avanzado (60 Estándares)
 **¿A quién aplica?** Empresas de **más de 50 trabajadores** (riesgo I, II, III, IV o V) y empresas de **cualquier tamaño** clasificadas en riesgo Alto (IV o V).
