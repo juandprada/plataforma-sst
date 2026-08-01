@@ -42,7 +42,7 @@ Según el Artículo 9 de la Res 0312. Al tener más empleados, el Decreto 1072 e
 *   **Incluye obligatoriamente los 7 estándares de Nivel Básico.**
 *   **Políticas SST:** Alta dirección formalmente comprometida (Ojo: Los "Objetivos" se auditan formalmente en 60 estándares).
 *   **Comités (COPASST/Vigía y Convivencia):** Según la ley (Res 2013/86), empresas con menos de 10 trabajadores eligen un **Vigía** de SST. Las de 10 o más conforman el **COPASST**. Al pasar al nivel de 21 estándares (11 a 50 empleados), la conformación paritaria del COPASST y del Comité de Convivencia se vuelve un ítem obligatorio de evaluación.
-*   **Emergencias:** Acta de Brigada, Documento Base del Plan y Simulacros obligatorios, ya que hay más vidas en juego en un solo lugar.
+*   **Emergencias e Inspecciones:** Acta de Brigada, Documento Base del Plan y Simulacros obligatorios. Además, para demostrar operatividad de emergencias y mantenimiento, se requieren inspecciones documentadas (botiquines, extintores, EPPs, locativas).
 *   **Gestión de incidentes:** Reportes FURAT/FUREL e investigación formal.
 
 ### ★★★ Nivel Avanzado (60 Estándares)
@@ -52,7 +52,6 @@ Según el Artículo 9 de la Res 0312. Al tener más empleados, el Decreto 1072 e
 Según el Artículo 16 de la Res 0312. Estas empresas deben aplicar la totalidad del Decreto 1072. Requieren un sistema maduro, medible y auditable de manera externa.
 *   **Incluye obligatoriamente los estándares de niveles anteriores.**
 *   **Objetivos del SG-SST y Matriz Legal:** Elementos formales de planeación avanzada.
-*   **Inspecciones Sistemáticas Documentadas:** Rutinas estrictas de chequeo a botiquines, extintores, EPPs e instalaciones.
 *   **Indicadores de Gestión (Estructura, Proceso y Resultado):** Ya no basta con hacer cosas, hay que demostrar con estadísticas que el sistema funciona.
 *   **Auditoría Interna:** Un requisito del 1072 para la mejora continua exhaustiva.
 *   **Programas de Vigilancia Epidemiológica y Profesiogramas:** Control avanzado y científico sobre enfermedades laborales.
