@@ -674,7 +674,7 @@ async function generar() {
 
     const raw = [
       "LOGO", "FIRMA_CONSULTORA", "TABLA_PRESUPUESTO", "TABLA_IPVER",
-      "CAPACITACION_PUNTOS", "INSPECCION_PUNTOS",
+      "CAPACITACION_PUNTOS", "INSPECCION_PUNTOS", "TITULO"
     ];
     const encabezado = fillTokens(ENCABEZADO_TPL, ctx, raw);
     const cuerpo = fillTokens(cuerpoTpl, ctx, raw);
