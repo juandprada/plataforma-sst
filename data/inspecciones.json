@@ -38,9 +38,9 @@
       "orientacion": "horizontal"
     },
     {
-      "id": "comportamiento",
-      "nombre": "OBSERVACIÓN DE COMPORTAMIENTO",
-      "archivo": "inspeccion-comportamiento.html",
+      "id": "actos-condiciones",
+      "nombre": "REPORTE DE ACTOS Y CONDICIONES INSEGURAS",
+      "archivo": "reporte-actos-condiciones.html",
       "orientacion": "vertical"
     },
     {
