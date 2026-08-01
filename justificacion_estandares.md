@@ -57,7 +57,6 @@ Según el Artículo 9 de la Res 0312. Estas empresas requieren un nivel mayor de
 *   **Reglamento de Higiene y Seguridad Industrial (RHSI):** El Código Sustantivo del Trabajo (Art. 349) exige este reglamento formal solo a empresas con 10 o más trabajadores.
 *   **Inspecciones Formales y Mantenimiento:** Para demostrar control operativo (Ítem 18), se requieren inspecciones mensuales documentadas en formatos específicos (botiquines, extintores, locativas, EPPs, vehículos) y mantenimientos preventivos formales.
 *   **Medicina Preventiva y Vigilancia Epidemiológica:** Actividades formales de salud pública y epidemiología requeridas por el Ítem 12.
-*   **Contratación y Adquisiciones (Proveedores):** La línea base para evaluar a terceros y garantizar la responsabilidad solidaria de la cadena de suministro.
 *   **Perfil de Cargos y Procedimientos Formales:** Documentación rígida de RRHH y protocolos operativos.
 *   **Tabla de Retención Documental:** Herramienta formal de archivo.
 
@@ -68,6 +67,7 @@ Según el Artículo 9 de la Res 0312. Estas empresas requieren un nivel mayor de
 Según el Artículo 16 de la Res 0312. Estas empresas deben aplicar la totalidad del Decreto 1072. Requieren un sistema maduro, medible y auditable de manera externa.
 *   **Incluye obligatoriamente los estándares de niveles anteriores.**
 *   **Indicadores de Gestión Avanzados (Estructura, Proceso y Resultado):** Mientras todas las empresas llevan indicadores de accidentalidad básicos, las de 60 estándares deben montar la batería completa de gestión exigida por el Decreto 1072.
+*   **Contratación y Adquisiciones (Proveedores):** Exigencia formal (Ítems 2.8.1 y 2.9.1) de contar con listas de chequeo y formatos de selección/verificación para toda la cadena de suministro.
 *   **Profesiogramas:** Control avanzado y técnico sobre los requerimientos biomédicos de los cargos.
 
 ---
