@@ -29,7 +29,7 @@ Según el Artículo 3 de la Resolución 0312, a estas microempresas se les exige
 *   **Afiliación ARL:** Cobertura de seguridad social básica.
 *   **Capacitación (Matriz y Asistencia):** Todos los trabajadores deben saber cómo cuidarse.
 *   **Plan de Trabajo Anual:** Una hoja de ruta mínima de prevención.
-*   **Evaluaciones Médicas Ocupacionales:** Garantizar la aptitud de los trabajadores para el cargo.
+*   **Evaluaciones Médicas Ocupacionales y Custodia:** Garantizar la aptitud de los trabajadores para el cargo. Al realizarse estos exámenes, la empresa está obligada a certificar que la **custodia de las historias clínicas** recae sobre la IPS y no sobre el empleador.
 *   **Matriz IPVER:** Identificar los peligros (el corazón de todo el sistema).
 *   **Matriz y entrega de EPPs:** Controles directos en el trabajador.
 *   **Evaluación Inicial y Plan de Mejora:** Según los artículos 25 y 26, todas las empresas sin importar su tamaño deben autoevaluarse y formular un plan de cierre de brechas.
