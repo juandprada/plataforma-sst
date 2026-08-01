@@ -35,6 +35,10 @@ Según el Artículo 3 de la Resolución 0312, a estas microempresas se les exige
 *   **Evaluación Inicial y Plan de Mejora:** Según los artículos 25 y 26, todas las empresas sin importar su tamaño deben autoevaluarse y formular un plan de cierre de brechas.
 *   **Indicadores Mínimos de SST:** Según el Artículo 30, todas las empresas sin excepción deben llevar registro estadístico básico de su accidentalidad y enfermedad laboral (frecuencia, severidad, prevalencia, etc.).
 *   **Auditoría Interna:** Por mandato expreso del Decreto 1072 (Art. 2.2.4.6.29), todas las empresas, independientemente de su tamaño, deben realizar una auditoría anual para verificar el cumplimiento del SG-SST.
+*   **Matriz Legal:** El Decreto 1072 (Art. 2.2.4.6.12) exige que todo empleador identifique y cumpla la normativa legal aplicable. Ninguna empresa está exenta de la ley.
+*   **Matriz de Comunicación:** Es el mecanismo para evidenciar que se comunican las políticas, riesgos y controles a los trabajadores (Art. 2.2.4.6.14).
+*   **Gestión del Cambio:** Todas las empresas deben evaluar los riesgos antes de implementar cambios internos, como maquinaria o procesos (Art. 2.2.4.6.26).
+*   **Reporte de Actos y Condiciones Inseguras:** Es un deber legal de todos los trabajadores (Art. 2.2.4.6.10) informar sobre peligros, por lo que toda empresa debe proveer el mecanismo para recibir estos reportes.
 
 ### ★★ Nivel Intermedio (21 Estándares)
 **¿A quién aplica?** Empresas de **11 a 50 trabajadores** clasificadas con riesgo I, II o III.
@@ -55,10 +59,8 @@ Según el Artículo 9 de la Res 0312. Al tener más empleados, el Decreto 1072 e
 **Justificación Documental:**
 Según el Artículo 16 de la Res 0312. Estas empresas deben aplicar la totalidad del Decreto 1072. Requieren un sistema maduro, medible y auditable de manera externa.
 *   **Incluye obligatoriamente los estándares de niveles anteriores.**
-*   **Matriz Legal:** Elemento formal de planeación avanzada.
 *   **Indicadores de Gestión Avanzados (Estructura, Proceso y Resultado):** Mientras todas las empresas llevan indicadores de accidentalidad básicos, las de 60 estándares deben montar la batería completa de gestión exigida por el Decreto 1072.
 *   **Profesiogramas:** Control avanzado y técnico sobre los requerimientos biomédicos de los cargos.
-*   **Gestión de Cambio:** Procedimientos documentados si cambia la maquinaria, el software o la estructura organizacional.
 
 ---
 
