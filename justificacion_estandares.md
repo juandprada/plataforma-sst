@@ -43,7 +43,7 @@ Según el Artículo 9 de la Res 0312. Al tener más empleados, el Decreto 1072 e
 *   **Políticas SST:** Alta dirección formalmente comprometida (Ojo: Los "Objetivos" se auditan formalmente en 60 estándares).
 *   **Comités (COPASST/Vigía y Convivencia):** Según la ley (Res 2013/86), empresas con menos de 10 trabajadores eligen un **Vigía** de SST. Las de 10 o más conforman el **COPASST**. Al pasar al nivel de 21 estándares (11 a 50 empleados), la conformación paritaria del COPASST y del Comité de Convivencia se vuelve un ítem obligatorio de evaluación.
 *   **Emergencias e Inspecciones:** Acta de Brigada, Documento Base del Plan y Simulacros obligatorios. Además, para demostrar operatividad de emergencias y mantenimiento, se requieren inspecciones documentadas (botiquines, extintores, EPPs, locativas).
-*   **Gestión de incidentes:** Reportes FURAT/FUREL e investigación formal.
+*   **Gestión de incidentes y Medidas Correctivas:** Reportes FURAT/FUREL e investigación formal. La investigación obliga a generar **acciones correctivas y preventivas**, y la empresa debe implementar cualquier medida dictada por la ARL o autoridades (Ítem 16).
 *   **Medicina Preventiva y Vigilancia Epidemiológica:** La resolución exige desarrollar actividades preventivas y programas de vigilancia epidemiológica acordes al diagnóstico de salud (Ítem 12).
 
 ### ★★★ Nivel Avanzado (60 Estándares)
