@@ -40,7 +40,7 @@ Según el Artículo 3 de la Resolución 0312, a estas microempresas se les exige
 **Justificación Documental:**
 Según el Artículo 9 de la Res 0312. Al tener más empleados, el Decreto 1072 exige un grado mayor de organización formal. Ya no basta con "hacer lo básico"; se debe evidenciar planeación estratégica e involucramiento del personal.
 *   **Incluye obligatoriamente los 7 estándares de Nivel Básico.**
-*   **Políticas SST:** Alta dirección formalmente comprometida (Ojo: Los "Objetivos" se auditan formalmente en 60 estándares).
+*   **Políticas y Objetivos SST:** La política demuestra el compromiso de la alta dirección. Además, por mandato del Decreto 1072, toda política debe fijar **Objetivos** medibles, los cuales son verificables en este nivel.
 *   **Comités (COPASST/Vigía y Convivencia):** Según la ley (Res 2013/86), empresas con menos de 10 trabajadores eligen un **Vigía** de SST. Las de 10 o más conforman el **COPASST**. Al pasar al nivel de 21 estándares (11 a 50 empleados), la conformación paritaria del COPASST y del Comité de Convivencia se vuelve un ítem obligatorio de evaluación.
 *   **Emergencias e Inspecciones:** Acta de Brigada, Documento Base del Plan y Simulacros obligatorios. Además, para demostrar operatividad de emergencias y mantenimiento, se requieren inspecciones documentadas (botiquines, extintores, EPPs, locativas).
 *   **Gestión de incidentes y Medidas Correctivas:** Reportes FURAT/FUREL e investigación formal. La investigación obliga a generar **acciones correctivas y preventivas**, y la empresa debe implementar cualquier medida dictada por la ARL o autoridades (Ítem 16).
@@ -52,7 +52,7 @@ Según el Artículo 9 de la Res 0312. Al tener más empleados, el Decreto 1072 e
 **Justificación Documental:**
 Según el Artículo 16 de la Res 0312. Estas empresas deben aplicar la totalidad del Decreto 1072. Requieren un sistema maduro, medible y auditable de manera externa.
 *   **Incluye obligatoriamente los estándares de niveles anteriores.**
-*   **Objetivos del SG-SST y Matriz Legal:** Elementos formales de planeación avanzada.
+*   **Matriz Legal:** Elemento formal de planeación avanzada.
 *   **Indicadores de Gestión (Estructura, Proceso y Resultado):** Ya no basta con hacer cosas, hay que demostrar con estadísticas que el sistema funciona.
 *   **Auditoría Interna:** Un requisito del 1072 para la mejora continua exhaustiva.
 *   **Profesiogramas:** Control avanzado y técnico sobre los requerimientos biomédicos de los cargos.
