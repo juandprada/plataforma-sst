@@ -259,6 +259,10 @@ varias empresas y ambas orientaciones.
 editar el `.xlsx`, correr `xlsx_to_json.py` + `normalize_logos.py`, commit. Sin Google
 Sheets ni dependencias externas. Herramientas: Python 3 con `openpyxl`, `Pillow`,
 `python-docx` y, solo para el cotejo visual, `pymupdf`.
+**Nota sobre codificación en Windows:** Al correr los scripts de datos (como `tools/gtc45_to_json.py`), la consola puede fallar con `UnicodeEncodeError` al imprimir caracteres especiales (como `→` o tildes) si la página de códigos no es UTF-8. Para evitarlo, antepón la variable de entorno:
+```powershell
+$env:PYTHONIOENCODING="utf-8"; python tools/gtc45_to_json.py
+```
 
 ## Publicar
 
