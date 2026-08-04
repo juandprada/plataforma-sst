@@ -408,7 +408,7 @@
     "te recuperamos": {
       "nombre_original": "Te recuperamos",
       "_clave": "te recuperamos",
-      "_timestamp": 1750955820168,
+      "_timestamp": 1785838711160,
       "trabajadores": {
         "admin": 10,
         "operarios": 1,
@@ -494,7 +494,7 @@
           ]
         },
         "SEG_03": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Ocasional",
           "cargos": [
             "Servicios Generales",
@@ -522,7 +522,7 @@
     "lotto hotel boutique": {
       "nombre_original": "Lotto hotel boutique",
       "_clave": "lotto hotel boutique",
-      "_timestamp": 1749759774665,
+      "_timestamp": 1785838711160,
       "trabajadores": {
         "admin": 0,
         "operarios": 0,
@@ -531,35 +531,35 @@
       },
       "peligros": {
         "BIO_01": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Frecuente",
           "cargos": [
             "Servicios Generales"
           ]
         },
         "BIO_02": {
-          "deficiencia": "Alto",
+          "deficiencia": "Bajo",
           "exposicion": "Esporadica",
           "cargos": [
             "Todos"
           ]
         },
         "BIO_03": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Ocasional",
           "cargos": [
             "Todos"
           ]
         },
         "BIO_04": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Ocasional",
           "cargos": [
             "Todos"
           ]
         },
         "BIO_05": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Frecuente",
           "cargos": [
             "Servicios Generales"
@@ -580,7 +580,7 @@
           ]
         },
         "BIO_M_03": {
-          "deficiencia": "Alto",
+          "deficiencia": "Bajo",
           "exposicion": "Continua",
           "cargos": [
             "Todos"
@@ -615,7 +615,7 @@
           ]
         },
         "NAT_01": {
-          "deficiencia": "Muy Alto",
+          "deficiencia": "Bajo",
           "exposicion": "Continua",
           "cargos": [
             "Todos"
@@ -629,21 +629,21 @@
           ]
         },
         "PSI_02": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Continua",
           "cargos": [
             "Todos"
           ]
         },
         "QUI_01": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Frecuente",
           "cargos": [
             "Servicios Generales"
           ]
         },
         "QUI_02": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Ocasional",
           "cargos": [
             "Servicios Generales"
@@ -657,14 +657,14 @@
           ]
         },
         "SEG_04": {
-          "deficiencia": "Alto",
+          "deficiencia": "Bajo",
           "exposicion": "Frecuente",
           "cargos": [
             "Todos"
           ]
         },
         "SEG_06": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Continua",
           "cargos": [
             "Administrativo"
@@ -675,7 +675,7 @@
     "medalleria deportiva del valle": {
       "nombre_original": "Medalleria deportiva del valle SAS",
       "_clave": "medalleria deportiva del valle",
-      "_timestamp": 1760624451398,
+      "_timestamp": 1785838711160,
       "trabajadores": {
         "admin": 2,
         "operarios": 1,
@@ -684,7 +684,7 @@
       },
       "peligros": {
         "BIO_01": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Ocasional",
           "cargos": [
             "Administrativo",
@@ -692,7 +692,7 @@
           ]
         },
         "BIO_02": {
-          "deficiencia": "Alto",
+          "deficiencia": "Bajo",
           "exposicion": "Ocasional",
           "cargos": [
             "Producción",
@@ -700,7 +700,7 @@
           ]
         },
         "BIO_03": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Ocasional",
           "cargos": [
             "Administrativo",
@@ -708,7 +708,7 @@
           ]
         },
         "BIO_04": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Ocasional",
           "cargos": [
             "Administrativo",
@@ -716,7 +716,7 @@
           ]
         },
         "BIO_05": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Ocasional",
           "cargos": [
             "Producción",
@@ -724,7 +724,7 @@
           ]
         },
         "BIO_M_01": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Continua",
           "cargos": [
             "Producción"
@@ -738,7 +738,7 @@
           ]
         },
         "BIO_M_03": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Frecuente",
           "cargos": [
             "Producción",
@@ -776,7 +776,7 @@
           ]
         },
         "FIS_04": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Frecuente",
           "cargos": [
             "Producción"
@@ -790,7 +790,7 @@
           ]
         },
         "NAT_01": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Continua",
           "cargos": [
             "Conductores",
@@ -799,7 +799,7 @@
           ]
         },
         "PSI_01": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Continua",
           "cargos": [
             "Producción",
@@ -808,7 +808,7 @@
           ]
         },
         "PSI_02": {
-          "deficiencia": "Muy Alto",
+          "deficiencia": "Bajo",
           "exposicion": "Continua",
           "cargos": [
             "Producción",
@@ -817,14 +817,14 @@
           ]
         },
         "QUI_01": {
-          "deficiencia": "Alto",
+          "deficiencia": "Bajo",
           "exposicion": "Frecuente",
           "cargos": [
             "Producción"
           ]
         },
         "QUI_02": {
-          "deficiencia": "Muy Alto",
+          "deficiencia": "Bajo",
           "exposicion": "Frecuente",
           "cargos": [
             "Producción"
@@ -845,14 +845,14 @@
           ]
         },
         "SEG_01": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Frecuente",
           "cargos": [
             "Producción"
           ]
         },
         "SEG_02": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Ocasional",
           "cargos": [
             "Producción",
@@ -860,7 +860,7 @@
           ]
         },
         "SEG_03": {
-          "deficiencia": "Alto",
+          "deficiencia": "Bajo",
           "exposicion": "Continua",
           "cargos": [
             "Producción",
@@ -878,14 +878,14 @@
           ]
         },
         "SEG_05": {
-          "deficiencia": "Alto",
+          "deficiencia": "Bajo",
           "exposicion": "Ocasional",
           "cargos": [
             "Conductores"
           ]
         },
         "SEG_06": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Frecuente",
           "cargos": [
             "Producción",
@@ -898,7 +898,7 @@
     "ck comercializadora un mundo de oportunidades": {
       "nombre_original": "CK COMERCIALIZADORA UN MUNDO DE OPORTUNIDADES SAS",
       "_clave": "ck comercializadora un mundo de oportunidades",
-      "_timestamp": 1785838047865,
+      "_timestamp": 1785838711160,
       "trabajadores": {
         "admin": 10,
         "operarios": 1,
@@ -960,7 +960,7 @@
           ]
         },
         "NAT_01": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Ocasional",
           "cargos": [
             "Servicios Generales",
@@ -984,7 +984,7 @@
           ]
         },
         "SEG_03": {
-          "deficiencia": "Alto",
+          "deficiencia": "Bajo",
           "exposicion": "Ocasional",
           "cargos": [
             "Servicios Generales",
@@ -992,7 +992,7 @@
           ]
         },
         "SEG_04": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Frecuente",
           "cargos": [
             "Servicios Generales",
@@ -1000,7 +1000,7 @@
           ]
         },
         "SEG_06": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Ocasional",
           "cargos": [
             "Servicios Generales",
@@ -1012,7 +1012,7 @@
     "gaf technology solutions": {
       "nombre_original": "GAF TECHNOLOGY SOLUTIONS SAS",
       "_clave": "gaf technology solutions",
-      "_timestamp": 1785838047865,
+      "_timestamp": 1785838711161,
       "trabajadores": {
         "admin": 10,
         "operarios": 1,
@@ -1074,7 +1074,7 @@
           ]
         },
         "NAT_01": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Ocasional",
           "cargos": [
             "Servicios Generales",
@@ -1098,7 +1098,7 @@
           ]
         },
         "SEG_03": {
-          "deficiencia": "Alto",
+          "deficiencia": "Bajo",
           "exposicion": "Ocasional",
           "cargos": [
             "Servicios Generales",
@@ -1106,7 +1106,7 @@
           ]
         },
         "SEG_04": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Frecuente",
           "cargos": [
             "Servicios Generales",
@@ -1114,7 +1114,7 @@
           ]
         },
         "SEG_06": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Ocasional",
           "cargos": [
             "Servicios Generales",
@@ -1126,7 +1126,7 @@
     "kapitalbank": {
       "nombre_original": "KAPITALBANK SAS",
       "_clave": "kapitalbank",
-      "_timestamp": 1785838047865,
+      "_timestamp": 1785838711161,
       "trabajadores": {
         "admin": 10,
         "operarios": 1,
@@ -1188,7 +1188,7 @@
           ]
         },
         "NAT_01": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Ocasional",
           "cargos": [
             "Servicios Generales",
@@ -1212,7 +1212,7 @@
           ]
         },
         "SEG_03": {
-          "deficiencia": "Alto",
+          "deficiencia": "Bajo",
           "exposicion": "Ocasional",
           "cargos": [
             "Servicios Generales",
@@ -1220,7 +1220,7 @@
           ]
         },
         "SEG_04": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Frecuente",
           "cargos": [
             "Servicios Generales",
@@ -1228,7 +1228,7 @@
           ]
         },
         "SEG_06": {
-          "deficiencia": "Medio",
+          "deficiencia": "Bajo",
           "exposicion": "Ocasional",
           "cargos": [
             "Servicios Generales",
