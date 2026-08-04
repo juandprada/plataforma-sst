@@ -317,7 +317,7 @@
     "titulo": "REGISTRO DE ENTREGA DE ELEMENTOS DE PROTECCIÓN PERSONAL",
     "codigo": "EPP-SST-01",
     "version": "01",
-    "orientacion": "vertical"
+    "orientacion": "horizontal"
   },
   {
     "id": "indicadores",
