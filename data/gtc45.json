@@ -671,6 +671,571 @@
           ]
         }
       }
+    },
+    "medalleria deportiva del valle": {
+      "nombre_original": "Medalleria deportiva del valle SAS",
+      "_clave": "medalleria deportiva del valle",
+      "_timestamp": 1760624451398,
+      "trabajadores": {
+        "admin": 2,
+        "operarios": 1,
+        "servicios": 0,
+        "conductores": 1
+      },
+      "peligros": {
+        "BIO_01": {
+          "deficiencia": "Medio",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Administrativo",
+            "Producción"
+          ]
+        },
+        "BIO_02": {
+          "deficiencia": "Alto",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Producción",
+            "Administrativo"
+          ]
+        },
+        "BIO_03": {
+          "deficiencia": "Medio",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Administrativo",
+            "Producción"
+          ]
+        },
+        "BIO_04": {
+          "deficiencia": "Medio",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Administrativo",
+            "Producción"
+          ]
+        },
+        "BIO_05": {
+          "deficiencia": "Medio",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Producción",
+            "Administrativo"
+          ]
+        },
+        "BIO_M_01": {
+          "deficiencia": "Medio",
+          "exposicion": "Continua",
+          "cargos": [
+            "Producción"
+          ]
+        },
+        "BIO_M_02": {
+          "deficiencia": "Medio",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Producción"
+          ]
+        },
+        "BIO_M_03": {
+          "deficiencia": "Medio",
+          "exposicion": "Frecuente",
+          "cargos": [
+            "Producción",
+            "Administrativo",
+            "Conductores"
+          ]
+        },
+        "BIO_M_04": {
+          "deficiencia": "Medio",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Producción"
+          ]
+        },
+        "FIS_01": {
+          "deficiencia": "Medio",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Producción",
+            "Administrativo"
+          ]
+        },
+        "FIS_02": {
+          "deficiencia": "Medio",
+          "exposicion": "Frecuente",
+          "cargos": [
+            "Producción"
+          ]
+        },
+        "FIS_03": {
+          "deficiencia": "Medio",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Producción"
+          ]
+        },
+        "FIS_04": {
+          "deficiencia": "Medio",
+          "exposicion": "Frecuente",
+          "cargos": [
+            "Producción"
+          ]
+        },
+        "FIS_07": {
+          "deficiencia": "Bajo",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Producción"
+          ]
+        },
+        "NAT_01": {
+          "deficiencia": "Medio",
+          "exposicion": "Continua",
+          "cargos": [
+            "Conductores",
+            "Administrativo",
+            "Producción"
+          ]
+        },
+        "PSI_01": {
+          "deficiencia": "Medio",
+          "exposicion": "Continua",
+          "cargos": [
+            "Producción",
+            "Administrativo",
+            "Conductores"
+          ]
+        },
+        "PSI_02": {
+          "deficiencia": "Muy Alto",
+          "exposicion": "Continua",
+          "cargos": [
+            "Producción",
+            "Administrativo",
+            "Conductores"
+          ]
+        },
+        "QUI_01": {
+          "deficiencia": "Alto",
+          "exposicion": "Frecuente",
+          "cargos": [
+            "Producción"
+          ]
+        },
+        "QUI_02": {
+          "deficiencia": "Muy Alto",
+          "exposicion": "Frecuente",
+          "cargos": [
+            "Producción"
+          ]
+        },
+        "QUI_03": {
+          "deficiencia": "Bajo",
+          "exposicion": "Continua",
+          "cargos": [
+            "Producción"
+          ]
+        },
+        "QUI_04": {
+          "deficiencia": "Medio",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Producción"
+          ]
+        },
+        "SEG_01": {
+          "deficiencia": "Medio",
+          "exposicion": "Frecuente",
+          "cargos": [
+            "Producción"
+          ]
+        },
+        "SEG_02": {
+          "deficiencia": "Medio",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Producción",
+            "Administrativo"
+          ]
+        },
+        "SEG_03": {
+          "deficiencia": "Alto",
+          "exposicion": "Continua",
+          "cargos": [
+            "Producción",
+            "Administrativo",
+            "Conductores"
+          ]
+        },
+        "SEG_04": {
+          "deficiencia": "Bajo",
+          "exposicion": "Continua",
+          "cargos": [
+            "Producción",
+            "Administrativo",
+            "Conductores"
+          ]
+        },
+        "SEG_05": {
+          "deficiencia": "Alto",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Conductores"
+          ]
+        },
+        "SEG_06": {
+          "deficiencia": "Medio",
+          "exposicion": "Frecuente",
+          "cargos": [
+            "Producción",
+            "Administrativo",
+            "Conductores"
+          ]
+        }
+      }
+    },
+    "ck comercializadora un mundo de oportunidades": {
+      "nombre_original": "CK COMERCIALIZADORA UN MUNDO DE OPORTUNIDADES SAS",
+      "_clave": "ck comercializadora un mundo de oportunidades",
+      "_timestamp": 1785838047865,
+      "trabajadores": {
+        "admin": 10,
+        "operarios": 1,
+        "servicios": 1,
+        "conductores": 0
+      },
+      "peligros": {
+        "BIO_01": {
+          "deficiencia": "Medio",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Servicios Generales",
+            "Administrativo"
+          ]
+        },
+        "BIO_05": {
+          "deficiencia": "Medio",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Servicios Generales"
+          ]
+        },
+        "BIO_M_01": {
+          "deficiencia": "Bajo",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Administrativo"
+          ]
+        },
+        "BIO_M_03": {
+          "deficiencia": "Bajo",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Administrativo",
+            "Servicios Generales"
+          ]
+        },
+        "BIO_M_04": {
+          "deficiencia": "Medio",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Administrativo",
+            "Servicios Generales"
+          ]
+        },
+        "FIS_01": {
+          "deficiencia": "Bajo",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Servicios Generales",
+            "Administrativo"
+          ]
+        },
+        "FIS_02": {
+          "deficiencia": "Medio",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Administrativo"
+          ]
+        },
+        "NAT_01": {
+          "deficiencia": "Medio",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Servicios Generales",
+            "Administrativo"
+          ]
+        },
+        "PSI_01": {
+          "deficiencia": "Bajo",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Administrativo",
+            "Servicios Generales"
+          ]
+        },
+        "PSI_02": {
+          "deficiencia": "Bajo",
+          "exposicion": "Continua",
+          "cargos": [
+            "Administrativo",
+            "Servicios Generales"
+          ]
+        },
+        "SEG_03": {
+          "deficiencia": "Alto",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Servicios Generales",
+            "Administrativo"
+          ]
+        },
+        "SEG_04": {
+          "deficiencia": "Medio",
+          "exposicion": "Frecuente",
+          "cargos": [
+            "Servicios Generales",
+            "Administrativo"
+          ]
+        },
+        "SEG_06": {
+          "deficiencia": "Medio",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Servicios Generales",
+            "Administrativo"
+          ]
+        }
+      }
+    },
+    "gaf technology solutions": {
+      "nombre_original": "GAF TECHNOLOGY SOLUTIONS SAS",
+      "_clave": "gaf technology solutions",
+      "_timestamp": 1785838047865,
+      "trabajadores": {
+        "admin": 10,
+        "operarios": 1,
+        "servicios": 1,
+        "conductores": 0
+      },
+      "peligros": {
+        "BIO_01": {
+          "deficiencia": "Medio",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Servicios Generales",
+            "Administrativo"
+          ]
+        },
+        "BIO_05": {
+          "deficiencia": "Medio",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Servicios Generales"
+          ]
+        },
+        "BIO_M_01": {
+          "deficiencia": "Bajo",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Administrativo"
+          ]
+        },
+        "BIO_M_03": {
+          "deficiencia": "Bajo",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Administrativo",
+            "Servicios Generales"
+          ]
+        },
+        "BIO_M_04": {
+          "deficiencia": "Medio",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Administrativo",
+            "Servicios Generales"
+          ]
+        },
+        "FIS_01": {
+          "deficiencia": "Bajo",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Servicios Generales",
+            "Administrativo"
+          ]
+        },
+        "FIS_02": {
+          "deficiencia": "Medio",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Administrativo"
+          ]
+        },
+        "NAT_01": {
+          "deficiencia": "Medio",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Servicios Generales",
+            "Administrativo"
+          ]
+        },
+        "PSI_01": {
+          "deficiencia": "Bajo",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Administrativo",
+            "Servicios Generales"
+          ]
+        },
+        "PSI_02": {
+          "deficiencia": "Bajo",
+          "exposicion": "Continua",
+          "cargos": [
+            "Administrativo",
+            "Servicios Generales"
+          ]
+        },
+        "SEG_03": {
+          "deficiencia": "Alto",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Servicios Generales",
+            "Administrativo"
+          ]
+        },
+        "SEG_04": {
+          "deficiencia": "Medio",
+          "exposicion": "Frecuente",
+          "cargos": [
+            "Servicios Generales",
+            "Administrativo"
+          ]
+        },
+        "SEG_06": {
+          "deficiencia": "Medio",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Servicios Generales",
+            "Administrativo"
+          ]
+        }
+      }
+    },
+    "kapitalbank": {
+      "nombre_original": "KAPITALBANK SAS",
+      "_clave": "kapitalbank",
+      "_timestamp": 1785838047865,
+      "trabajadores": {
+        "admin": 10,
+        "operarios": 1,
+        "servicios": 1,
+        "conductores": 0
+      },
+      "peligros": {
+        "BIO_01": {
+          "deficiencia": "Medio",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Servicios Generales",
+            "Administrativo"
+          ]
+        },
+        "BIO_05": {
+          "deficiencia": "Medio",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Servicios Generales"
+          ]
+        },
+        "BIO_M_01": {
+          "deficiencia": "Bajo",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Administrativo"
+          ]
+        },
+        "BIO_M_03": {
+          "deficiencia": "Bajo",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Administrativo",
+            "Servicios Generales"
+          ]
+        },
+        "BIO_M_04": {
+          "deficiencia": "Medio",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Administrativo",
+            "Servicios Generales"
+          ]
+        },
+        "FIS_01": {
+          "deficiencia": "Bajo",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Servicios Generales",
+            "Administrativo"
+          ]
+        },
+        "FIS_02": {
+          "deficiencia": "Medio",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Administrativo"
+          ]
+        },
+        "NAT_01": {
+          "deficiencia": "Medio",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Servicios Generales",
+            "Administrativo"
+          ]
+        },
+        "PSI_01": {
+          "deficiencia": "Bajo",
+          "exposicion": "Esporadica",
+          "cargos": [
+            "Administrativo",
+            "Servicios Generales"
+          ]
+        },
+        "PSI_02": {
+          "deficiencia": "Bajo",
+          "exposicion": "Continua",
+          "cargos": [
+            "Administrativo",
+            "Servicios Generales"
+          ]
+        },
+        "SEG_03": {
+          "deficiencia": "Alto",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Servicios Generales",
+            "Administrativo"
+          ]
+        },
+        "SEG_04": {
+          "deficiencia": "Medio",
+          "exposicion": "Frecuente",
+          "cargos": [
+            "Servicios Generales",
+            "Administrativo"
+          ]
+        },
+        "SEG_06": {
+          "deficiencia": "Medio",
+          "exposicion": "Ocasional",
+          "cargos": [
+            "Servicios Generales",
+            "Administrativo"
+          ]
+        }
+      }
     }
   }
 }
