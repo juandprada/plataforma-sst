@@ -175,6 +175,15 @@
           }
         },
         {
+          "nombre": "Aplicación Batería de Riesgo Psicosocial",
+          "vu": {
+            "fijo": 35000
+          },
+          "cant": {
+            "param": "trabajadores"
+          }
+        },
+        {
           "nombre": "Semana de la Salud",
           "vu": {
             "fijo": 30000,
