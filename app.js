@@ -629,6 +629,9 @@ async function generar() {
     renderSelectorCargoIPVER(formato);
     // Selector de inspección: solo en el formato de inspección.
     renderSelectorInspeccion(formato);
+    // Panel de extras Matriz Legal: solo en matriz-legal.
+    const panelMatrizLegal = $("#panel-matriz-legal");
+    if (panelMatrizLegal) panelMatrizLegal.hidden = formato.id !== "matriz-legal";
     
     const cap = capacitacionElegida();
     const insp = inspeccionElegida();
@@ -696,6 +699,19 @@ async function generar() {
     $("#salida").innerHTML =
       `<article class="doc ${scope}">${encabezado}` +
       `<div class="doc-body">${cuerpo}</div></article>`;
+
+    if (formato.id === "matriz-legal") {
+      const docOut = $("#salida");
+      if (!$("#ml-chk-alturas").checked) {
+        docOut.querySelectorAll('tr[data-extra="alturas"]').forEach(el => el.remove());
+      }
+      if (!$("#ml-chk-confinados").checked) {
+        docOut.querySelectorAll('tr[data-extra="confinados"]').forEach(el => el.remove());
+      }
+      if (!$("#ml-chk-pesv").checked) {
+        docOut.querySelectorAll('tr[data-extra="pesv"]').forEach(el => el.remove());
+      }
+    }
 
     // Página por defecto en cada encabezado; al descargar se corrige al total real.
     const celdasPag = $("#salida").querySelectorAll(".dh-pagina");
@@ -857,6 +873,9 @@ async function init() {
     $("#sel-capacitacion").addEventListener("change", solicitarGeneracion);
     $("#sel-cargo-ipver").addEventListener("change", solicitarGeneracion);
     $("#sel-inspeccion").addEventListener("change", solicitarGeneracion);
+    $("#ml-chk-alturas").addEventListener("change", solicitarGeneracion);
+    $("#ml-chk-confinados").addEventListener("change", solicitarGeneracion);
+    $("#ml-chk-pesv").addEventListener("change", solicitarGeneracion);
     solicitarGeneracion(); // genera el primer documento con la selección por defecto
   } catch (err) {
     console.error(err);
