@@ -1,14 +1,17 @@
 [
   {
-    "id": "licencia",
-    "nombre": "Licencia del Sistema SST",
+    "id": "licencias-y-certificados",
+    "nombre": "Licencias y Certificados",
     "categoria": "General",
     "archivo": "",
-    "titulo": "Licencia del Sistema SST",
+    "titulo": "Licencias y Certificados",
     "codigo": "",
     "version": "",
     "orientacion": "vertical",
-    "estatico": "assets/licencia.pdf"
+    "estatico": [
+      { "nombre": "Licencia del Sistema SST", "url": "assets/licencia.pdf" },
+      { "nombre": "Certificado 20 Horas SST", "url": "assets/karen-bensur-20-horas.pdf" }
+    ]
   },
   {
     "id": "tabla-de-contenido",

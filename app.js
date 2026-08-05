@@ -606,17 +606,27 @@ async function generar() {
       $("#salida").innerHTML = "";
       const visor = $("#visor");
       visor.hidden = false;
-      visor.innerHTML = `
-        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;background:#f9f9f9;border:1px dashed #ccc;">
-          <a href="${formato.estatico}" download="${formato.nombre}.pdf" style="text-decoration:none;text-align:center;color:#333;padding:40px;border-radius:10px;background:#fff;box-shadow:0 4px 6px rgba(0,0,0,0.1);transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      
+      let botones = "";
+      const estaticos = Array.isArray(formato.estatico) ? formato.estatico : [{ nombre: formato.nombre, url: formato.estatico }];
+      
+      for (const est of estaticos) {
+        botones += `
+          <a href="${est.url}" download="${est.nombre}.pdf" style="text-decoration:none;text-align:center;color:#333;padding:40px;border-radius:10px;background:#fff;box-shadow:0 4px 6px rgba(0,0,0,0.1);transition:transform 0.2s;margin:15px;min-width:200px;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
             <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:15px;color:#d9534f;">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
               <polyline points="7 10 12 15 17 10"></polyline>
               <line x1="12" y1="15" x2="12" y2="3"></line>
             </svg>
             <br>
-            <strong style="font-size:18px;">Descargar ${formato.nombre}</strong>
+            <strong style="font-size:18px;">Descargar<br>${est.nombre}</strong>
           </a>
+        `;
+      }
+
+      visor.innerHTML = `
+        <div style="display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:center;height:100%;background:#f9f9f9;border:1px dashed #ccc;">
+          ${botones}
         </div>`;
       return;
     }
