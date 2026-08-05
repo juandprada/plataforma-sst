@@ -323,6 +323,26 @@
     "orientacion": "horizontal"
   },
   {
+    "id": "inspeccion-epps",
+    "nombre": "Inspección de EPPs",
+    "categoria": "2.HACER",
+    "archivo": "inspeccion-epps.html",
+    "titulo": "INSPECCIÓN DE ELEMENTOS DE PROTECCIÓN PERSONAL",
+    "codigo": "EPP-SST-02",
+    "version": "01",
+    "orientacion": "horizontal"
+  },
+  {
+    "id": "matriz-epps",
+    "nombre": "Matriz de EPPs",
+    "categoria": "2.HACER",
+    "archivo": "matriz-epps.html",
+    "titulo": "MATRIZ DE ELEMENTOS DE PROTECCIÓN PERSONAL",
+    "codigo": "EPP-SST-03",
+    "version": "01",
+    "orientacion": "horizontal"
+  },
+  {
     "id": "indicadores",
     "nombre": "Indicadores de Gestión",
     "categoria": "3.VERIFICAR",
