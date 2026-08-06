@@ -391,5 +391,16 @@
     "codigo": "MP-SST-01",
     "version": "01",
     "orientacion": "vertical"
+  },
+  {
+    "id": "plan-respuestas",
+    "nombre": "Plan de Respuestas (encuestas)",
+    "categoria": "Utilidades",
+    "archivo": null,
+    "titulo": "PLAN DE RESPUESTAS — ENCUESTAS SG-SST",
+    "codigo": "PR-SST-01",
+    "version": "01",
+    "orientacion": "vertical",
+    "especial": "plan-respuestas"
   }
 ]

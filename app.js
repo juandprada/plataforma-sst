@@ -514,6 +514,149 @@ async function fetchText(url) {
   return r.text();
 }
 
+// ---- Plan de Respuestas (seguimiento de encuestas SG-SST) -------------------
+// Fuente de catalogo de encuestas: workers/config.json del repo juandprada/respuestasencuestas.
+// Fuente de respuestas: GitHub Contents API (repo publico; sin token requerido).
+const PLAN_BASE = "https://juandprada.github.io/respuestasencuestas";
+const PLAN_REPO_RAW = "https://raw.githubusercontent.com/juandprada/respuestasencuestas/main/workers/config.json";
+const PLAN_REPO_API = "https://api.github.com/repos/juandprada/respuestasencuestas/contents";
+
+function planSlugify(s) {
+  return String(s || "")
+    .toLowerCase()
+    .normalize("NFD").replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+}
+
+// nombre del archivo del worker: <slug_empresa>_<ISO8601>_<uuid8>.json
+function planParseFilename(name) {
+  const m = String(name).match(/^(.*?)_(\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}-\d{3}Z)_[a-f0-9]{8}\.json$/);
+  if (!m) return null;
+  return { empresa: m[1], ts: m[2], fecha: m[2].replace(/T(\d{2})-(\d{2})-(\d{2})-/, "T$1:$2:$3.") };
+}
+
+async function planFetchJSON(url) {
+  const r = await fetch(url, { cache: "no-cache" });
+  if (!r.ok) {
+    const err = new Error(`${r.status}`);
+    err.status = r.status;
+    throw err;
+  }
+  return r.json();
+}
+
+async function planRespuestasPorEncuesta(slug) {
+  const url = `${PLAN_REPO_API}/respuestas/${slug}`;
+  try {
+    const items = await planFetchJSON(url);
+    return items.filter((it) => it.type === "file" && it.name.endsWith(".json"));
+  } catch (e) {
+    if (e.status === 404) return [];
+    throw e;
+  }
+}
+
+function planFechaBonita(iso) {
+  if (!iso) return "";
+  const m = iso.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2})-(\d{2})-(\d{2})-(\d{3})Z$/);
+  if (!m) return iso;
+  return `${m[3]}/${m[2]}/${m[1]} ${m[4]}:${m[5]}:${m[6]}Z`;
+}
+
+async function renderPlanRespuestas(empresa) {
+  setEstado("Buscando encuestas realizadas…");
+  const visor = $("#visor");
+  const slugEmpresa = planSlugify(empresa.EMPRESA);
+
+  // 1) catalogo = encuestas publicadas (config.json del repo)
+  let cfg;
+  try {
+    cfg = await planFetchJSON(PLAN_REPO_RAW);
+  } catch (e) {
+    setEstado("No se pudo leer workers/config.json del repo: " + e.message, true);
+    return;
+  }
+  const encuestas = Array.isArray(cfg.encuestas) ? cfg.encuestas : [];
+
+  // 2) respuestas por encuesta
+  let info = [];
+  let tasaError = null;
+  for (const enc of encuestas) {
+    try {
+      const archivos = await planRespuestasPorEncuesta(enc.slug);
+      const mios = archivos
+        .map((it) => ({ it, meta: planParseFilename(it.name) }))
+        .filter((x) => x.meta && x.meta.empresa === slugEmpresa)
+        .sort((a, b) => (a.meta.ts < b.meta.ts ? 1 : -1));
+      info.push({ enc, total: archivos.length, ultimo: mios[0] || null, mios });
+    } catch (e) {
+      tasaError = e;
+      info.push({ enc, total: 0, ultimo: null, mios: [] });
+    }
+  }
+
+  // 3) pintar panel tipo "estatico"
+  const hechas = info.filter((x) => x.ultimo).length;
+  const filas = info.map(({ enc, ultimo, mios }) => {
+    const urlEncuesta = `${PLAN_BASE}/encuestas/${enc.slug}.html?empresa=${encodeURIComponent(slugEmpresa)}`;
+    const completada = !!ultimo;
+    const it = completada ? ultimo.it : null;
+    const fecha = completada ? planFechaBonita(ultimo.meta.ts) : "";
+    const jsonUrl = completada
+      ? `https://github.com/juandprada/respuestasencuestas/blob/main/${it.path.replace(/ /g, "%20")}`
+      : "";
+    const verLink = completada && mios.length > 0
+      ? `<a href="https://github.com/juandprada/respuestasencuestas/tree/main/${enc.slug}" target="_blank" rel="noopener">todas (${info.length ? mios.length : 0})</a>`
+      : "";
+    return `
+      <tr style="background:${completada ? "#f2fbf4" : "#fdf4f4"}">
+        <td style="text-align:center; width:56px; font-size:1.3rem">${completada ? "✅" : "⬜"}</td>
+        <td style="font-weight:600">${escapeHTML(enc.title)}</td>
+        <td><code>${escapeHTML(enc.codigo || "—")}</code></td>
+        <td style="text-align:center">${completada ? "Completada" : "Pendiente"}</td>
+        <td>${fecha}</td>
+        <td>
+          <a href="${urlEncuesta}" target="_blank" rel="noopener" style="font-weight:600">${completada ? "Volver a responder" : "Completar ahora →"}</a>
+          ${completada ? ` · <a href="${jsonUrl}" target="_blank" rel="noopener">ver JSON</a>` : ""}
+        </td>
+      </tr>`;
+  }).join("");
+
+  const errorNota = tasaError ? `<p style="color:#b21d21; font-size:.9rem; margin:6px 0">
+    ⚠ GitHub API devolvió un error (${tasaError.status || tasaError.message}). Puede ser límite de
+    tasa (60/h sin token) o un repo movido a privado.</p>` : "";
+
+  visor.hidden = false;
+  visor.innerHTML = `
+    <div style="padding: 26px; background: #fff; max-width: 1060px; margin: 0 auto; box-shadow: 0 2px 8px rgba(0,0,0,.07); font-family: Arial, sans-serif;">
+      <h2 style="margin:0 0 2px; color:#1f4e79; font-size: 1.1rem;">PLAN DE RESPUESTAS — ENCUESTAS SG-SST</h2>
+      <div style="font-size:.85rem; color:#555;">Empresa: <strong>${escapeHTML(empresa.EMPRESA)}</strong> &nbsp;·&nbsp; ${hechas} de ${encuestas.length} encuestas completadas</div>
+      <hr style="border:none; border-top:2px solid #1f4e79; margin:10px 0">
+      ${errorNota}
+      <table style="width:100%; border-collapse:collapse; font-size:.92rem">
+        <thead>
+          <tr style="background:#f2f2f2">
+            <th style="border:1px solid #000; padding:6px">Estado</th>
+            <th style="border:1px solid #000; padding:6px">Encuesta</th>
+            <th style="border:1px solid #000; padding:6px">Código</th>
+            <th style="border:1px solid #000; padding:6px">Situación</th>
+            <th style="border:1px solid #000; padding:6px">Última realización</th>
+            <th style="border:1px solid #000; padding:6px">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>${filas}</tbody>
+      </table>
+      <p style="font-size:.8rem; color:#666; margin-top:10px">
+        Los enlaces "Completar ahora" abren la encuesta pública ya con el nombre de la empresa prellenado.
+        Las respuestas quedan en el repo GitHub <code>juandprada/respuestasencuestas</code> vía el Worker.
+      </p>
+    </div>`;
+  $("#salida").innerHTML = "";
+  document.title = `Plan de Respuestas - ${empresa.EMPRESA}`;
+  setEstado("");
+}
+
 async function fetchJSON(url) {
   return JSON.parse(await fetchText(url));
 }
@@ -628,6 +771,14 @@ async function generar() {
         <div style="display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:center;height:100%;background:#f9f9f9;border:1px dashed #ccc;">
           ${botones}
         </div>`;
+      return;
+    }
+
+    // FORMATO ESPECIAL: Plan de Respuestas (encuestas internas SG-SST).
+    // No genera PDF; pinta el seguimiento de encuestas de la empresa: cuáles están
+    // realizadas (fecha y archivo) y links para completar las faltantes.
+    if (formato.id === "plan-respuestas") {
+      await renderPlanRespuestas(empresa);
       return;
     }
 
