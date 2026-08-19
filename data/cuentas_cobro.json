@@ -15,5 +15,13 @@
     "recubrimiento-del-valle": 450000,
     "premium-alimentos-sas": 500000
   },
-  "tarifa_default": 250000
+  "tarifa_default": 250000,
+  "valores_comunes": [
+    150000,
+    162500,
+    200000,
+    250000,
+    450000,
+    500000
+  ]
 }

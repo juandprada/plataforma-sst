@@ -591,11 +591,17 @@ function diaATexto(dia) {
   return String(dia);
 }
 
+function valoresComunesCuentaCobro() {
+  return (CUENTAS_COBRO_DATA && CUENTAS_COBRO_DATA.valores_comunes) || [
+    150000, 162500, 200000, 250000, 450000, 500000
+  ];
+}
+
 function valorCuentaCobro(empresa) {
   if (!empresa) return 250000;
-  const inputValor = $("#input-valor-cc");
-  if (inputValor && inputValor.value !== "" && Number(inputValor.value) > 0) {
-    return Number(inputValor.value);
+  const selValor = $("#sel-valor-cc");
+  if (selValor && selValor.value !== "" && Number(selValor.value) > 0) {
+    return Number(selValor.value);
   }
   const tarifas = (CUENTAS_COBRO_DATA && CUENTAS_COBRO_DATA.tarifas_por_empresa) || {};
   return tarifas[empresa._id] || (CUENTAS_COBRO_DATA && CUENTAS_COBRO_DATA.tarifa_default) || 250000;
@@ -609,12 +615,12 @@ function renderSelectorCuentaCobro(formato, empresa) {
   if (campoValor) campoValor.hidden = !esCC;
 
   if (esCC && empresa) {
-    const inputValor = $("#input-valor-cc");
-    if (inputValor && (!inputValor.dataset.empresa || inputValor.dataset.empresa !== empresa._id)) {
+    const selValor = $("#sel-valor-cc");
+    if (selValor && (!selValor.dataset.empresa || selValor.dataset.empresa !== empresa._id)) {
       const tarifas = (CUENTAS_COBRO_DATA && CUENTAS_COBRO_DATA.tarifas_por_empresa) || {};
       const val = tarifas[empresa._id] || (CUENTAS_COBRO_DATA && CUENTAS_COBRO_DATA.tarifa_default) || 250000;
-      inputValor.value = val;
-      inputValor.dataset.empresa = empresa._id;
+      selValor.value = String(val);
+      selValor.dataset.empresa = empresa._id;
     }
   }
 }
@@ -841,6 +847,19 @@ function poblarSelects() {
     });
     const mesActual = new Date().getMonth() + 1;
     selM.value = String(mesActual);
+  }
+
+  // Valores mensuales para Cuenta de Cobro.
+  const selV = $("#sel-valor-cc");
+  if (selV) {
+    selV.innerHTML = "";
+    const comunes = valoresComunesCuentaCobro();
+    for (const val of comunes) {
+      const o = document.createElement("option");
+      o.value = String(val);
+      o.textContent = "$" + val.toLocaleString("es-CO");
+      selV.appendChild(o);
+    }
   }
 
   // Años disponibles: el actual y el anterior (hoy: 2026 y 2025). Muchos documentos
@@ -1184,11 +1203,12 @@ async function init() {
       const formato = FORMATOS.find((f) => f.id === $("#sel-formato").value);
       const empresa = EMPRESAS.find((e) => e._id === $("#sel-empresa").value);
       if (formato && formato.id === FORMATO_CUENTA_COBRO && empresa) {
-        const inputValor = $("#input-valor-cc");
-        if (inputValor) {
+        const selValor = $("#sel-valor-cc");
+        if (selValor) {
           const tarifas = (CUENTAS_COBRO_DATA && CUENTAS_COBRO_DATA.tarifas_por_empresa) || {};
-          inputValor.value = tarifas[empresa._id] || (CUENTAS_COBRO_DATA && CUENTAS_COBRO_DATA.tarifa_default) || 250000;
-          inputValor.dataset.empresa = empresa._id;
+          const val = tarifas[empresa._id] || (CUENTAS_COBRO_DATA && CUENTAS_COBRO_DATA.tarifa_default) || 250000;
+          selValor.value = String(val);
+          selValor.dataset.empresa = empresa._id;
         }
       }
       solicitarGeneracion();
@@ -1197,11 +1217,12 @@ async function init() {
       const formato = FORMATOS.find((f) => f.id === $("#sel-formato").value);
       const empresa = EMPRESAS.find((e) => e._id === $("#sel-empresa").value);
       if (formato && formato.id === FORMATO_CUENTA_COBRO && empresa) {
-        const inputValor = $("#input-valor-cc");
-        if (inputValor) {
+        const selValor = $("#sel-valor-cc");
+        if (selValor) {
           const tarifas = (CUENTAS_COBRO_DATA && CUENTAS_COBRO_DATA.tarifas_por_empresa) || {};
-          inputValor.value = tarifas[empresa._id] || (CUENTAS_COBRO_DATA && CUENTAS_COBRO_DATA.tarifa_default) || 250000;
-          inputValor.dataset.empresa = empresa._id;
+          const val = tarifas[empresa._id] || (CUENTAS_COBRO_DATA && CUENTAS_COBRO_DATA.tarifa_default) || 250000;
+          selValor.value = String(val);
+          selValor.dataset.empresa = empresa._id;
         }
       }
       solicitarGeneracion();
@@ -1211,7 +1232,7 @@ async function init() {
     $("#sel-cargo-ipver").addEventListener("change", solicitarGeneracion);
     $("#sel-inspeccion").addEventListener("change", solicitarGeneracion);
     $("#sel-mes-cc").addEventListener("change", solicitarGeneracion);
-    $("#input-valor-cc").addEventListener("change", solicitarGeneracion);
+    $("#sel-valor-cc").addEventListener("change", solicitarGeneracion);
     $("#ml-chk-alturas").addEventListener("change", solicitarGeneracion);
     $("#ml-chk-confinados").addEventListener("change", solicitarGeneracion);
     $("#ml-chk-pesv").addEventListener("change", solicitarGeneracion);
