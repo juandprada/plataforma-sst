@@ -604,3 +604,126 @@ button:disabled { opacity: .5; cursor: not-allowed; }
   font-size: 10px;
   color: #856404;
 }
+
+/* ---- Cuenta de Cobro ---- */
+#campo-valor-cc input {
+  padding: .55rem .6rem;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  font-size: .95rem;
+  background: #fff;
+}
+
+.doc--cuenta-de-cobro .doc-header { display: none; }
+.doc--cuenta-de-cobro .doc-body { margin-top: 0; font-size: 15px; line-height: 1.6; }
+
+.cc-container {
+  padding: 8px 4px;
+}
+
+.cc-marco {
+  border: 1.5px solid #bbb;
+  padding: 40px 45px 35px;
+  box-sizing: border-box;
+  min-height: 860px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cc-encabezado-seccion {
+  margin-bottom: 20px;
+}
+
+.cc-titulo {
+  text-align: center;
+  font-size: 21px;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 16px;
+  letter-spacing: .5px;
+}
+
+.cc-numero {
+  font-size: 14.5px;
+  margin: 0;
+  color: #000;
+}
+
+.cc-partes {
+  text-align: center;
+  margin: 24px 0 30px;
+}
+
+.cc-nombre-empresa, .cc-nit-empresa, .cc-nombre-consultora, .cc-nit-consultora {
+  margin: 3px 0;
+  font-size: 15px;
+  color: #000;
+}
+
+.cc-conector {
+  margin: 14px 0;
+  font-size: 15px;
+  color: #000;
+}
+
+.cc-cuerpo-texto {
+  margin: 20px 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.cc-parrafo-valor {
+  margin-bottom: 24px;
+  text-align: left;
+  color: #000;
+}
+
+.cc-parrafo-fecha {
+  margin-bottom: 16px;
+  text-align: left;
+  color: #000;
+}
+
+.cc-firma-seccion {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.cc-firma-img-box {
+  height: 52px;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: -12px;
+}
+
+.cc-firma-img-box .firma-img {
+  max-height: 50px;
+  object-fit: contain;
+}
+
+.cc-firma-datos {
+  font-size: 14px;
+}
+
+.cc-firma-datos p {
+  margin: 2px 0;
+  color: #000;
+}
+
+.cc-aceptacion-seccion {
+  margin-top: 24px;
+  font-size: 14px;
+  color: #000;
+}
+
+.cc-aceptacion-label {
+  margin: 0 0 8px;
+}
+
+.cc-aceptacion-linea {
+  font-size: 14px;
+  color: #000;
+}

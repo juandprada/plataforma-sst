@@ -1,0 +1,19 @@
+{
+  "consultora": {
+    "nombre": "KAREN LIZETH BENSUR MURIEL",
+    "nit": "1.143.973.774-7",
+    "concepto": "Asesoría en el desarrollo del SG-SST",
+    "ciudad": "CALI"
+  },
+  "tarifas_por_empresa": {
+    "ck-comercializadora-un-mundo-de-oportunidades-sas": 162500,
+    "gaf-technology-solutions-sas": 162500,
+    "kapitalbank-sas": 162500,
+    "te-recuperamos-sas": 162500,
+    "medalleria-deportiva-del-valle": 200000,
+    "cromados-del-valle-cv-sas": 150000,
+    "recubrimiento-del-valle": 450000,
+    "premium-alimentos-sas": 500000
+  },
+  "tarifa_default": 250000
+}

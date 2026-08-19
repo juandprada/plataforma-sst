@@ -8,6 +8,7 @@ let PRESUPUESTO = null; // data/presupuesto.json (parámetros por empresa + cat�
 let CAPACITACIONES = null; // data/capacitaciones.json (contenido de la página 1 del acta)
 let GTC45_DATA = null;    // data/gtc45.json (mapeo de peligros + resultados por empresa)
 let INSPECCIONES = null;  // data/inspecciones.json
+let CUENTAS_COBRO_DATA = null; // data/cuentas_cobro.json
 
 // Formato cuya página 1 depende de la capacitación elegida (ver CAPACITACIONES).
 const FORMATO_ASISTENCIA = "asistencia-a-capacitacion";
@@ -15,6 +16,8 @@ const FORMATO_ASISTENCIA = "asistencia-a-capacitacion";
 const FORMATO_IPVER = "matriz-ipver";
 // Formato cuya página 1 depende de la inspección elegida (ver INSPECCIONES).
 const FORMATO_INSPECCION = "formato-inspeccion";
+// Formato de Cuenta de Cobro.
+const FORMATO_CUENTA_COBRO = "cuenta-de-cobro";
 
 const $ = (sel) => document.querySelector(sel);
 
@@ -508,6 +511,114 @@ function renderSelectorInspeccion(formato) {
   if (campo) campo.hidden = formato.id !== FORMATO_INSPECCION;
 }
 
+// ---- Cuenta de Cobro (formato mensual de honorarios SG-SST) -------------
+const MESES_ES = [
+  "ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO",
+  "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"
+];
+
+// Convierte un número entero a texto en español (soporta millones y formato bancario/factura).
+function numeroALetras(n) {
+  n = Math.floor(Number(n) || 0);
+  if (n === 0) return "CERO PESOS";
+  const u = ["", "UN", "DOS", "TRES", "CUATRO", "CINCO", "SEIS", "SIETE", "OCHO", "NUEVE"];
+  const d1 = ["DIEZ", "ONCE", "DOCE", "TRECE", "CATORCE", "QUINCE", "DIECISÉIS", "DIECISIETE", "DIECIOCHO", "DIECINUEVE"];
+  const d2 = ["", "", "VEINTE", "TREINTA", "CUARENTA", "CINCUENTA", "SESENTA", "SETENTA", "OCHENTA", "NOVENTA"];
+  const c3 = ["", "CIENTO", "DOSCIENTOS", "TRESCIENTOS", "CUATROCIENTOS", "QUINIENTOS", "SEISCIENTOS", "SETECIENTOS", "OCHOCIENTOS", "NOVECIENTOS"];
+
+  function w_1_99(x) {
+    if (x < 10) return u[x];
+    if (x < 20) return d1[x - 10];
+    const d = Math.floor(x / 10);
+    const r = x % 10;
+    if (x === 20) return "VEINTE";
+    if (r === 0) return d2[d];
+    if (d === 2) return "VEINTI" + u[r];
+    return d2[d] + " Y " + u[r];
+  }
+
+  function w_1_999(x) {
+    if (x === 0) return "";
+    if (x === 100) return "CIEN";
+    const c = Math.floor(x / 100);
+    const r = x % 100;
+    const cent = c3[c];
+    const rest = w_1_99(r);
+    return [cent, rest].filter(Boolean).join(" ");
+  }
+
+  const mm = Math.floor(n / 1e6);
+  const rmm = n % 1e6;
+  const th = Math.floor(rmm / 1000);
+  const rth = rmm % 1000;
+
+  const parts = [];
+  if (mm > 0) {
+    if (mm === 1) parts.push("UN MILLÓN");
+    else parts.push(w_1_999(mm) + " MILLONES");
+    if (th === 0 && rth === 0) parts.push("DE");
+  }
+  if (th > 0) {
+    if (th === 1) parts.push("MIL");
+    else parts.push(w_1_999(th) + " MIL");
+  }
+  if (rth > 0) {
+    parts.push(w_1_999(rth));
+  }
+  parts.push("PESOS");
+  return parts.join(" ").replace(/\s+/g, " ").trim();
+}
+
+// Obtiene el último día hábil (lunes a viernes) del mes y año indicados.
+function ultimoDiaHabil(anio, mes) {
+  // mes: 1-12. El día 0 del mes siguiente es el último día del mes deseado.
+  const fecha = new Date(anio, mes, 0);
+  const diaSemana = fecha.getDay(); // 0 = Domingo, 6 = Sábado
+  if (diaSemana === 0) fecha.setDate(fecha.getDate() - 2);
+  else if (diaSemana === 6) fecha.setDate(fecha.getDate() - 1);
+  return fecha.getDate();
+}
+
+function diaATexto(dia) {
+  const u = ["", "UNO", "DOS", "TRES", "CUATRO", "CINCO", "SEIS", "SIETE", "OCHO", "NUEVE"];
+  const d1 = ["DIEZ", "ONCE", "DOCE", "TRECE", "CATORCE", "QUINCE", "DIECISÉIS", "DIECISIETE", "DIECIOCHO", "DIECINUEVE"];
+  if (dia < 10) return u[dia];
+  if (dia < 20) return d1[dia - 10];
+  if (dia === 20) return "VEINTE";
+  if (dia < 30) return "VEINTI" + u[dia % 10];
+  if (dia === 30) return "TREINTA";
+  if (dia === 31) return "TREINTA Y UNO";
+  return String(dia);
+}
+
+function valorCuentaCobro(empresa) {
+  if (!empresa) return 250000;
+  const inputValor = $("#input-valor-cc");
+  if (inputValor && inputValor.value !== "" && Number(inputValor.value) > 0) {
+    return Number(inputValor.value);
+  }
+  const tarifas = (CUENTAS_COBRO_DATA && CUENTAS_COBRO_DATA.tarifas_por_empresa) || {};
+  return tarifas[empresa._id] || (CUENTAS_COBRO_DATA && CUENTAS_COBRO_DATA.tarifa_default) || 250000;
+}
+
+function renderSelectorCuentaCobro(formato, empresa) {
+  const campoMes = $("#campo-mes-cc");
+  const campoValor = $("#campo-valor-cc");
+  const esCC = formato.id === FORMATO_CUENTA_COBRO;
+  if (campoMes) campoMes.hidden = !esCC;
+  if (campoValor) campoValor.hidden = !esCC;
+
+  if (esCC && empresa) {
+    const inputValor = $("#input-valor-cc");
+    if (inputValor && (!inputValor.dataset.empresa || inputValor.dataset.empresa !== empresa._id)) {
+      const tarifas = (CUENTAS_COBRO_DATA && CUENTAS_COBRO_DATA.tarifas_por_empresa) || {};
+      const val = tarifas[empresa._id] || (CUENTAS_COBRO_DATA && CUENTAS_COBRO_DATA.tarifa_default) || 250000;
+      inputValor.value = val;
+      inputValor.dataset.empresa = empresa._id;
+    }
+  }
+}
+
 async function fetchText(url) {
   const r = await fetch(url, { cache: "no-cache" });
   if (!r.ok) throw new Error(`No se pudo cargar ${url} (${r.status})`);
@@ -718,12 +829,26 @@ function poblarSelects() {
     }
   }
 
+  // Meses disponibles para Cuenta de Cobro.
+  const selM = $("#sel-mes-cc");
+  if (selM) {
+    selM.innerHTML = "";
+    MESES_ES.forEach((nombre, idx) => {
+      const o = document.createElement("option");
+      o.value = String(idx + 1);
+      o.textContent = tituloCase(nombre);
+      selM.appendChild(o);
+    });
+    const mesActual = new Date().getMonth() + 1;
+    selM.value = String(mesActual);
+  }
+
   // Años disponibles: el actual y el anterior (hoy: 2026 y 2025). Muchos documentos
   // se firman para el año en curso, pero a veces hay que reponer los del año pasado.
   const selA = $("#sel-anio");
   const actual = new Date().getFullYear();
   selA.innerHTML = "";
-  for (const a of [actual, actual - 1]) {
+  for (const a of [actual, actual - 1, actual - 2]) {
     const o = document.createElement("option");
     o.value = String(a);
     o.textContent = String(a);
@@ -790,12 +915,27 @@ async function generar() {
     renderSelectorCargoIPVER(formato);
     // Selector de inspección: solo en el formato de inspección.
     renderSelectorInspeccion(formato);
+    // Selector y valor de Cuenta de Cobro: solo en cuenta-de-cobro.
+    renderSelectorCuentaCobro(formato, empresa);
     // Panel de extras Matriz Legal: solo en matriz-legal.
     const panelMatrizLegal = $("#panel-matriz-legal");
     if (panelMatrizLegal) panelMatrizLegal.hidden = formato.id !== "matriz-legal";
     
     const cap = capacitacionElegida();
     const insp = inspeccionElegida();
+
+    const mesCC = Number(($("#sel-mes-cc") && $("#sel-mes-cc").value) || (new Date().getMonth() + 1)) || 1;
+    const valorCC = valorCuentaCobro(empresa);
+    const diaNumCC = ultimoDiaHabil(anio, mesCC);
+    const diaTxtCC = diaATexto(diaNumCC);
+    const mesNombreCC = MESES_ES[mesCC - 1] || "ENERO";
+    const numeroCC = `${String(mesCC).padStart(2, "0")}-${String(anio).slice(-2)}`;
+    const consultora = (CUENTAS_COBRO_DATA && CUENTAS_COBRO_DATA.consultora) || {
+      nombre: "KAREN LIZETH BENSUR MURIEL",
+      nit: "1.143.973.774-7",
+      concepto: "Asesoría en el desarrollo del SG-SST",
+      ciudad: "CALI",
+    };
 
     let archivoTpl = formato.archivo;
     let tituloFmt = formato.titulo || formato.nombre;
@@ -834,6 +974,17 @@ async function generar() {
       INSPECCION_NOMBRE: insp ? insp.nombre : "",
       INSPECCION_OBJETIVO: insp ? insp.objetivo : "",
       INSPECCION_PUNTOS: puntosInspeccionHTML(insp),
+      // Tokens de Cuenta de Cobro.
+      NUMERO_CUENTA: numeroCC,
+      CONSULTORA_NOMBRE: consultora.nombre,
+      CONSULTORA_NIT: consultora.nit,
+      VALOR_LETRAS: numeroALetras(valorCC),
+      VALOR_PESOS: "$" + Math.round(valorCC).toLocaleString("es-CO"),
+      CONCEPTO: consultora.concepto,
+      MES_NOMBRE: mesNombreCC,
+      DIA_TEXTO: diaTxtCC,
+      DIA_NUMERO: String(diaNumCC),
+      CIUDAD: consultora.ciudad,
     };
 
     const raw = [
@@ -1013,7 +1164,7 @@ async function solicitarGeneracion() {
 async function init() {
   try {
     setEstado("Cargando datos…");
-    [EMPRESAS, FORMATOS, ENCABEZADO_TPL, PRESUPUESTO, CAPACITACIONES, GTC45_DATA, INSPECCIONES] =
+    [EMPRESAS, FORMATOS, ENCABEZADO_TPL, PRESUPUESTO, CAPACITACIONES, GTC45_DATA, INSPECCIONES, CUENTAS_COBRO_DATA] =
       await Promise.all([
         fetchJSON("data/empresas.json"),
         fetchJSON("plantillas/manifest.json"),
@@ -1022,18 +1173,45 @@ async function init() {
         fetchJSON("data/capacitaciones.json"),
         fetchJSON("data/gtc45.json"),
         fetchJSON("data/inspecciones.json"),
+        fetchJSON("data/cuentas_cobro.json"),
       ]);
     cargarAjustes(); // ajustes de presupuesto guardados en este navegador
     poblarSelects();
     conectarPanelPresupuesto();
     setEstado("");
     // Auto-genera el PDF al elegir formato o empresa (sin botones), serializado.
-    $("#sel-formato").addEventListener("change", solicitarGeneracion);
-    $("#sel-empresa").addEventListener("change", solicitarGeneracion);
+    $("#sel-formato").addEventListener("change", () => {
+      const formato = FORMATOS.find((f) => f.id === $("#sel-formato").value);
+      const empresa = EMPRESAS.find((e) => e._id === $("#sel-empresa").value);
+      if (formato && formato.id === FORMATO_CUENTA_COBRO && empresa) {
+        const inputValor = $("#input-valor-cc");
+        if (inputValor) {
+          const tarifas = (CUENTAS_COBRO_DATA && CUENTAS_COBRO_DATA.tarifas_por_empresa) || {};
+          inputValor.value = tarifas[empresa._id] || (CUENTAS_COBRO_DATA && CUENTAS_COBRO_DATA.tarifa_default) || 250000;
+          inputValor.dataset.empresa = empresa._id;
+        }
+      }
+      solicitarGeneracion();
+    });
+    $("#sel-empresa").addEventListener("change", () => {
+      const formato = FORMATOS.find((f) => f.id === $("#sel-formato").value);
+      const empresa = EMPRESAS.find((e) => e._id === $("#sel-empresa").value);
+      if (formato && formato.id === FORMATO_CUENTA_COBRO && empresa) {
+        const inputValor = $("#input-valor-cc");
+        if (inputValor) {
+          const tarifas = (CUENTAS_COBRO_DATA && CUENTAS_COBRO_DATA.tarifas_por_empresa) || {};
+          inputValor.value = tarifas[empresa._id] || (CUENTAS_COBRO_DATA && CUENTAS_COBRO_DATA.tarifa_default) || 250000;
+          inputValor.dataset.empresa = empresa._id;
+        }
+      }
+      solicitarGeneracion();
+    });
     $("#sel-anio").addEventListener("change", solicitarGeneracion);
     $("#sel-capacitacion").addEventListener("change", solicitarGeneracion);
     $("#sel-cargo-ipver").addEventListener("change", solicitarGeneracion);
     $("#sel-inspeccion").addEventListener("change", solicitarGeneracion);
+    $("#sel-mes-cc").addEventListener("change", solicitarGeneracion);
+    $("#input-valor-cc").addEventListener("change", solicitarGeneracion);
     $("#ml-chk-alturas").addEventListener("change", solicitarGeneracion);
     $("#ml-chk-confinados").addEventListener("change", solicitarGeneracion);
     $("#ml-chk-pesv").addEventListener("change", solicitarGeneracion);

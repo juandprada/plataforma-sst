@@ -1,0 +1,51 @@
+<!-- Plantilla: Cuenta de Cobro (Mensual Asesoría SG-SST) -->
+<div class="cc-container">
+  <div class="cc-marco">
+    <div class="cc-encabezado-seccion">
+      <h1 class="cc-titulo">CUENTA DE COBRO</h1>
+      <p class="cc-numero"><strong>Cuenta de cobro No:</strong> {{NUMERO_CUENTA}}</p>
+    </div>
+
+    <div class="cc-partes">
+      <div class="cc-empresa-bloque">
+        <p class="cc-nombre-empresa"><strong>{{EMPRESA}}</strong></p>
+        <p class="cc-nit-empresa"><strong>NIT # {{NIT}}</strong></p>
+      </div>
+
+      <p class="cc-conector">Debe a</p>
+
+      <div class="cc-consultora-bloque">
+        <p class="cc-nombre-consultora"><strong>{{CONSULTORA_NOMBRE}}</strong></p>
+        <p class="cc-nit-consultora"><strong>NIT # {{CONSULTORA_NIT}}</strong></p>
+      </div>
+    </div>
+
+    <div class="cc-cuerpo-texto">
+      <p class="cc-parrafo-valor">
+        La suma de <strong>{{VALOR_LETRAS}} ({{VALOR_PESOS}})</strong> por concepto de
+        <strong>{{CONCEPTO}}</strong>, labor que se llevó a cabo durante el mes de
+        <strong>{{MES_NOMBRE}}</strong>.
+      </p>
+
+      <p class="cc-parrafo-fecha">
+        Se firma en {{CIUDAD}}, a los <strong>{{DIA_TEXTO}} ({{DIA_NUMERO}})</strong> días del mes de
+        <strong>{{MES_NOMBRE}}</strong> de <strong>{{ANIO}}</strong>.
+      </p>
+    </div>
+
+    <div class="cc-firma-seccion">
+      <div class="cc-firma-img-box">
+        {{FIRMA_CONSULTORA}}
+      </div>
+      <div class="cc-firma-datos">
+        <p class="cc-firma-nombre"><strong>{{CONSULTORA_NOMBRE}}</strong></p>
+        <p class="cc-firma-nit"><strong>NIT # {{CONSULTORA_NIT}}</strong></p>
+      </div>
+    </div>
+
+    <div class="cc-aceptacion-seccion">
+      <p class="cc-aceptacion-label">Aceptada:</p>
+      <div class="cc-aceptacion-linea">_____________________________</div>
+    </div>
+  </div>
+</div>

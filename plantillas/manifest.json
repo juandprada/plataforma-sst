@@ -25,6 +25,16 @@
     "origen": "TABLA DE CONTENIDO.docx"
   },
   {
+    "id": "cuenta-de-cobro",
+    "nombre": "Cuenta de Cobro",
+    "categoria": "General",
+    "archivo": "cuenta-de-cobro.html",
+    "titulo": "CUENTA DE COBRO",
+    "codigo": "",
+    "version": "",
+    "orientacion": "vertical"
+  },
+  {
     "id": "plan-de-mejora",
     "nombre": "Plan de Mejora",
     "categoria": "1.PLANEAR",
