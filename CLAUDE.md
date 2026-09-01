@@ -50,6 +50,11 @@ Input/Logo*.png →(tools/normalize_logos.py)→ logos/<id>.png
   Código/Versión de ancho fijo. Debe verse **igual en vertical y horizontal**; solo el
   título se estira. La orientación por formato está en `manifest.orientacion`
   (`vertical|horizontal`); la app fija `@page size` vía `<style id="page-orient">`.
+- **Margen superior de inspecciones**: los formatos de `data/inspecciones.json`
+  (todos renderizan como `formato-inspeccion`) usan margen superior **0.4in**; el
+  resto de la plataforma conserva 0.6in uniforme. Lo fija `renderFormato` en la
+  regla `@page` (impresión del navegador) y en `#salida[data-mtop]`, que lee
+  `generarPDF` para `opt.margin = [arriba, izq, abajo, der]` de html2pdf.
 - **Estilos de tabla = base + variantes + ámbito** (no un solo estilo global para todo):
   base `.doc-tabla` (bordes/fuente) + **variantes reutilizables** que la plantilla elige
   según la función de la tabla — `.tabla-form` (filas altas para llenar a mano),

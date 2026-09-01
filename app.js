@@ -1019,9 +1019,14 @@ async function generar() {
       orientacion = insp.orientacion;
     }
     const horizontal = orientacion === "horizontal";
+    // Los formatos de inspección arrancan más arriba: margen superior 0.4in
+    // (el resto de la plataforma conserva 0.6in uniforme). Aplica a la impresión
+    // del navegador (@page aquí) y al PDF (generarPDF lee #salida[data-mtop]).
+    const mtop = formato.id === FORMATO_INSPECCION ? "0.4in" : "0.6in";
     document.getElementById("page-orient").textContent =
-      `@page { size: Letter ${horizontal ? "landscape" : "portrait"}; margin: 0.6in; }`;
+      `@page { size: Letter ${horizontal ? "landscape" : "portrait"}; margin: ${mtop} 0.6in 0.6in; }`;
     $("#salida").classList.toggle("horizontal", horizontal);
+    $("#salida").dataset.mtop = mtop;
 
     // Ámbito por formato: la clase doc--<id> permite ajustes de CSS específicos de
     // un formato sin afectar a los demás (ver styles.css). Las variantes de tabla
@@ -1093,8 +1098,12 @@ async function generarPDF() {
     (document.title || "documento").replace(/[^\wáéíóúñ .-]+/gi, "").trim() ||
     "documento";
 
+  // Margen superior reducido (0.4in) SOLO en los formatos de inspección; lo fija
+  // renderFormato en #salida[data-mtop]. El array de html2pdf es [arriba, izq,
+  // abajo, der] — verificado en el vendor: addImage usa margin[1]=X, margin[0]=Y.
+  const mtop = parseFloat($("#salida").dataset.mtop || "0.6") || 0.6;
   const opt = {
-    margin: 0.6, // margen uniforme (in) en TODAS las páginas y lados
+    margin: [mtop, 0.6, 0.6, 0.6], // (in): arriba 0.4 solo inspecciones; resto 0.6
     filename: nombre + ".pdf",
     image: { type: "jpeg", quality: 0.98 },
     // Sin windowWidth/width: dependían del devicePixelRatio (escalado de Windows)
