@@ -41,7 +41,7 @@
       "id": "actos-condiciones",
       "nombre": "REPORTE DE ACTOS Y CONDICIONES INSEGURAS",
       "archivo": "reporte-actos-condiciones.html",
-      "orientacion": "vertical"
+      "orientacion": "horizontal"
     },
     {
       "id": "kit-derrames",
