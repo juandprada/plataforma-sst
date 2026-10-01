@@ -23,13 +23,13 @@
       "id": "dotacion-brigada",
       "nombre": "DOTACIÓN Y EQUIPO BRIGADA DE EMERGENCIA",
       "archivo": "inspeccion-dotacion-brigada.html",
-      "orientacion": "vertical"
+      "orientacion": "horizontal"
     },
     {
       "id": "locativa",
       "nombre": "INSPECCIÓN DE SEGURIDAD, ORDEN Y ASEO",
       "archivo": "inspeccion-locativa.html",
-      "orientacion": "vertical"
+      "orientacion": "horizontal"
     },
     {
       "id": "mantenimiento",
